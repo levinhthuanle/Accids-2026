@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1762879681.49691 "d:/Projects/Research/Aciids_2025/Report/samplepaper.tex" "samplepaper.pdf" "samplepaper" 1762879682.29 0
+["pdflatex"] 1762881181.25751 "d:/Projects/Research/Aciids_2025/Report/samplepaper.tex" "samplepaper.pdf" "samplepaper" 1762881181.94919 0
   "C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1759574839 87510 b3766c2e1f241588f88cba4a8bf1b25f ""
   "C:/Users/DELL/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1762879673 22504 9592660a0f9a93e55cd933200c9046aa ""
   "C:/Users/DELL/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1762879670 25420 97db549d8b200381dc21fa58243d3506 ""
@@ -33,10 +33,12 @@
   "E:/MikTex/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "E:/MikTex/fonts/tfm/public/cm/cmsy9.tfm" 1136765053 1116 25a7bf822c58caf309a702ef79f4afbb ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1247596666 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
+  "E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1247596667 32587 65067f817f408bc71a7312f3d9828a9b ""
   "E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "E:/MikTex/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "E:/MikTex/tex/latex/00miktex/epstopdf-sys.cfg" 1616067285 584 2a1075dd71571459f59146da9f7502ad ""
@@ -53,11 +55,11 @@
   "E:/MikTex/tex/latex/l3backend/l3backend-pdftex.def" 1751005717 30351 a2b09edc6c93a742566b222c33d0278e ""
   "E:/MikTex/tex/latex/oberdiek/aliascnt.sty" 1722085538 2652 813491e2bc95c1dafbb39cd7c54b380b ""
   "E:/MikTex/tex/latex/tools/multicol.sty" 1749468414 33259 db80f750a01491473161bd4d0f6986d2 ""
-  "d:/Projects/Research/Aciids_2025/Report/samplepaper.tex" 1762879635 6492 5083061c995d8bb43aae2de8da8e7fe9 ""
+  "d:/Projects/Research/Aciids_2025/Report/samplepaper.tex" 1762881179 6417 50462d52f6d9f5025a22943b8801fdb1 ""
   "fig1.eps" 1762879635 357553 7e2b7e710693198613c8426973a2c3ce ""
   "llncs.cls" 1762879635 43402 5fb5a2dc40571aa40f3d199c00cbb986 ""
-  "samplepaper.aux" 1762879682 1716 da0b94f3c1923e6cd722880b3429574b "pdflatex"
-  "samplepaper.tex" 1762879635 6492 5083061c995d8bb43aae2de8da8e7fe9 ""
+  "samplepaper.aux" 1762881181 1847 dfe1c20c87c17f2d46b10f2fb0250bda "pdflatex"
+  "samplepaper.tex" 1762881179 6417 50462d52f6d9f5025a22943b8801fdb1 ""
   (generated)
   "samplepaper.aux"
   "samplepaper.log"
