@@ -150,13 +150,7 @@ sim(d_i, e_k) = \alpha \cdot sim_{text}(c_i, label(e_k)) + \beta \cdot sim_{cont
 where $\alpha$ and $\beta$ are weighting parameters, and $sim_{text}$ and $sim_{context}$ represent textual and contextual similarity measures respectively.
 
 \subsubsection{Knowledge Graph Formalization}
-The constructed knowledge graph is formally defined as a directed graph $KG = (V, E, R, A)$ where:
-\begin{itemize}
-    \item $V = \{v_1, v_2, ..., v_m\}$ is the set of entity vertices
-    \item $E \subseteq V \times V$ represents the edges between entities
-    \item $R$ is the set of relation types
-    \item $A: V \rightarrow \mathcal{P}(\mathcal{A})$ maps entities to their attribute sets
-\end{itemize}
+The constructed knowledge graph is formally defined as a directed graph $KG = (V, E, R, A)$ where $V = \{v_1, v_2, ..., v_m\}$ is the set of entity vertices, $E \subseteq V \times V$ represents the edges between entities, $R$ is the set of relation types, and $A: V \rightarrow \mathcal{P}(\mathcal{A})$ maps entities to their attribute sets.
 
 \subsection{T5-based Natural Language Generation Framework}
 
@@ -242,63 +236,30 @@ Figure \ref{fig:architecture} illustrates the complete pipeline of our proposed 
 The first stage performs comprehensive visual analysis using multiple computer vision techniques to extract rich visual information from input images.
 
 \subsubsection{Multi-Scale Object Detection}
-Our system employs YOLOv11 \cite{ultralytics2023yolov8} for robust object detection, which provides:
-\begin{itemize}
-    \item Real-time object detection with high accuracy
-    \item Multi-scale feature extraction for objects of varying sizes
-    \item Confidence-based filtering to ensure reliable detections
-\end{itemize}
+Our system employs YOLOv11 \cite{ultralytics2023yolov8} for robust object detection, which provides real-time object detection with high accuracy, multi-scale feature extraction for objects of varying sizes, and confidence-based filtering to ensure reliable detections.
 
 The detection process generates a comprehensive object set $O = \{o_1, o_2, ..., o_n\}$, where each object $o_i$ contains class information, spatial coordinates, and confidence scores.
 
 \subsubsection{Depth-Based Spatial Understanding}
-We integrate Depth-Anything-V2-Base \cite{yang2024depth} to obtain detailed depth information, enabling:
-\begin{itemize}
-    \item 3D spatial relationship understanding between objects
-    \item Distance estimation for relative positioning
-    \item Depth-aware scene composition analysis
-\end{itemize}
+We integrate Depth-Anything-V2-Base \cite{yang2024depth} to obtain detailed depth information, enabling 3D spatial relationship understanding between objects, distance estimation for relative positioning, and depth-aware scene composition analysis.
 
 The depth estimation provides spatial context that enhances the understanding of object interactions and scene layout.
 
 \subsubsection{Geometric Relationship Analysis}
-Using the Shapely geometry library \cite{gillies2007shapely}, we compute precise geometric relationships:
-\begin{itemize}
-    \item Spatial overlaps and intersections between object regions
-    \item Relative positioning (above, below, left, right, inside, outside)
-    \item Distance calculations for proximity analysis
-    \item Containment relationships for hierarchical object understanding
-\end{itemize}
+Using the Shapely geometry library \cite{gillies2007shapely}, we compute precise geometric relationships including spatial overlaps and intersections between object regions, relative positioning (above, below, left, right, inside, outside), distance calculations for proximity analysis, and containment relationships for hierarchical object understanding.
 
 \subsubsection{Optical Character Recognition}
-For images containing textual elements, we incorporate OCR capabilities to:
-\begin{itemize}
-    \item Extract textual information from signs, labels, and documents
-    \item Integrate text as additional contextual entities
-    \item Enhance semantic understanding through textual cues
-\end{itemize}
+For images containing textual elements, we incorporate OCR capabilities to extract textual information from signs, labels, and documents, integrate text as additional contextual entities, and enhance semantic understanding through textual cues.
 
 \subsection{Stage II: Knowledge Graph Construction and Entity Linking}
 
 The second stage transforms visual detections into a structured knowledge representation that enables semantic reasoning and contextual understanding.
 
 \subsubsection{Entity Enrichment and Aggregation}
-Detected objects are enhanced with additional semantic information:
-\begin{itemize}
-    \item Visual attributes (color, size, texture, orientation)
-    \item Spatial properties derived from depth analysis
-    \item Contextual tags based on scene understanding
-    \item Confidence-weighted importance scoring
-\end{itemize}
+Detected objects are enhanced with additional semantic information including visual attributes (color, size, texture, orientation), spatial properties derived from depth analysis, contextual tags based on scene understanding, and confidence-weighted importance scoring.
 
 \subsubsection{External Knowledge Base Integration}
-Our system performs entity linking with multiple knowledge sources:
-\begin{itemize}
-    \item \textbf{ConceptNet}: For common-sense relationships and properties
-    \item \textbf{WordNet}: For semantic hierarchies and synonyms
-    \item \textbf{YAGO/DBpedia}: For factual information and entity properties
-    \item \textbf{Visual Genome}: For visual relationship patterns
-\end{itemize}
+Our system performs entity linking with multiple knowledge sources: \textbf{ConceptNet} for common-sense relationships and properties, \textbf{WordNet} for semantic hierarchies and synonyms, \textbf{YAGO/DBpedia} for factual information and entity properties, and \textbf{Visual Genome} for visual relationship patterns.
 
 The linking process employs semantic similarity matching:
 \begin{equation}
@@ -306,112 +267,83 @@ similarity(e_{visual}, e_{kb}) = \alpha \cdot sim_{text}(label(e_{visual}), labe
 \end{equation}
 
 \subsubsection{Dynamic Knowledge Graph Construction}
-The system constructs a scene-specific knowledge graph $KG = (V, E, R, A)$ where:
-\begin{itemize}
-    \item $V$ contains both detected visual entities and linked knowledge entities
-    \item $E$ represents relationships derived from spatial analysis and knowledge linking
-    \item $R$ includes spatial, semantic, and functional relationship types
-    \item $A$ maps entities to their enriched attribute sets
-\end{itemize}
+The system constructs a scene-specific knowledge graph $KG = (V, E, R, A)$ where $V$ contains both detected visual entities and linked knowledge entities, $E$ represents relationships derived from spatial analysis and knowledge linking, $R$ includes spatial, semantic, and functional relationship types, and $A$ maps entities to their enriched attribute sets.
 
 \subsection{Stage III: Contextual Analysis and Enriched Data Processing}
 
 The third stage focuses on sophisticated reasoning using the enriched knowledge graph without explicit relationship modeling.
 
 \subsubsection{Semantic Enrichment Strategy}
-Unlike traditional approaches that explicitly model all relationships, our system focuses on enriching entities with contextual information:
-\begin{itemize}
-    \item \textbf{Semantic Context}: Inferring implicit meanings from entity combinations
-    \item \textbf{Functional Context}: Understanding purposes and activities
-    \item \textbf{Temporal Context}: Inferring time-related aspects from visual cues
-    \item \textbf{Causal Context}: Identifying cause-effect relationships
-\end{itemize}
+Unlike traditional approaches that explicitly model all relationships, our system focuses on enriching entities with contextual information. This includes \textbf{Semantic Context} for inferring implicit meanings from entity combinations, \textbf{Functional Context} for understanding purposes and activities, \textbf{Temporal Context} for inferring time-related aspects from visual cues, and \textbf{Causal Context} for identifying cause-effect relationships.
 
 \subsubsection{Multi-Level Inference Engine}
-Our inference engine operates at multiple abstraction levels:
-
-\begin{enumerate}
-    \item \textbf{Object-Level Inference}: Direct properties and attributes
-    \item \textbf{Scene-Level Inference}: Overall scene understanding and context
-    \item \textbf{Activity-Level Inference}: Actions and events happening in the scene
-    \item \textbf{Conceptual-Level Inference}: High-level concepts and themes
-\end{enumerate}
+Our inference engine operates at multiple abstraction levels: (1) \textbf{Object-Level Inference} for direct properties and attributes, (2) \textbf{Scene-Level Inference} for overall scene understanding and context, (3) \textbf{Activity-Level Inference} for actions and events happening in the scene, and (4) \textbf{Conceptual-Level Inference} for high-level concepts and themes.
 
 \subsubsection{Context Propagation Mechanism}
-The system employs a context propagation algorithm that:
-\begin{itemize}
-    \item Spreads semantic information through the knowledge graph
-    \item Weights context based on spatial proximity and semantic similarity
-    \item Resolves ambiguities through multi-source evidence combination
-    \item Maintains uncertainty estimates for probabilistic reasoning
-\end{itemize}
+The system employs a context propagation algorithm that spreads semantic information through the knowledge graph, weights context based on spatial proximity and semantic similarity, resolves ambiguities through multi-source evidence combination, and maintains uncertainty estimates for probabilistic reasoning.
 
 \subsection{Stage IV: T5-Based Natural Language Generation}
 
 The final stage employs the T5 (Text-to-Text Transfer Transformer) model \cite{raffel2020exploring} to generate natural language descriptions from the enriched semantic representation.
 
 \subsubsection{Semantic-to-Text Encoding}
-The enriched knowledge graph is converted into a structured semantic representation:
-\begin{itemize}
-    \item Entity-centric encoding highlighting important objects and their properties
-    \item Relationship-aware structuring preserving spatial and semantic connections
-    \item Context-enriched formatting including inferred information
-    \item Hierarchical organization from concrete objects to abstract concepts
-\end{itemize}
+The enriched knowledge graph is converted into a structured semantic representation featuring entity-centric encoding highlighting important objects and their properties, relationship-aware structuring preserving spatial and semantic connections, context-enriched formatting including inferred information, and hierarchical organization from concrete objects to abstract concepts.
 
 \subsubsection{T5 Model Adaptation}
-We fine-tune the T5 model specifically for our image description task:
-\begin{itemize}
-    \item \textbf{Input Format}: Structured semantic representations derived from knowledge graphs
-    \item \textbf{Output Format}: Natural language descriptions with varying levels of detail
-    \item \textbf{Training Strategy}: Multi-task learning with description generation and semantic consistency
-    \item \textbf{Attention Mechanism}: Enhanced attention over semantic structures
-\end{itemize}
+We fine-tune the T5 model specifically for our image description task with \textbf{Input Format} as structured semantic representations derived from knowledge graphs, \textbf{Output Format} as natural language descriptions with varying levels of detail, \textbf{Training Strategy} using multi-task learning with description generation and semantic consistency, and \textbf{Attention Mechanism} enhanced attention over semantic structures.
 
 \subsubsection{Description Generation Logic}
-The text generation process follows a structured approach:
-
-\begin{enumerate}
-    \item \textbf{Content Planning}: Organizing semantic information into narrative structure
-    \item \textbf{Sentence Structure Logic}: Constructing grammatically correct and coherent sentences
-    \item \textbf{Style Adaptation}: Adjusting linguistic style based on content type and context
-    \item \textbf{Coherence Optimization}: Ensuring logical flow and narrative consistency
-\end{enumerate}
+The text generation process follows a structured approach: (1) \textbf{Content Planning} for organizing semantic information into narrative structure, (2) \textbf{Sentence Structure Logic} for constructing grammatically correct and coherent sentences, (3) \textbf{Style Adaptation} for adjusting linguistic style based on content type and context, and (4) \textbf{Coherence Optimization} for ensuring logical flow and narrative consistency.
 
 \subsubsection{Multi-Level Description Generation}
-Our system generates descriptions at multiple levels of detail:
-\begin{itemize}
-    \item \textbf{Basic Level}: Simple object enumeration and spatial relationships
-    \item \textbf{Detailed Level}: Rich descriptions including attributes, activities, and context
-    \item \textbf{Narrative Level}: Story-like descriptions with inferred activities and emotions
-    \item \textbf{Technical Level}: Precise descriptions suitable for accessibility applications
-\end{itemize}
+Our system generates descriptions at multiple levels of detail: \textbf{Basic Level} for simple object enumeration and spatial relationships, \textbf{Detailed Level} for rich descriptions including attributes, activities, and context, \textbf{Narrative Level} for story-like descriptions with inferred activities and emotions, and \textbf{Technical Level} for precise descriptions suitable for accessibility applications.
 
 \subsection{Integration and Optimization}
 
 \subsubsection{End-to-End Training Strategy}
-While individual components are pre-trained separately, the system employs end-to-end fine-tuning:
-\begin{itemize}
-    \item Joint optimization of knowledge graph construction and text generation
-    \item Reinforcement learning for description quality improvement
-    \item Multi-objective optimization balancing accuracy, fluency, and informativeness
-\end{itemize}
+While individual components are pre-trained separately, the system employs end-to-end fine-tuning through joint optimization of knowledge graph construction and text generation, reinforcement learning for description quality improvement, and multi-objective optimization balancing accuracy, fluency, and informativeness.
 
 \subsubsection{Quality Assurance Mechanisms}
-The system incorporates several quality control measures:
-\begin{itemize}
-    \item Semantic consistency checking between visual content and generated text
-    \item Factual accuracy verification against knowledge bases
-    \item Linguistic quality assessment using automated metrics
-    \item Diversity promotion to avoid repetitive descriptions
-\end{itemize}
+The system incorporates several quality control measures including semantic consistency checking between visual content and generated text, factual accuracy verification against knowledge bases, linguistic quality assessment using automated metrics, and diversity promotion to avoid repetitive descriptions.
 
 This comprehensive approach ensures that our system generates high-quality, contextually rich, and semantically accurate image descriptions that surpass traditional methods in both information content and linguistic quality.
 
 \section{Evaluation}
 \subsection{Environment and Experiment Data}
 
-\section{Conclusion and Future Work}
+\section{Future Work}
+
+While our current framework demonstrates promising results in knowledge graph-enhanced image description generation, several avenues for future research and improvement remain to be explored.
+
+\subsection{Scalability and Real-time Optimization}
+
+Future work will focus on optimizing the computational efficiency of our four-stage pipeline to enable real-time applications. This includes developing lightweight versions of the knowledge graph construction module for mobile and edge computing environments, implementing parallel processing techniques to reduce inference time across all four stages, particularly in the entity linking and contextual reasoning phases, exploring model compression and quantization techniques for the T5 transformer without significant performance degradation, and investigating efficient caching mechanisms for frequently accessed knowledge graph entities.
+
+\subsection{Enhanced Knowledge Graph Integration}
+
+We plan to expand and improve the knowledge graph component through integration of domain-specific knowledge bases (medical, scientific, cultural) for specialized image description tasks, development of dynamic knowledge graph updating mechanisms that can incorporate new entities and relationships during inference, investigation of multimodal knowledge graphs that combine visual, textual, and temporal information for richer semantic representation, and exploration of federated knowledge graph architectures to leverage multiple distributed knowledge sources.
+
+\subsection{Advanced Contextual Reasoning}
+
+Future research will explore more sophisticated inference mechanisms including implementation of causal reasoning models to better understand cause-effect relationships in complex scenes, development of temporal reasoning capabilities for video description generation and dynamic scene understanding, investigation of emotional and sentiment inference from visual cues to generate more nuanced descriptions, and enhancement of the context propagation mechanism with graph neural networks for better semantic diffusion.
+
+\subsection{Multimodal and Cross-domain Applications}
+
+We aim to extend our approach to broader applications through adaptation for video description generation by incorporating temporal dynamics and motion analysis, extension to medical image analysis for generating diagnostic descriptions with clinical knowledge integration, development of cross-lingual description generation capabilities using multilingual knowledge bases, integration with accessibility technologies for visually impaired users, including audio description generation, and application to augmented reality scenarios for real-time scene understanding and description.
+
+\subsection{Evaluation and Benchmarking}
+
+Future work will include comprehensive evaluation strategies involving development of new evaluation metrics that better capture semantic richness, factual accuracy, and contextual appropriateness, creation of specialized benchmarks for knowledge-enhanced image description tasks with ground truth knowledge annotations, human evaluation studies to assess the quality and usefulness of generated descriptions in real-world applications, and comparative analysis with human-generated descriptions to identify areas for improvement.
+
+\subsection{Robustness and Generalization}
+
+We plan to investigate the robustness of our approach through evaluation on adversarial examples and out-of-domain images to test system resilience, development of uncertainty estimation mechanisms for confidence-aware description generation, investigation of few-shot learning capabilities for adapting to new domains with limited training data, and analysis of failure modes and development of error detection and correction mechanisms.
+
+\subsection{Integration with Emerging Technologies}
+
+Future directions will also explore integration with cutting-edge technologies including integration with large language models (LLMs) for enhanced natural language generation capabilities, exploration of diffusion models for generating visual explanations alongside textual descriptions, investigation of neural-symbolic approaches for more interpretable reasoning processes, and development of interactive description generation systems that can respond to user queries and preferences.
+
+These future directions will contribute to advancing the field of knowledge-enhanced image understanding and enable the deployment of our framework in real-world applications requiring detailed, accurate, and contextually appropriate image descriptions.
 
 \section*{Acknowledgments}
 The authors would like to thank the Faculty of Information Technology, Ho Chi Minh
@@ -419,128 +351,7 @@ The authors would like to thank the Faculty of Information Technology, Ho Chi Mi
  are sponsors of this research. We also thank anonymous reviewers for their helpful
  comments on this paper.
 
-
-
-% \section{First Section}
-
-
-% \subsection{A Subsection Sample}
-% Please note that the first paragraph of a section or subsection is
-% not indented. The first paragraph that follows a table, figure,
-% equation etc. does not need an indent, either.
-
-% Subsequent paragraphs, however, are indented.
-
-% \subsubsection{Sample Heading (Third Level)} Only two levels of
-% headings should be numbered. Lower level headings remain unnumbered;
-% they are formatted as run-in headings.
-
-% \paragraph{Sample Heading (Fourth Level)}
-% The contribution should contain no more than four levels of
-% headings. Table~\ref{tab1} gives a summary of all heading levels.
-
-% \begin{table}
-% \caption{Table captions should be placed above the
-% tables.}\label{tab1}
-% \begin{tabular}{|l|l|l|}
-% \hline
-% Heading level &  Example & Font size and style\\
-% \hline
-% Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
-% 1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
-% 2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
-% 3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
-% 4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
-% \hline
-% \end{tabular}
-% \end{table}
-
-
-% \noindent Displayed equations are centered and set on a separate
-% line.
-% \begin{equation}
-% x + y = z
-% \end{equation}
-% Please try to avoid rasterized images for line-art diagrams and
-% schemas. Whenever possible, use vector graphics instead (see
-% Fig.~\ref{fig1}).
-
-% \begin{figure}
-% \includegraphics[width=\textwidth]{fig1.eps}
-% \caption{A figure caption is always placed below the illustration.
-% Please note that short captions are centered, while long ones are
-% justified by the macro package automatically.} \label{fig1}
-% \end{figure}
-
-% \begin{theorem}
-% This is a sample theorem. The run-in heading is set in bold, while
-% the following text appears in italics. Definitions, lemmas,
-% propositions, and corollaries are styled the same way.
-% \end{theorem}
-% %
-% % the environments 'definition', 'lemma', 'proposition', 'corollary',
-% % 'remark', and 'example' are defined in the LLNCS documentclass as well.
-% %
-% \begin{proof}
-% Proofs, examples, and remarks have the initial word in italics,
-% while the following text appears in normal font.
-% \end{proof}
-% For citations of references, we prefer the use of square brackets
-% and consecutive numbers. Citations using labels or the author/year
-% convention are also acceptable. The following bibliography provides
-% a sample reference list with entries for journal
-% articles~\cite{Vinyals2015}, an LNCS chapter~\cite{SceneGraphRef}, a
-% book~\cite{EntityLinkingRef}, proceedings without editors~\cite{TemplateRetrievalRef},
-% and a homepage~\cite{KnowledgeBasedCaptioningRef}. Multiple citations are grouped
-% \cite{Vinyals2015,SceneGraphRef,EntityLinkingRef},
-% \cite{Vinyals2015,EntityLinkingRef,TemplateRetrievalRef,KnowledgeBasedCaptioningRef}.
-
-% \begin{credits}
-% \subsubsection{\ackname} A bold run-in heading in small font size at the end of the paper is
-% used for general acknowledgments, for example: This study was funded
-% by X (grant number Y).
-
-% \subsubsection{\discintname}
-% It is now necessary to declare any competing interests or to specifically
-% state that the authors have no competing interests. Please place the
-% statement with a bold run-in heading in small font size beneath the
-% (optional) acknowledgments\footnote{If EquinOCS, our proceedings submission
-% system, is used, then the disclaimer can be provided directly in the system.},
-% for example: The authors have no competing interests to declare that are
-% relevant to the content of this article. Or: Author A has received research
-% grants from Company W. Author B has received a speaker honorarium from
-% Company X and owns stock in Company Y. Author C is a member of committee Z.
-% \end{credits}
-% %
-% % ---- Bibliography ----
-% %
-% % BibTeX users should specify bibliography style 'splncs04'.
-% % References will then be sorted and formatted in the correct style.
-%
 \bibliographystyle{splncs04}
 \bibliography{ref}
-%
-% \begin{thebibliography}{8}
-% \bibitem{ref_article1}
-% Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-
-% \bibitem{ref_lncs1}
-% Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-% F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-% Springer, Heidelberg (2016). \doi{10.10007/1234567890}
-
-% \bibitem{ref_book1}
-% Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-% Location (1999)
-
-% \bibitem{ref_proc1}
-% Author, A.-B.: Contribution title. In: 9th International Proceedings
-% on Proceedings, pp. 1--2. Publisher, Location (2010)
-
-% \bibitem{ref_url1}
-% LNCS Homepage, \url{http://www.springer.com/lncs}, last accessed 2023/10/25
-% \end{thebibliography}
-
-
 
 \end{document}
