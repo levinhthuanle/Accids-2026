@@ -5,59 +5,47 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: splncs04.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
-Warning--I didn't find a database entry for "vinyals2015show"
-Warning--I didn't find a database entry for "karpathy2015deep"
-Warning--I didn't find a database entry for "xu2015show"
-Warning--I didn't find a database entry for "anderson2018bottom"
-Warning--I didn't find a database entry for "li2019entangled"
-Warning--I didn't find a database entry for "wang2019controllable"
-Warning--I didn't find a database entry for "cornia2020meshed"
-Warning--I didn't find a database entry for "marino2017ok"
-Warning--I didn't find a database entry for "wu2017image"
-Warning--I didn't find a database entry for "yao2018exploring"
-Warning--I didn't find a database entry for "zhong2020comprehensive"
-Warning--I didn't find a database entry for "zhao2021knowledge"
 Warning--I didn't find a database entry for "li2022oscar"
-Warning--I didn't find a database entry for "ultralytics2023yolov8"
-You've used 13 entries,
+Warning--I didn't find a database entry for "yang2024depth"
+You've used 27 entries,
             2850 wiz_defined-function locations,
-            697 strings with 7433 characters,
-and the built_in function-call counts, 9383 in all, are:
-= -- 787
-> -- 331
-< -- 17
-+ -- 137
-- -- 122
-* -- 592
-:= -- 1164
-add.period$ -- 20
-call.type$ -- 13
-change.case$ -- 114
+            748 strings with 9591 characters,
+and the built_in function-call counts, 19237 in all, are:
+= -- 1643
+> -- 679
+< -- 31
++ -- 280
+- -- 250
+* -- 1201
+:= -- 2384
+add.period$ -- 43
+call.type$ -- 27
+change.case$ -- 242
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 787
-empty$ -- 787
-format.name$ -- 135
-if$ -- 2095
+cite$ -- 27
+duplicate$ -- 1594
+empty$ -- 1629
+format.name$ -- 275
+if$ -- 4285
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 156
-newline$ -- 45
-num.names$ -- 26
-pop$ -- 305
+int.to.str$ -- 27
+missing$ -- 316
+newline$ -- 87
+num.names$ -- 54
+pop$ -- 645
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 179
 quote$ -- 0
-skip$ -- 298
+skip$ -- 599
 stack$ -- 0
-substring$ -- 581
-swap$ -- 476
-text.length$ -- 17
+substring$ -- 1219
+swap$ -- 939
+text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 108
 warning$ -- 0
-while$ -- 63
-width$ -- 15
-write$ -- 134
-(There were 14 warnings)
+while$ -- 141
+width$ -- 29
+write$ -- 272
+(There were 2 warnings)

@@ -3,6 +3,12 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
+\bibitem{anderson2018bottom}
+Anderson, P., He, X., Buehler, C., Teney, D., Johnson, M., Gould, S., Zhang,
+  L.: Bottom-up and top-down attention for image captioning and visual question
+  answering. In: Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR). pp. 6077--6086 (2018)
+
 \bibitem{YOLO_family_ref}
 Cao, C., Song, Y., He, J.: An overview of yolo series: From yolov1 to yolov8.
   Journal of Physics: Conference Series  \textbf{2685}(1),  012002 (2023)
@@ -17,10 +23,35 @@ Chen, Y., Ma, L., Huang, Y., Zhang, S., Qian, Y.: A survey of knowledge
   graph-based entity linking from text to knowledge graph. IEEE Access
   \textbf{9},  13000--13020 (2021)
 
+\bibitem{cornia2020meshed}
+Cornia, M., Stefanini, M., Baraldi, L., Cucchiara, R.: Meshed-memory
+  transformer for image captioning. In: IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR). pp. 10578--10587 (2020)
+
+\bibitem{gillies2007shapely}
+Gillies, S.: Shapely: manipulation and analysis of planar geometric objects
+  (2007), python package, available at \url{https://pypi.org/project/Shapely/}
+
 \bibitem{TemplateBasedRef}
 Kulkarni, M., Kulkarni, G.S., Krishna, V.S.R., Singh, S.K.: Generating image
   descriptions using template and semantic composition. In: European Conference
   on Computer Vision (ECCV). pp. 126--140 (2014)
+
+\bibitem{li2019entangled}
+Li, G., Zhu, L., Liu, P., Yang, Y.: Entangled transformer for image captioning.
+  In: IEEE/CVF International Conference on Computer Vision (ICCV). pp.
+  8928--8937 (2019)
+
+\bibitem{marino2017ok}
+Marino, K., Salakhutdinov, R., Gupta, A.: The more you know: Using knowledge
+  graphs for image classification. In: IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR). pp. 2673--2681 (2017)
+
+\bibitem{raffel2020exploring}
+Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou,
+  Y., Li, W., Liu, P.J.: Exploring the limits of transfer learning with a
+  unified text-to-text transformer. Journal of Machine Learning Research
+  \textbf{21}(140),  1--67 (2020)
 
 \bibitem{YOLO_ref}
 Redmon, J., Divvala, S., Girshick, R., Farhadi, A.: You only look once:
@@ -31,6 +62,15 @@ Redmon, J., Divvala, S., Girshick, R., Farhadi, A.: You only look once:
 Ren, S., He, K., Girshick, R., Sun, J.: Faster r-cnn: Towards real-time object
   detection with region proposal networks. IEEE Transactions on Pattern
   Analysis and Machine Intelligence (PAMI)  \textbf{39}(6),  1137--1149 (2017)
+
+\bibitem{ultralytics2023yolov8}
+Ultralytics: Yolov8: A new state-of-the-art computer vision model.
+  \url{https://github.com/ultralytics/ultralytics} (2023), accessed: 2023
+
+\bibitem{vinyals2015show}
+Vinyals, O., Toshev, A., Bengio, S., Erhan, D.: Show and tell: A neural image
+  caption generator. In: Proceedings of the IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR). pp. 3156--3164 (2015)
 
 \bibitem{Vinyals2015}
 Vinyals, O., Toshev, A., Bengio, S., Erhan, D.: Show and tell: A neural image
@@ -46,11 +86,34 @@ Wang, P., Wu, Q., Shen, C., van~den Hengel, A.: Fvqa: Fact-based visual
   question answering. IEEE Transactions on Pattern Analysis and Machine
   Intelligence (PAMI)  \textbf{40}(10),  2413--2427 (2018)
 
+\bibitem{wang2019controllable}
+Wang, Z., Yu, J., Yu, A.W., Dai, Z., Tsvetkov, Y., Cao, Z.: Controllable image
+  captioning with part-of-speech guidance. In: Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition (CVPR). pp. 8689--8698
+  (2019)
+
+\bibitem{wu2017image}
+Wu, Q., Shen, C., Wang, P., Dick, A., van~den Hengel, A.: Image captioning and
+  visual question answering based on attributes and external knowledge. IEEE
+  Transactions on Pattern Analysis and Machine Intelligence  \textbf{40}(6),
+  1367--1381 (2017)
+
+\bibitem{xu2015show}
+Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel,
+  R.S., Bengio, Y.: Show, attend and tell: Neural image caption generation with
+  visual attention. In: Proceedings of the International Conference on Machine
+  Learning (ICML). pp. 2048--2057 (2015)
+
 \bibitem{Xu2015}
 Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel,
   R.S., Bengio, Y.: Show, attend and tell: Neural image caption generation with
   visual attention. In: International Conference on Machine Learning (ICML).
   pp. 2048--2057 (2015)
+
+\bibitem{yao2018exploring}
+Yao, T., Pan, Y., Li, Y., Mei, T.: Exploring visual relationship for image
+  captioning. In: European Conference on Computer Vision (ECCV). pp. 684--699
+  (2018)
 
 \bibitem{SceneGraphRef}
 Zellers, R., Yatskar, M., Thomson, S., Choi, Y.: Neural motifs: Scene graph
@@ -61,6 +124,15 @@ Zellers, R., Yatskar, M., Thomson, S., Choi, Y.: Neural motifs: Scene graph
 Zhao, S., Sun, Z., Li, X., Gong, M., Tao, D., Wei, W., Zhang, X., Li, X.:
   Attentional relational reasoning for image captioning. In: AAAI Conference on
   Artificial Intelligence (AAAI). pp. 9463--9470 (2019)
+
+\bibitem{zhao2021knowledge}
+Zhao, W., Wu, B., Ma, S.: Knowledge enhanced fine-grained image captioning. In:
+  ACM International Conference on Multimedia (MM). pp. 1631--1640 (2021)
+
+\bibitem{zhong2020comprehensive}
+Zhong, Y., Wang, L., Chen, J., Yu, D., Li, Y.: Comprehensive image captioning
+  via scene graph decomposition. In: European Conference on Computer Vision
+  (ECCV). pp. 211--229 (2020)
 
 \bibitem{KnowledgeBasedCaptioningRef}
 Zhu, Y., Yang, Z., Salakhutdinov, R., Xing, E.P.: Incorporating commonsense

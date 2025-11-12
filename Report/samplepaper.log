@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  12 NOV 2025 16:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  12 NOV 2025 19:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -150,6 +150,20 @@ LaTeX Info: Redefining \vec on input line 394.
 \c@solution=\count312
 \c@remark=\count313
 \headlineindent=\dimen170
+) (E:\MikTex\tex/latex/cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+) (E:\MikTex\tex/latex/base\fontenc.sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+) (E:\MikTex\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks21
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ) (E:\MikTex\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/06/16 v2.17y AMS math features
 \@mathmargin=\skip53
@@ -159,7 +173,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2024/11/17 v2.01 AMS text
  (E:\MikTex\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks21
+\@emptytoks=\toks22
 \ex@=\dimen171
 )) (E:\MikTex\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -201,35 +215,42 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \dotsspace@=\muskip17
 \c@parentequation=\count321
 \dspbrk@lvl=\count322
-\tag@help=\toks22
+\tag@help=\toks23
 \row@=\count323
 \column@=\count324
 \maxfields@=\count325
-\andhelp@=\toks23
+\andhelp@=\toks24
 \eqnshift@=\dimen174
 \alignsep@=\dimen175
 \tagshift@=\dimen176
 \tagwidth@=\dimen177
 \totwidth@=\dimen178
 \lineht@=\dimen179
-\@envbody=\toks24
+\@envbody=\toks25
 \multlinegap=\skip54
 \multlinetaggap=\skip55
-\mathdisplay@stack=\toks25
+\mathdisplay@stack=\toks26
 LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
-) (E:\MikTex\tex/latex/cite\cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 332.
-Package: cite 2015/02/27  v 5.5
-) (E:\MikTex\tex/latex/base\fontenc.sty
-Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+) (E:\MikTex\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (E:\MikTex\tex/latex/algorithms\algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+ (E:\MikTex\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (E:\MikTex\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks27
+)
+\c@ALC@unique=\count326
+\c@ALC@line=\count327
+\c@ALC@rem=\count328
+\c@ALC@depth=\count329
+\ALC@tlm=\skip56
+\algorithmicindent=\skip57
 ) (E:\MikTex\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (E:\MikTex\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks26
-) (E:\MikTex\tex/latex/graphics\graphics.sty
+ (E:\MikTex\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (E:\MikTex\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
@@ -242,92 +263,73 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen180
 \Gin@req@width=\dimen181
+) (E:\MikTex\tex/latex/base\textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (E:\MikTex\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (E:\MikTex\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (E:\MikTex\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (E:\MikTex\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count326
+\l__color_backend_stack_int=\count330
 ) (samplepaper.aux)
 \openout1 = `samplepaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
  (E:\MikTex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count327
+\scratchcounter=\count331
 \scratchdimen=\dimen182
 \scratchbox=\box103
-\nofMPsegments=\count328
-\nofMParguments=\count329
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count330
+\nofMPsegments=\count332
+\nofMParguments=\count333
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count334
 \MPscratchDim=\dimen183
-\MPnumerator=\count331
-\makeMPintoPDFobject=\count332
-\everyMPtoPDFconversion=\toks28
+\MPnumerator=\count335
+\makeMPintoPDFobject=\count336
+\everyMPtoPDFconversion=\toks29
 ) (E:\MikTex\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (E:\MikTex\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+ (E:\MikTex\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+ (E:\MikTex\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
-LaTeX Warning: Citation `vinyals2015show' on page 1 undefined on input line 63.
-
-
-LaTeX Warning: Citation `karpathy2015deep' on page 1 undefined on input line 63.
-
-
-LaTeX Warning: Citation `xu2015show' on page 1 undefined on input line 63.
-
-
-LaTeX Warning: Citation `anderson2018bottom' on page 1 undefined on input line 63.
-
-
-LaTeX Warning: Citation `vinyals2015show' on page 1 undefined on input line 65.
-
-
-LaTeX Warning: Citation `xu2015show' on page 1 undefined on input line 65.
-
-
-LaTeX Warning: Citation `li2019entangled' on page 1 undefined on input line 65.
-
-
-LaTeX Warning: Citation `wang2019controllable' on page 1 undefined on input line 65.
-
-
-LaTeX Warning: Citation `cornia2020meshed' on page 1 undefined on input line 65.
-
-
-LaTeX Warning: Citation `marino2017ok' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `wu2017image' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `yao2018exploring' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `zhong2020comprehensive' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `zhao2021knowledge' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 67.
-
-
-LaTeX Warning: Citation `ultralytics2023yolov8' on page 1 undefined on input line 69.
+LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 75.
 
 
 
@@ -336,7 +338,7 @@ LaTeX Warning: Citation `ultralytics2023yolov8' on page 1 undefined on input lin
 {C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
-Overfull \hbox (8.56738pt too wide) in paragraph at lines 85--86
+Overfull \hbox (8.56738pt too wide) in paragraph at lines 93--94
 \T1/cmr/m/n/10 adopted form of struc-tured ex-ter-nal knowl-edge, prov-ing vi-tal in pro-vid-ing common-
  []
 
@@ -344,13 +346,56 @@ Overfull \hbox (8.56738pt too wide) in paragraph at lines 85--86
 
 [3]
 
+LaTeX Warning: Citation `yang2024depth' on page 4 undefined on input line 123.
+
+
+
 [4]
 
-[5] (samplepaper.bbl
+[5]
+Overfull \hbox (2.31891pt too wide) in paragraph at lines 230--231
+\T1/cmr/m/n/10 four-stage ar-chi-tec-ture, en-sur-ing prin-ci-pled in-te-gra-tion of com-puter vi-sion, knowl-
+ []
 
-[6])
 
-[7] (samplepaper.aux)
+
+[6]
+
+LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 238.
+
+
+Overfull \hbox (7.25958pt too wide) in paragraph at lines 252--253
+[]\T1/cmr/m/n/10 The de-tec-tion pro-cess gen-er-ates a com-pre-hen-sive ob-ject set $\OML/cmm/m/it/10 O \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 o[]; o[]; :::; o[]\OMS/cmsy/m/n/10 g$\T1/cmr/m/n/10 ,
+ []
+
+
+LaTeX Warning: Citation `yang2024depth' on page 7 undefined on input line 255.
+
+
+
+[7]
+Overfull \hbox (110.85109pt too wide) detected at line 306
+[]\OML/cmm/m/it/10 similarity\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]; e[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10  \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 sim[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 label\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; label\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 )) + \OML/cmm/m/it/10 ^^L \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 sim[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 context\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; context\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 ))
+ []
+
+
+
+[8]
+
+[9]
+
+[10] (samplepaper.bbl
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
+[]\T1/cmr/m/n/9 Ultralytics: Yolov8: A new state-of-the-art com-puter vi-sion model.
+ []
+
+
+
+[12])
+
+[13] (samplepaper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -361,17 +406,17 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2872 strings out of 468133
- 39831 string characters out of 5447550
- 454612 words of memory out of 5000000
- 31479 multiletter control sequences out of 15000+600000
- 637901 words of font info for 62 fonts, out of 8000000 for 9000
+ 4114 strings out of 468133
+ 55664 string characters out of 5447550
+ 473697 words of memory out of 5000000
+ 32682 multiletter control sequences out of 15000+600000
+ 639973 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,5n,65p,943b,287s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on samplepaper.pdf (7 pages, 193472 bytes).
+ 57i,6n,65p,943b,292s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><E:/MikTex/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on samplepaper.pdf (13 pages, 249452 bytes).
 PDF statistics:
- 411 PDF objects out of 1000 (max. 8388607)
+ 445 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
