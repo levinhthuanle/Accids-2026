@@ -5,9 +5,23 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: splncs04.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
+Warning--I didn't find a database entry for "vinyals2015show"
+Warning--I didn't find a database entry for "karpathy2015deep"
+Warning--I didn't find a database entry for "xu2015show"
+Warning--I didn't find a database entry for "anderson2018bottom"
+Warning--I didn't find a database entry for "li2019entangled"
+Warning--I didn't find a database entry for "wang2019controllable"
+Warning--I didn't find a database entry for "cornia2020meshed"
+Warning--I didn't find a database entry for "marino2017ok"
+Warning--I didn't find a database entry for "wu2017image"
+Warning--I didn't find a database entry for "yao2018exploring"
+Warning--I didn't find a database entry for "zhong2020comprehensive"
+Warning--I didn't find a database entry for "zhao2021knowledge"
+Warning--I didn't find a database entry for "li2022oscar"
+Warning--I didn't find a database entry for "ultralytics2023yolov8"
 You've used 13 entries,
             2850 wiz_defined-function locations,
-            683 strings with 7213 characters,
+            697 strings with 7433 characters,
 and the built_in function-call counts, 9383 in all, are:
 = -- 787
 > -- 331
@@ -46,3 +60,4 @@ warning$ -- 0
 while$ -- 63
 width$ -- 15
 write$ -- 134
+(There were 14 warnings)
