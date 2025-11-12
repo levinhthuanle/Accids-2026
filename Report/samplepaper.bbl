@@ -1,0 +1,71 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{YOLO_family_ref}
+Cao, C., Song, Y., He, J.: An overview of yolo series: From yolov1 to yolov8.
+  Journal of Physics: Conference Series  \textbf{2685}(1),  012002 (2023)
+
+\bibitem{DETR_ref}
+Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., Zagoruyko, S.:
+  End-to-end object detection with transformers. In: European Conference on
+  Computer Vision (ECCV). pp. 213--229 (2020)
+
+\bibitem{EntityLinkingRef}
+Chen, Y., Ma, L., Huang, Y., Zhang, S., Qian, Y.: A survey of knowledge
+  graph-based entity linking from text to knowledge graph. IEEE Access
+  \textbf{9},  13000--13020 (2021)
+
+\bibitem{TemplateBasedRef}
+Kulkarni, M., Kulkarni, G.S., Krishna, V.S.R., Singh, S.K.: Generating image
+  descriptions using template and semantic composition. In: European Conference
+  on Computer Vision (ECCV). pp. 126--140 (2014)
+
+\bibitem{YOLO_ref}
+Redmon, J., Divvala, S., Girshick, R., Farhadi, A.: You only look once:
+  Unified, real-time object detection. In: IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR). pp. 779--788 (2016)
+
+\bibitem{FasterRCNN_ref}
+Ren, S., He, K., Girshick, R., Sun, J.: Faster r-cnn: Towards real-time object
+  detection with region proposal networks. IEEE Transactions on Pattern
+  Analysis and Machine Intelligence (PAMI)  \textbf{39}(6),  1137--1149 (2017)
+
+\bibitem{Vinyals2015}
+Vinyals, O., Toshev, A., Bengio, S., Erhan, D.: Show and tell: A neural image
+  caption generator. IEEE Transactions on Pattern Analysis and Machine
+  Intelligence (PAMI)  \textbf{39}(10),  1974--1985 (2017)
+
+\bibitem{YOLOv7_ref}
+Wang, C.Y., Bochkovskiy, A., Liao, H.Y.M.: Yolov7: Trainable bag-of-freebies
+  for real-time object detection. arXiv preprint arXiv:2207.02696  (2022)
+
+\bibitem{KGforVQARef}
+Wang, P., Wu, Q., Shen, C., van~den Hengel, A.: Fvqa: Fact-based visual
+  question answering. IEEE Transactions on Pattern Analysis and Machine
+  Intelligence (PAMI)  \textbf{40}(10),  2413--2427 (2018)
+
+\bibitem{Xu2015}
+Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel,
+  R.S., Bengio, Y.: Show, attend and tell: Neural image caption generation with
+  visual attention. In: International Conference on Machine Learning (ICML).
+  pp. 2048--2057 (2015)
+
+\bibitem{SceneGraphRef}
+Zellers, R., Yatskar, M., Thomson, S., Choi, Y.: Neural motifs: Scene graph
+  generation with global context. In: IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR). pp. 5831--5840 (2018)
+
+\bibitem{RelationalInferenceRef}
+Zhao, S., Sun, Z., Li, X., Gong, M., Tao, D., Wei, W., Zhang, X., Li, X.:
+  Attentional relational reasoning for image captioning. In: AAAI Conference on
+  Artificial Intelligence (AAAI). pp. 9463--9470 (2019)
+
+\bibitem{KnowledgeBasedCaptioningRef}
+Zhu, Y., Yang, Z., Salakhutdinov, R., Xing, E.P.: Incorporating commonsense
+  knowledge into image captioning via graph convolutional networks. In:
+  IEEE/CVF International Conference on Computer Vision (ICCV). pp. 9008--9017
+  (2019)
+
+\end{thebibliography}

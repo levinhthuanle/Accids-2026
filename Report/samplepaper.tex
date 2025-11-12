@@ -4,6 +4,8 @@
 %
 \documentclass[runningheads]{llncs}
 %
+\usepackage{amsmath}
+\usepackage{cite}
 \usepackage[T1]{fontenc}
 % T1 fonts will be used to generate the final print and online PDFs,
 % so please use T1 fonts in your manuscript whenever possible.
@@ -19,15 +21,17 @@
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %\urlstyle{rm}
 %
+
+\pagestyle{plain}
 \begin{document}
 %
-\title{Contribution Title}
+\title{Apply KG to enhance Image Description Generation}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
-\author{Le Vinh Thuan\inst{1} \and Nguyen Minh Khoa\inst{2} \and Nguyen Vinh Thanh\inst{3} \and Nguyen Thi Dinh \inst{4,*}}
+\author{Le Vinh Thuan\inst{1} \and Nguyen Minh Khoa\inst{2} \and Nguyen Vinh Thanh\inst{3} \and Nguyen Thi Dinh \inst{4,}}
 
 \authorrunning{L. V. Thuan, et al .}
 
@@ -54,124 +58,200 @@ The abstract should briefly summarize the contents of the paper in
 %
 %
 
-\section{Introduction}
+\section{Related Work}
+
+Research on semantically-rich Image Description Generation (IDG) intersects multiple key domains, including Computer Vision (CV), Knowledge Representation (specifically Knowledge Graphs, KG), and Natural Language Processing (NLP). Early studies in image description primarily focused on generating fluent but factually limited captions based on simple encoder-decoder architectures. More recent works have shifted towards incorporating explicit semantic structures to enrich the output. At the same time, the field of Knowledge Representation has been exploring effective methods to inject external, common-sense knowledge into visual tasks. This section reviews three main directions relevant to the proposed framework: Object Detection and Feature Extraction for IDG, Knowledge-Enhanced Semantic Grounding, and Contextual Inference and Natural Language Generation.
+
+\subsection{Object Detection and Feature Extraction for IDG}
+
+High-quality image description relies on robust detection and accurate attribute extraction from the visual input. Object detection frameworks, such as the YOLO family \cite{YOLO_ref} and Faster R-CNN \cite{FasterRCNN_ref}, have become the foundation for most modern vision-to-language models. Recent advancements in object detection, including variants that enhance performance on small objects or crowded scenes \cite{YOLOv7_ref, DETR_ref}, continuously provide more granular and reliable entity bounding boxes.
+
+While most detection-based IDG models use bounding boxes to apply attention mechanisms \cite{Xu2015} or build Scene Graphs \cite{SceneGraphRef}, they often stop at basic object classification (e.g., "person," "car"). This leaves a gap in research tailored to adapting the raw visual output for explicit knowledge retrieval. Our approach specifically leverages the visual features extracted (e.g., object class, bounding box, detected attributes) as input for a subsequent semantic grounding phase, using a robust detector like YOLOv11 \cite{YOLO_family_ref} to ensure high precision in entity localization.
+
+\subsection{Knowledge-Enhanced Semantic Grounding}
+
+To move beyond superficial descriptions, several studies have focused on incorporating external knowledge. Knowledge Graphs (KGs) are the most widely adopted form of structured external knowledge, proving vital in providing common-sense or domain-specific facts \cite{KGforVQARef}.
+
+The core challenge is Semantic Grounding: effectively mapping coarse visual detections to specific KG entities. Techniques like Entity Linking \cite{EntityLinkingRef} are used to resolve ambiguities (e.g., distinguishing "apple" as a fruit vs. a company). Some models apply KG features during the decoding phase, primarily to aid vocabulary selection or fact-checking \cite{KnowledgeBasedCaptioningRef}. However, this late integration often fails to fundamentally change the input structure of the generation model. Our methodology differentiates by placing the KG at the center of the pipeline, using it to systematically enrich all raw visual entities and attributes with specific semantic details before the generation phase, thereby transforming a simple object list into a dense semantic structure.
+
+\subsection{Contextual Inference and Natural Language Generation (NLG)}
+
+The final stage of IDG involves converting the enriched semantic data into coherent, natural sentences. Conventional methods often rely on powerful sequence-to-sequence models to implicitly learn the mapping from features to text \cite{Vinyals2015}. However, when dealing with highly structured, fact-dense input (like the output of a KG), implicit mapping can lead to factual omissions or illogical sentence structure.
+
+Early Template-based models \cite{TemplateBasedRef} offered logical structure but lacked fluency. More sophisticated methods employ explicit Relational Inference to discover implicit actions or states between objects \cite{RelationalInferenceRef}. Our work emphasizes a dedicated inference layer that operates on the structured, KG-enriched data. This layer's role is to perform Contextual Analysis and Logical Structuring—essentially prioritizing the semantic facts and organizing them into a logical flow. This is crucial for satisfying the goal of generating a detailed "description" (which requires a narrative flow) rather than a simple "caption" (a single descriptive sentence). The structured output then feeds into a robust NLG module (potentially template-based or an advanced decoder) to ensure both high fluency and factual accuracy.
+
+\subsection{Research Gap and Contribution}
+
+Previous research highlights the complementary strengths of advanced object detectors and external knowledge sources. However, most methods remain limited either by their reliance on implicit reasoning within the decoder or by a superficial integration of knowledge (e.g., only using it for fact-checking). A unified framework that systematically leverages structured knowledge for entity enrichment and uses this enriched data for explicit, structured inference before NLG remains a significant challenge. Addressing this gap requires a unified framework that tightly couples robust visual analysis with a structured KG and a dedicated inference mechanism to deliver accurate, scalable, and semantically deep Image Description Generation.
 
 
-\section{First Section}
-\subsection{A Subsection Sample}
-Please note that the first paragraph of a section or subsection is
-not indented. The first paragraph that follows a table, figure,
-equation etc. does not need an indent, either.
+\section{Theoretical Basis}
 
-Subsequent paragraphs, however, are indented.
+The development of our Knowledge Graph-enhanced Image Description Generation (IDG) system necessitates a solid foundation built upon advanced Computer Vision, 
+structured knowledge representation, and natural language processing techniques. Core methods include deep convolutional networks for object detection, 
+graph-based mechanisms for semantic grounding, and language models for coherent text synthesis. Our framework utilizes these techniques in sequence: 
+raw visual features are extracted, enriched with external knowledge, and finally converted into descriptive language.
 
-\subsubsection{Sample Heading (Third Level)} Only two levels of
-headings should be numbered. Lower level headings remain unnumbered;
-they are formatted as run-in headings.
+\subsection{Core Concepts and Definitions}
 
-\paragraph{Sample Heading (Fourth Level)}
-The contribution should contain no more than four levels of
-headings. Table~\ref{tab1} gives a summary of all heading levels.
+\textbf{Image Description Generation (IDG):} A task that involves generating a textual output that is not only visually accurate but also semantically rich, often incorporating contextual or world knowledge. This differs from standard Image Captioning by prioritizing factual detail and narrative depth.
 
-\begin{table}
-\caption{Table captions should be placed above the
-tables.}\label{tab1}
-\begin{tabular}{|l|l|l|}
-\hline
-Heading level &  Example & Font size and style\\
-\hline
-Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
-1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
-2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
-3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
-4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
-\hline
-\end{tabular}
-\end{table}
+\textbf{Knowledge Graph (KG):} A structured representation of knowledge composed of entities, attributes, and their relationships (often expressed as subject-predicate-object triples). KGs serve as the external memory for our system, providing the necessary factual context to enrich object detections.
+
+\textbf{Semantic Grounding / Entity Linking:} The process of resolving ambiguity and connecting detected entities from the visual domain to specific, canonical entities within the Knowledge Graph. This mechanism transforms raw detection labels into Enriched Entities with specific attributes.
+
+\textbf{Semantic Inference:} The intermediate process between KG enrichment and NLG. It involves reasoning over the enriched entities and their inferred relationships to construct a structured, logical sequence of facts (triples) that will guide the text generation.
+
+\subsection{Visual Feature Extraction and Object Detection}
+
+The initial step in our pipeline is to robustly identify and localize entities within the input image. This relies on state-of-the-art Object Detection models, such as those in the YOLO family \cite{YOLO_ref}. YOLO (You Only Look Once) is preferred for its real-time capability and high accuracy in simultaneously predicting bounding boxes and class probabilities.
+
+The output of this phase is the set of Raw Visual Features, which includes:
+\begin{itemize}
+    \item \textbf{Raw Entities:} Class labels and bounding box coordinates for each detected object.
+    \item \textbf{Visual Attributes:} Low-level visual properties extracted or inferred, such as color, relative size, and spatial location.
+\end{itemize}
+These features are the initial, ambiguous input that the system must semantically enrich.
+
+\subsection{Knowledge Graph and Entity Semantic Grounding}
+
+The Knowledge Graph serves as the domain-specific ontology, built upon a rich dataset like Visual Genome. It is used to overcome the limited scope of raw visual detection.
+
+\textbf{Semantic Grounding (Entity Linking):} 
+Given a raw entity $e_{\text{raw}}$ and its visual attributes $A_v$, the system seeks to find the best matching canonical entity $e_{\text{KG}}$ in the Knowledge Graph. This process typically involves a scoring mechanism that combines the confidence score of the raw detection and the degree of match between $A_v$ and the known attributes of $e_{\text{KG}}$ within the KG.
+
+$$\text{Score}(e_{\text{KG}} | e_{\text{raw}}, A_v) = f(P(e_{\text{raw}}) \cdot \text{Similarity}(A_v, \text{Attributes}(e_{\text{KG}})))$$
+
+Where $P(e_{\text{raw}})$ is the confidence from the object detector, and $\text{Similarity}$ measures the alignment between the visual features and the KG's structural knowledge. An entity is considered Enriched once it is successfully linked, gaining access to all associated facts and relationships in the KG.
+
+\subsection{Semantic Inference and Text Generation}
+
+The final component ensures the conversion of structured, factual knowledge into coherent, high-quality descriptive text.
+
+\textbf{Semantic Inference:} This layer utilizes the enriched entities and their explicit relationships from the KG to perform Contextual Analysis. It generates a set of ordered Semantic Triples $\mathcal{T} = \{(S_i, P_i, O_i)\}$ that best describe the scene. The triples are prioritized based on their semantic relevance and visual saliency. This structured output ensures that the final description maintains factual accuracy and a logical flow.
+
+\textbf{Natural Language Generation (NLG) via Template-Based Method:} Given the need for factual accuracy and a controlled narrative flow in IDG, a Template-Based NLG approach can be utilized \cite{TemplateBasedRef}. This method maps the ordered set of semantic triples $\mathcal{T}$ onto a pre-defined syntactic structure (template). This allows for a balance between descriptive richness (provided by $\mathcal{T}$) and linguistic fluency/correctness (provided by the template), offering high control over the output style, which is often a requirement for specialized description systems.
+
+% \section{First Section}
 
 
-\noindent Displayed equations are centered and set on a separate
-line.
-\begin{equation}
-x + y = z
-\end{equation}
-Please try to avoid rasterized images for line-art diagrams and
-schemas. Whenever possible, use vector graphics instead (see
-Fig.~\ref{fig1}).
+% \subsection{A Subsection Sample}
+% Please note that the first paragraph of a section or subsection is
+% not indented. The first paragraph that follows a table, figure,
+% equation etc. does not need an indent, either.
 
-\begin{figure}
-\includegraphics[width=\textwidth]{fig1.eps}
-\caption{A figure caption is always placed below the illustration.
-Please note that short captions are centered, while long ones are
-justified by the macro package automatically.} \label{fig1}
-\end{figure}
+% Subsequent paragraphs, however, are indented.
 
-\begin{theorem}
-This is a sample theorem. The run-in heading is set in bold, while
-the following text appears in italics. Definitions, lemmas,
-propositions, and corollaries are styled the same way.
-\end{theorem}
+% \subsubsection{Sample Heading (Third Level)} Only two levels of
+% headings should be numbered. Lower level headings remain unnumbered;
+% they are formatted as run-in headings.
+
+% \paragraph{Sample Heading (Fourth Level)}
+% The contribution should contain no more than four levels of
+% headings. Table~\ref{tab1} gives a summary of all heading levels.
+
+% \begin{table}
+% \caption{Table captions should be placed above the
+% tables.}\label{tab1}
+% \begin{tabular}{|l|l|l|}
+% \hline
+% Heading level &  Example & Font size and style\\
+% \hline
+% Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
+% 1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
+% 2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
+% 3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
+% 4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
+% \hline
+% \end{tabular}
+% \end{table}
+
+
+% \noindent Displayed equations are centered and set on a separate
+% line.
+% \begin{equation}
+% x + y = z
+% \end{equation}
+% Please try to avoid rasterized images for line-art diagrams and
+% schemas. Whenever possible, use vector graphics instead (see
+% Fig.~\ref{fig1}).
+
+% \begin{figure}
+% \includegraphics[width=\textwidth]{fig1.eps}
+% \caption{A figure caption is always placed below the illustration.
+% Please note that short captions are centered, while long ones are
+% justified by the macro package automatically.} \label{fig1}
+% \end{figure}
+
+% \begin{theorem}
+% This is a sample theorem. The run-in heading is set in bold, while
+% the following text appears in italics. Definitions, lemmas,
+% propositions, and corollaries are styled the same way.
+% \end{theorem}
+% %
+% % the environments 'definition', 'lemma', 'proposition', 'corollary',
+% % 'remark', and 'example' are defined in the LLNCS documentclass as well.
+% %
+% \begin{proof}
+% Proofs, examples, and remarks have the initial word in italics,
+% while the following text appears in normal font.
+% \end{proof}
+% For citations of references, we prefer the use of square brackets
+% and consecutive numbers. Citations using labels or the author/year
+% convention are also acceptable. The following bibliography provides
+% a sample reference list with entries for journal
+% articles~\cite{Vinyals2015}, an LNCS chapter~\cite{SceneGraphRef}, a
+% book~\cite{EntityLinkingRef}, proceedings without editors~\cite{TemplateRetrievalRef},
+% and a homepage~\cite{KnowledgeBasedCaptioningRef}. Multiple citations are grouped
+% \cite{Vinyals2015,SceneGraphRef,EntityLinkingRef},
+% \cite{Vinyals2015,EntityLinkingRef,TemplateRetrievalRef,KnowledgeBasedCaptioningRef}.
+
+% \begin{credits}
+% \subsubsection{\ackname} A bold run-in heading in small font size at the end of the paper is
+% used for general acknowledgments, for example: This study was funded
+% by X (grant number Y).
+
+% \subsubsection{\discintname}
+% It is now necessary to declare any competing interests or to specifically
+% state that the authors have no competing interests. Please place the
+% statement with a bold run-in heading in small font size beneath the
+% (optional) acknowledgments\footnote{If EquinOCS, our proceedings submission
+% system, is used, then the disclaimer can be provided directly in the system.},
+% for example: The authors have no competing interests to declare that are
+% relevant to the content of this article. Or: Author A has received research
+% grants from Company W. Author B has received a speaker honorarium from
+% Company X and owns stock in Company Y. Author C is a member of committee Z.
+% \end{credits}
+% %
+% % ---- Bibliography ----
+% %
+% % BibTeX users should specify bibliography style 'splncs04'.
+% % References will then be sorted and formatted in the correct style.
 %
-% the environments 'definition', 'lemma', 'proposition', 'corollary',
-% 'remark', and 'example' are defined in the LLNCS documentclass as well.
+\bibliographystyle{splncs04}
+\bibliography{ref}
 %
-\begin{proof}
-Proofs, examples, and remarks have the initial word in italics,
-while the following text appears in normal font.
-\end{proof}
-For citations of references, we prefer the use of square brackets
-and consecutive numbers. Citations using labels or the author/year
-convention are also acceptable. The following bibliography provides
-a sample reference list with entries for journal
-articles~\cite{ref_article1}, an LNCS chapter~\cite{ref_lncs1}, a
-book~\cite{ref_book1}, proceedings without editors~\cite{ref_proc1},
-and a homepage~\cite{ref_url1}. Multiple citations are grouped
-\cite{ref_article1,ref_lncs1,ref_book1},
-\cite{ref_article1,ref_book1,ref_proc1,ref_url1}.
+% \begin{thebibliography}{8}
+% \bibitem{ref_article1}
+% Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
 
-\begin{credits}
-\subsubsection{\ackname} A bold run-in heading in small font size at the end of the paper is
-used for general acknowledgments, for example: This study was funded
-by X (grant number Y).
+% \bibitem{ref_lncs1}
+% Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+% F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+% Springer, Heidelberg (2016). \doi{10.10007/1234567890}
 
-\subsubsection{\discintname}
-It is now necessary to declare any competing interests or to specifically
-state that the authors have no competing interests. Please place the
-statement with a bold run-in heading in small font size beneath the
-(optional) acknowledgments\footnote{If EquinOCS, our proceedings submission
-system, is used, then the disclaimer can be provided directly in the system.},
-for example: The authors have no competing interests to declare that are
-relevant to the content of this article. Or: Author A has received research
-grants from Company W. Author B has received a speaker honorarium from
-Company X and owns stock in Company Y. Author C is a member of committee Z.
-\end{credits}
-%
-% ---- Bibliography ----
-%
-% BibTeX users should specify bibliography style 'splncs04'.
-% References will then be sorted and formatted in the correct style.
-%
-% \bibliographystyle{splncs04}
-% \bibliography{mybibliography}
-%
-\begin{thebibliography}{8}
-\bibitem{ref_article1}
-Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+% \bibitem{ref_book1}
+% Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+% Location (1999)
 
-\bibitem{ref_lncs1}
-Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+% \bibitem{ref_proc1}
+% Author, A.-B.: Contribution title. In: 9th International Proceedings
+% on Proceedings, pp. 1--2. Publisher, Location (2010)
 
-\bibitem{ref_book1}
-Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-Location (1999)
+% \bibitem{ref_url1}
+% LNCS Homepage, \url{http://www.springer.com/lncs}, last accessed 2023/10/25
+% \end{thebibliography}
 
-\bibitem{ref_proc1}
-Author, A.-B.: Contribution title. In: 9th International Proceedings
-on Proceedings, pp. 1--2. Publisher, Location (2010)
 
-\bibitem{ref_url1}
-LNCS Homepage, \url{http://www.springer.com/lncs}, last accessed 2023/10/25
-\end{thebibliography}
+
 \end{document}
