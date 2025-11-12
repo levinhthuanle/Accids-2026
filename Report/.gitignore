@@ -18,7 +18,6 @@
 *.vrb
 
 # Output files (optional — ignore compiled PDFs)
-*.pdf
 *.dvi
 *.ps
 
