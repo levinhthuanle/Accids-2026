@@ -37,6 +37,15 @@ out/
 __pycache__/
 *.pyc
 
+*.aux
+*.log
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+
 # IDE settings (uncomment if you don't want to commit)
 # .vscode/
 # .idea/
