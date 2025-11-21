@@ -23,11 +23,6 @@ Chen, Y., Ma, L., Huang, Y., Zhang, S., Qian, Y.: A survey of knowledge
   graph-based entity linking from text to knowledge graph. IEEE Access
   \textbf{9},  13000--13020 (2021)
 
-\bibitem{cornia2020meshed}
-Cornia, M., Stefanini, M., Baraldi, L., Cucchiara, R.: Meshed-memory
-  transformer for image captioning. In: IEEE/CVF Conference on Computer Vision
-  and Pattern Recognition (CVPR). pp. 10578--10587 (2020)
-
 \bibitem{gillies2007shapely}
 Gillies, S.: Shapely: manipulation and analysis of planar geometric objects
   (2007), python package, available at \url{https://pypi.org/project/Shapely/}
@@ -36,11 +31,6 @@ Gillies, S.: Shapely: manipulation and analysis of planar geometric objects
 Kulkarni, M., Kulkarni, G.S., Krishna, V.S.R., Singh, S.K.: Generating image
   descriptions using template and semantic composition. In: European Conference
   on Computer Vision (ECCV). pp. 126--140 (2014)
-
-\bibitem{li2019entangled}
-Li, G., Zhu, L., Liu, P., Yang, Y.: Entangled transformer for image captioning.
-  In: IEEE/CVF International Conference on Computer Vision (ICCV). pp.
-  8928--8937 (2019)
 
 \bibitem{marino2017ok}
 Marino, K., Salakhutdinov, R., Gupta, A.: The more you know: Using knowledge
@@ -86,12 +76,6 @@ Wang, P., Wu, Q., Shen, C., van~den Hengel, A.: Fvqa: Fact-based visual
   question answering. IEEE Transactions on Pattern Analysis and Machine
   Intelligence (PAMI)  \textbf{40}(10),  2413--2427 (2018)
 
-\bibitem{wang2019controllable}
-Wang, Z., Yu, J., Yu, A.W., Dai, Z., Tsvetkov, Y., Cao, Z.: Controllable image
-  captioning with part-of-speech guidance. In: Proceedings of the IEEE/CVF
-  Conference on Computer Vision and Pattern Recognition (CVPR). pp. 8689--8698
-  (2019)
-
 \bibitem{wu2017image}
 Wu, Q., Shen, C., Wang, P., Dick, A., van~den Hengel, A.: Image captioning and
   visual question answering based on attributes and external knowledge. IEEE
@@ -128,11 +112,6 @@ Zhao, S., Sun, Z., Li, X., Gong, M., Tao, D., Wei, W., Zhang, X., Li, X.:
 \bibitem{zhao2021knowledge}
 Zhao, W., Wu, B., Ma, S.: Knowledge enhanced fine-grained image captioning. In:
   ACM International Conference on Multimedia (MM). pp. 1631--1640 (2021)
-
-\bibitem{zhong2020comprehensive}
-Zhong, Y., Wang, L., Chen, J., Yu, D., Li, Y.: Comprehensive image captioning
-  via scene graph decomposition. In: European Conference on Computer Vision
-  (ECCV). pp. 211--229 (2020)
 
 \bibitem{KnowledgeBasedCaptioningRef}
 Zhu, Y., Yang, Z., Salakhutdinov, R., Xing, E.P.: Incorporating commonsense

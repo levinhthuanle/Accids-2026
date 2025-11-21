@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  12 NOV 2025 23:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  21 NOV 2025 21:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -331,7 +331,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Title too long for running head. Please supply
 a shorter form with \titlerunning prior to \maketitle
 
-LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 75.
+LaTeX Warning: Citation `li2022blip' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `alayrac2022flamingo' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 73.
 
 
 
@@ -340,7 +346,7 @@ LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 75.
 {C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
-Overfull \hbox (8.56738pt too wide) in paragraph at lines 93--94
+Overfull \hbox (8.56738pt too wide) in paragraph at lines 92--93
 \T1/cmr/m/n/10 adopted form of struc-tured ex-ter-nal knowl-edge, prov-ing vi-tal in pro-vid-ing common-
  []
 
@@ -348,14 +354,14 @@ Overfull \hbox (8.56738pt too wide) in paragraph at lines 93--94
 
 [3]
 
-LaTeX Warning: Citation `yang2024depth' on page 4 undefined on input line 123.
+LaTeX Warning: Citation `yang2024depth' on page 4 undefined on input line 122.
 
 
 
 [4]
 
 [5]
-Overfull \hbox (2.31891pt too wide) in paragraph at lines 224--225
+Overfull \hbox (2.31891pt too wide) in paragraph at lines 223--224
 \T1/cmr/m/n/10 four-stage ar-chi-tec-ture, en-sur-ing prin-ci-pled in-te-gra-tion of com-puter vi-sion, knowl-
  []
 
@@ -363,7 +369,7 @@ Overfull \hbox (2.31891pt too wide) in paragraph at lines 224--225
 
 [6]
 
-LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 232.
+LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 233.
 
 
 Overfull \hbox (7.25958pt too wide) in paragraph at lines 241--242
@@ -386,40 +392,26 @@ Overfull \hbox (110.85109pt too wide) detected at line 267
  []
 
 
+
+[8]
 Overfull \hbox (1.45107pt too wide) in paragraph at lines 280--281
 \T1/cmr/m/n/10 scene, and (4) \T1/cmr/bx/n/10 Conceptual-Level In-fer-ence \T1/cmr/m/n/10 for high-level con-cepts and themes. 
  []
 
 
 
-[8]
-
-[9]
-Overfull \hbox (1.3747pt too wide) in paragraph at lines 316--317
-\T1/cmr/m/n/10 While our cur-rent frame-work demon-strates promis-ing re-sults in knowl-edge graph-
- []
-
-
-Overfull \hbox (8.31744pt too wide) in paragraph at lines 320--321
-\T1/cmr/m/n/10 stage pipeline to en-able real-time ap-pli-ca-tions. This in-cludes de-vel-op-ing lightweight
- []
-
-
+[9] (samplepaper.bbl
 
 [10]
-
-[11] (samplepaper.bbl
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 []\T1/cmr/m/n/9 Ultralytics: Yolov8: A new state-of-the-art com-puter vi-sion model.
  []
 
 
 
-[13])
+[11])
 
-[14] (samplepaper.aux)
+[12] (samplepaper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -430,17 +422,17 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4110 strings out of 468133
- 55544 string characters out of 5447550
- 473697 words of memory out of 5000000
- 32678 multiletter control sequences out of 15000+600000
+ 4108 strings out of 468133
+ 55496 string characters out of 5447550
+ 473681 words of memory out of 5000000
+ 32676 multiletter control sequences out of 15000+600000
  639973 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,943b,290s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><E:/MikTex/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on samplepaper.pdf (14 pages, 255763 bytes).
+Output written on samplepaper.pdf (12 pages, 250964 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
+ 446 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

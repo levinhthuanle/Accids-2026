@@ -1,26 +1,22 @@
 \relax 
 \citation{vinyals2015show,anderson2018bottom}
 \citation{xu2015show,anderson2018bottom}
-\citation{vinyals2015show}
-\citation{xu2015show}
-\citation{li2019entangled}
-\citation{wang2019controllable,cornia2020meshed}
+\citation{li2022blip,alayrac2022flamingo}
 \citation{marino2017ok,wu2017image}
-\citation{yao2018exploring,zhong2020comprehensive}
-\citation{zhao2021knowledge,li2022oscar}
-\citation{ultralytics2023yolov8}
-\@writefile{toc}{\contentsline {title}{Semantic Enrichment for Image Description Generation via Knowledge Graph and Contextual Inference}{1}{}\protected@file@percent }
+\citation{yao2018exploring,li2022oscar}
+\citation{zhao2021knowledge}
+\@writefile{toc}{\contentsline {title}{Spatio-Structural Image Captioning via LLM Fine-Tuning with Depth-Enhanced Scene Graphs}{1}{}\protected@file@percent }
 \@writefile{toc}{\authcount {4}}
 \@writefile{toc}{\contentsline {author}{Le Vinh Thuan \and Nguyen Minh Khoa \and Nguyen Vinh Thanh \and Nguyen Thi Dinh }{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
 \citation{YOLO_ref}
 \citation{FasterRCNN_ref}
 \citation{YOLOv7_ref,DETR_ref}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Object Detection and Feature Extraction for IDG}{2}{}\protected@file@percent }
 \citation{Xu2015}
 \citation{SceneGraphRef}
 \citation{YOLO_family_ref}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Object Detection and Feature Extraction for IDG}{2}{}\protected@file@percent }
 \citation{KGforVQARef}
 \citation{EntityLinkingRef}
 \citation{KnowledgeBasedCaptioningRef}
@@ -29,21 +25,21 @@
 \citation{RelationalInferenceRef}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Knowledge-Enhanced Semantic Grounding}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Contextual Inference and Natural Language Generation (NLG)}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Research Gap and Contribution}{3}{}\protected@file@percent }
 \citation{yang2024depth}
 \citation{gillies2007shapely}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Research Gap and Contribution}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Theoretical Basis}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Object Detection and Spatial Analysis Framework}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{YOLOv11 Detection Model}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Depth Estimation and Spatial Reasoning}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Knowledge Graph Construction Theory}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Entity Linking and Knowledge Fusion}{4}{}\protected@file@percent }
 \citation{raffel2020exploring}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Knowledge Graph Construction Theory}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Entity Linking and Knowledge Fusion}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Knowledge Graph Formalization}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}T5-based Natural Language Generation Framework}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Text-to-Text Transfer Learning}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Semantic Representation Encoding}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism for Semantic Focus}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism for Semantic Focus}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Contextual Reasoning and Inference Theory}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Enriched Data Analysis}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Semantic Coherence Optimization}{6}{}\protected@file@percent }
@@ -58,62 +54,51 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Stage I: Enhanced Computer Vision Processing}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Multi-Scale Object Detection}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Depth-Based Spatial Understanding}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Geometric Relationship Analysis}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Geometric Relationship Analysis}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Optical Character Recognition}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Stage II: Knowledge Graph Construction and Entity Linking}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Entity Enrichment and Aggregation}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{External Knowledge Base Integration}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Dynamic Knowledge Graph Construction}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Stage III: Contextual Analysis and Enriched Data Processing}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Semantic Enrichment Strategy}{8}{}\protected@file@percent }
 \citation{raffel2020exploring}
+\@writefile{toc}{\contentsline {subsubsection}{Semantic Enrichment Strategy}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Multi-Level Inference Engine}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Context Propagation Mechanism}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Stage IV: T5-Based Natural Language Generation}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Semantic-to-Text Encoding}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{T5 Model Adaptation}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Description Generation Logic}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Multi-Level Description Generation}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Integration and Optimization}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{End-to-End Training Strategy}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Quality Assurance Mechanisms}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Environment and Experiment Data}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Scalability and Real-time Optimization}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Enhanced Knowledge Graph Integration}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Advanced Contextual Reasoning}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Multimodal and Cross-domain Applications}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Evaluation and Benchmarking}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}ness and Generalization}{11}{}\protected@file@percent }
 \bibstyle{splncs04}
 \bibdata{ref}
 \bibcite{anderson2018bottom}{1}
 \bibcite{YOLO_family_ref}{2}
 \bibcite{DETR_ref}{3}
 \bibcite{EntityLinkingRef}{4}
-\bibcite{cornia2020meshed}{5}
-\bibcite{gillies2007shapely}{6}
-\bibcite{TemplateBasedRef}{7}
-\bibcite{li2019entangled}{8}
-\bibcite{marino2017ok}{9}
-\bibcite{raffel2020exploring}{10}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Integration with Emerging Technologies}{12}{}\protected@file@percent }
-\bibcite{YOLO_ref}{11}
-\bibcite{FasterRCNN_ref}{12}
-\bibcite{ultralytics2023yolov8}{13}
-\bibcite{vinyals2015show}{14}
-\bibcite{Vinyals2015}{15}
-\bibcite{YOLOv7_ref}{16}
-\bibcite{KGforVQARef}{17}
-\bibcite{wang2019controllable}{18}
-\bibcite{wu2017image}{19}
-\bibcite{xu2015show}{20}
-\bibcite{Xu2015}{21}
-\bibcite{yao2018exploring}{22}
-\bibcite{SceneGraphRef}{23}
-\bibcite{RelationalInferenceRef}{24}
-\bibcite{zhao2021knowledge}{25}
-\bibcite{zhong2020comprehensive}{26}
-\bibcite{KnowledgeBasedCaptioningRef}{27}
-\gdef \@abspage@last{14}
+\@writefile{toc}{\contentsline {subsubsection}{Multi-Level Description Generation}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Integration and Optimization}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{End-to-End Training Strategy}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Quality Assurance Mechanisms}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Environment and Experiment Data}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{10}{}\protected@file@percent }
+\bibcite{gillies2007shapely}{5}
+\bibcite{TemplateBasedRef}{6}
+\bibcite{marino2017ok}{7}
+\bibcite{raffel2020exploring}{8}
+\bibcite{YOLO_ref}{9}
+\bibcite{FasterRCNN_ref}{10}
+\bibcite{ultralytics2023yolov8}{11}
+\bibcite{vinyals2015show}{12}
+\bibcite{Vinyals2015}{13}
+\bibcite{YOLOv7_ref}{14}
+\bibcite{KGforVQARef}{15}
+\bibcite{wu2017image}{16}
+\bibcite{xu2015show}{17}
+\bibcite{Xu2015}{18}
+\bibcite{yao2018exploring}{19}
+\bibcite{SceneGraphRef}{20}
+\bibcite{RelationalInferenceRef}{21}
+\bibcite{zhao2021knowledge}{22}
+\bibcite{KnowledgeBasedCaptioningRef}{23}
+\gdef \@abspage@last{12}
