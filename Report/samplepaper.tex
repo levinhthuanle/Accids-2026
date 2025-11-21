@@ -33,7 +33,7 @@
 \pagestyle{plain}
 \begin{document}
 %
-\title{Semantic Enrichment for Image Description Generation via Knowledge Graph and Contextual Inference}
+\title{Spatio-Structural Image Captioning via LLM Fine-Tuning with Depth-Enhanced Scene Graphs}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
@@ -68,16 +68,15 @@ The abstract should briefly summarize the contents of the paper in
 
 \section{Introduction}
 
-The automatic generation of natural language descriptions from images has emerged as one of the most challenging and important tasks in computer vision and natural language processing \cite{vinyals2015show, anderson2018bottom}. This interdisciplinary field, commonly known as image captioning or image description, requires machines to not only recognize objects and their spatial relationships within images but also to generate coherent, contextually appropriate textual descriptions that capture the semantic essence of visual content \cite{xu2015show, anderson2018bottom}.
-
-Recent advances in deep learning have significantly improved the performance of image description systems, with approaches ranging from encoder-decoder architectures \cite{vinyals2015show} to attention-based mechanisms \cite{xu2015show} and transformer-based models \cite{li2019entangled}. However, existing methods often struggle with generating rich, contextually aware descriptions that go beyond simple object enumeration and spatial relationships \cite{wang2019controllable, cornia2020meshed}.
-
-Knowledge graphs have shown tremendous potential in enhancing various computer vision tasks by providing structured semantic information and enabling reasoning capabilities \cite{marino2017ok, wu2017image}. The integration of knowledge graphs with image understanding systems allows for more sophisticated semantic reasoning and can bridge the gap between visual perception and high-level conceptual understanding \cite{yao2018exploring, zhong2020comprehensive}. Furthermore, the incorporation of external knowledge bases enables systems to generate more informative and contextually rich descriptions by leveraging world knowledge beyond what is directly observable in the image \cite{zhao2021knowledge, li2022oscar}.
-
-This paper presents a comprehensive four-stage pipeline for generating detailed image descriptions that combines state-of-the-art object detection with knowledge graph construction and natural language inference. Our approach employs YOLOv11 \cite{ultralytics2023yolov8} for robust object detection in the first stage, followed by knowledge graph construction and entity linking. Unlike traditional approaches that rely solely on visual features, our system incorporates enriched contextual data through knowledge graph reasoning to perform sophisticated contextual analysis and inference, ultimately generating more comprehensive and meaningful image descriptions.
-
-The main contributions of this work are: (1) A novel four-stage architecture that seamlessly integrates computer vision, knowledge representation, and natural language processing for image description; (2) An enhanced knowledge graph-based reasoning approach that enriches visual understanding with external knowledge; (3) A streamlined contextual analysis module that focuses on enriched data interpretation; and (4) Comprehensive evaluation demonstrating the effectiveness of our approach in generating high-quality, contextually aware image descriptions.
-
+The automatic generation of natural language descriptions from images remains one of the most challenging and important tasks in computer vision and natural language processing \cite{vinyals2015show, anderson2018bottom}. This interdisciplinary field, commonly known as image captioning, requires machines to not only perceive objects and their relationships but also to generate coherent, contextually appropriate text that captures the scene's semantic essence \cite{xu2015show, anderson2018bottom}.
+Recent advances in deep learning, particularly the adoption of Transformer-based models and Large Language Models (LLMs) in Vision-Language Pre-training (VLP) \cite{li2022blip, alayrac2022flamingo}, have significantly improved descriptive fluency. However, a critical limitation persists: current VLP and image captioning methods primarily rely on 2D feature extraction and lack a deep, grounded understanding of the 3D structure and spatial relationships within a scene. Consequently, generated captions often fail to accurately describe position, depth, and structural context (e.g., "the car is in front of the building" without specifying the distance or depth plane), limiting their applicability in domains requiring precise spatial reasoning, such as robotics or complex scene analysis.
+To address this gap, Knowledge Graphs (KGs) offer a crucial pathway by providing structured semantic information and enabling reasoning capabilities \cite{marino2017ok, wu2017image}. While previous work has used KGs to incorporate general semantic and factual knowledge \cite{yao2018exploring, li2022oscar}, few have effectively integrated explicit structural and geometric knowledge like scene depth and 3D spatial relationships. Furthermore, existing KG-enhanced methods often lack commonsense reasoning, which is vital for generating captions that reflect human-like understanding of causality and purpose \cite{zhao2021knowledge}.
+This paper introduces a novel framework, the Depth- and Commonsense-Augmented Scene Graph Captioner (DASG-CS Captioner), designed to generate fine-grained image descriptions with enhanced Spatio-Structural and Commonsense-Grounded awareness. We propose a comprehensive pipeline that moves beyond 2D perception by integrating state-of-the-art depth estimation into the knowledge representation stage, thereby enriching the generated captions with precise spatial details. Our method leverages the structured reasoning capabilities of Knowledge Graphs and the generative power of Fine-Tuned LLMs.
+The main contributions of this work are:
+A Novel Depth- and Commonsense-Augmented Scene Graph (DASG-CS): We propose a new KG architecture that seamlessly fuses visual features, quantitative depth information (from Depth Anything v2), and commonsense knowledge (from ConceptNet) to create a multi-faceted, structured representation of the scene.
+Spatially-Aware LLM Fine-Tuning Strategy: We develop an effective encoding and fine-tuning strategy for LLMs, enabling the model to explicitly utilize the Spatio-Structural and Commonsense information encoded in the DASG-CS, leading to generated captions that are demonstrably richer in depth and contextual reasoning.
+A Comprehensive Four-Stage Pipeline: We present a robust and reproducible pipeline that integrates feature extraction, multi-source knowledge fusion, structured data encoding, and natural language generation, setting a new benchmark for spatially and contextually grounded image captioning.
+Extensive Evaluation with Novel Metrics: We conduct a comprehensive evaluation demonstrating the effectiveness of the DASG-CS framework, including specialized metrics to quantify the improvement in Spatial Reasoning Accuracy and Contextual Richness of the generated descriptions.
 \section{Related Work}
 
 Image captioning has evolved significantly from simple encoder-decoder architectures \cite{vinyals2015show} to sophisticated systems incorporating spatial awareness and external knowledge \cite{anderson2018bottom}. Our work builds upon three critical research directions: depth-aware image understanding, knowledge graph construction for vision-language tasks, and fine-tuning language models for spatial-aware captioning.
@@ -251,18 +250,19 @@ This theoretical framework provides the mathematical foundation for our four-sta
 
 \section{Proposed Approach}
 
-This section presents our comprehensive four-stage architecture for knowledge graph-enhanced image description generation. Our approach integrates advanced computer vision techniques with knowledge representation and natural language processing to generate rich, contextually aware image descriptions.
+This section presents our three-stage architecture for knowledge graph-enhanced image description generation. 
+Our approach integrates advanced computer vision techniques with knowledge representation and natural language processing to generate rich, 
+contextually aware image descriptions.
 
 \subsection{Overall Architecture}
 
-Figure \ref{fig:architecture} illustrates the complete pipeline of our proposed system. The architecture consists of four interconnected stages: (1) Computer Vision Processing using YOLOv11 and depth estimation, (2) Knowledge Graph Construction with entity linking, (3) Contextual Analysis and Inference using enriched data, and (4) Natural Language Generation powered by T5 transformer. Each stage contributes essential components that collectively enable sophisticated image understanding and description generation.
-
+Figure \ref{fig:architecture} illustrates the complete pipeline of our proposed system. The architecture consists of three interconnected stages: (1) Computer Vision Processing using YOLOv11 and depth estimation, (2) Knowledge Graph Construction with entity linking, and (3) Contextual Analysis and Inference using enriched data, and (4) Natural Language Generation powered by T5 transformer. Each stage contributes essential components that collectively enable sophisticated image understanding and description generation.
 \subsection{Stage I: Enhanced Computer Vision Processing}
 
 The first stage performs comprehensive visual analysis using multiple computer vision techniques to extract rich visual information from input images.
 
 \subsubsection{Multi-Scale Object Detection}
-Our system employs YOLOv11 \cite{ultralytics2023yolov8} for robust object detection, which provides real-time object detection with high accuracy, multi-scale feature extraction for objects of varying sizes, and confidence-based filtering to ensure reliable detections.
+Our system employs YOLOv11 \cite{ultralytics2023yolov8} for  object detection, which provides real-time object detection with high accuracy, multi-scale feature extraction for objects of varying sizes, and confidence-based filtering to ensure reliable detections.
 
 The detection process generates a comprehensive object set $O = \{o_1, o_2, ..., o_n\}$, where each object $o_i$ contains class information, spatial coordinates, and confidence scores.
 
@@ -339,37 +339,7 @@ This comprehensive approach ensures that our system generates high-quality, cont
 
 \section{Future Work}
 
-While our current framework demonstrates promising results in knowledge graph-enhanced image description generation, several avenues for future research and improvement remain to be explored.
 
-\subsection{Scalability and Real-time Optimization}
-
-Future work will focus on optimizing the computational efficiency of our four-stage pipeline to enable real-time applications. This includes developing lightweight versions of the knowledge graph construction module for mobile and edge computing environments, implementing parallel processing techniques to reduce inference time across all four stages, particularly in the entity linking and contextual reasoning phases, exploring model compression and quantization techniques for the T5 transformer without significant performance degradation, and investigating efficient caching mechanisms for frequently accessed knowledge graph entities.
-
-\subsection{Enhanced Knowledge Graph Integration}
-
-We plan to expand and improve the knowledge graph component through integration of domain-specific knowledge bases (medical, scientific, cultural) for specialized image description tasks, development of dynamic knowledge graph updating mechanisms that can incorporate new entities and relationships during inference, investigation of multimodal knowledge graphs that combine visual, textual, and temporal information for richer semantic representation, and exploration of federated knowledge graph architectures to leverage multiple distributed knowledge sources.
-
-\subsection{Advanced Contextual Reasoning}
-
-Future research will explore more sophisticated inference mechanisms including implementation of causal reasoning models to better understand cause-effect relationships in complex scenes, development of temporal reasoning capabilities for video description generation and dynamic scene understanding, investigation of emotional and sentiment inference from visual cues to generate more nuanced descriptions, and enhancement of the context propagation mechanism with graph neural networks for better semantic diffusion.
-
-\subsection{Multimodal and Cross-domain Applications}
-
-We aim to extend our approach to broader applications through adaptation for video description generation by incorporating temporal dynamics and motion analysis, extension to medical image analysis for generating diagnostic descriptions with clinical knowledge integration, development of cross-lingual description generation capabilities using multilingual knowledge bases, integration with accessibility technologies for visually impaired users, including audio description generation, and application to augmented reality scenarios for real-time scene understanding and description.
-
-\subsection{Evaluation and Benchmarking}
-
-Future work will include comprehensive evaluation strategies involving development of new evaluation metrics that better capture semantic richness, factual accuracy, and contextual appropriateness, creation of specialized benchmarks for knowledge-enhanced image description tasks with ground truth knowledge annotations, human evaluation studies to assess the quality and usefulness of generated descriptions in real-world applications, and comparative analysis with human-generated descriptions to identify areas for improvement.
-
-\subsection{Robustness and Generalization}
-
-We plan to investigate the robustness of our approach through evaluation on adversarial examples and out-of-domain images to test system resilience, development of uncertainty estimation mechanisms for confidence-aware description generation, investigation of few-shot learning capabilities for adapting to new domains with limited training data, and analysis of failure modes and development of error detection and correction mechanisms.
-
-\subsection{Integration with Emerging Technologies}
-
-Future directions will also explore integration with cutting-edge technologies including integration with large language models (LLMs) for enhanced natural language generation capabilities, exploration of diffusion models for generating visual explanations alongside textual descriptions, investigation of neural-symbolic approaches for more interpretable reasoning processes, and development of interactive description generation systems that can respond to user queries and preferences.
-
-These future directions will contribute to advancing the field of knowledge-enhanced image understanding and enable the deployment of our framework in real-world applications requiring detailed, accurate, and contextually appropriate image descriptions.
 
 \section*{Acknowledgments}
 The authors would like to thank the Faculty of Information Technology, Ho Chi Minh

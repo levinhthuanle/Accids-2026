@@ -5,47 +5,49 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: splncs04.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
+Warning--I didn't find a database entry for "li2022blip"
+Warning--I didn't find a database entry for "alayrac2022flamingo"
 Warning--I didn't find a database entry for "li2022oscar"
 Warning--I didn't find a database entry for "yang2024depth"
-You've used 27 entries,
+You've used 23 entries,
             2850 wiz_defined-function locations,
-            748 strings with 9591 characters,
-and the built_in function-call counts, 19237 in all, are:
-= -- 1643
-> -- 679
-< -- 31
-+ -- 280
-- -- 250
-* -- 1201
-:= -- 2384
-add.period$ -- 43
-call.type$ -- 27
-change.case$ -- 242
+            732 strings with 8927 characters,
+and the built_in function-call counts, 16193 in all, are:
+= -- 1369
+> -- 576
+< -- 27
++ -- 238
+- -- 212
+* -- 1017
+:= -- 2010
+add.period$ -- 35
+call.type$ -- 23
+change.case$ -- 203
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 1594
-empty$ -- 1629
-format.name$ -- 275
-if$ -- 4285
+cite$ -- 23
+duplicate$ -- 1348
+empty$ -- 1370
+format.name$ -- 233
+if$ -- 3600
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 316
-newline$ -- 87
-num.names$ -- 54
-pop$ -- 645
+int.to.str$ -- 23
+missing$ -- 269
+newline$ -- 75
+num.names$ -- 46
+pop$ -- 543
 preamble$ -- 1
-purify$ -- 179
+purify$ -- 152
 quote$ -- 0
-skip$ -- 599
+skip$ -- 499
 stack$ -- 0
-substring$ -- 1219
-swap$ -- 939
-text.length$ -- 31
+substring$ -- 1007
+swap$ -- 801
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 92
 warning$ -- 0
-while$ -- 141
-width$ -- 29
-write$ -- 272
-(There were 2 warnings)
+while$ -- 117
+width$ -- 25
+write$ -- 232
+(There were 4 warnings)

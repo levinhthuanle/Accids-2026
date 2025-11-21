@@ -1,0 +1,46 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+
+# Output files (optional — ignore compiled PDFs)
+*.dvi
+*.ps
+
+# Editor / OS
+*~
+.#*
+.DS_Store
+Thumbs.db
+
+# LaTeX editor folders
+latexbuild/
+build/
+out/
+
+# Jupyter & Python caches
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# IDE settings (uncomment if you don't want to commit)
+# .vscode/
+# .idea/
+
+# Large datasets / generated files (adjust to your repo)
+# VG_Dataset/visualgenome_kg.ttl
+# visual_genome_kg.ttl
