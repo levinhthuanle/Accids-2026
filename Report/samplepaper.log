@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  23 NOV 2025 15:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  23 NOV 2025 15:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -354,13 +354,21 @@ LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 73.
 [5]
 
 [6]
-Overfull \hbox (2.31891pt too wide) in paragraph at lines 249--250
+Overfull \hbox (2.31891pt too wide) in paragraph at lines 251--252
 \T1/cmr/m/n/10 four-stage ar-chi-tec-ture, en-sur-ing prin-ci-pled in-te-gra-tion of com-puter vi-sion, knowl-
  []
 
-(samplepaper.bbl
 
-[7]
+
+pdfTeX warning: pdflatex (file ./figures/System1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/System1.pdf, id=39, 864.1083pt x 449.76028pt>
+File: figures/System1.pdf Graphic file (type pdf)
+<use figures/System1.pdf>
+Package pdftex.def Info: figures/System1.pdf  used on input line 264.
+(pdftex.def)             Requested size: 347.12354pt x 180.6764pt.
+
+
+[7 <./figures/System1.pdf>] (samplepaper.bbl
 
 [8])
 
@@ -375,17 +383,17 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4109 strings out of 468133
- 55568 string characters out of 5447550
- 473683 words of memory out of 5000000
- 32677 multiletter control sequences out of 15000+600000
+ 4119 strings out of 468133
+ 55847 string characters out of 5447550
+ 472705 words of memory out of 5000000
+ 32687 multiletter control sequences out of 15000+600000
  639973 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,879b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><E:/MikTex/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on samplepaper.pdf (9 pages, 239378 bytes).
+Output written on samplepaper.pdf (9 pages, 7096112 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
+ 451 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -75,7 +75,7 @@ This paper introduces a novel framework, the Depth- and Commonsense-Augmented Sc
 The main contributions of this work are:
 A Novel Depth- and Commonsense-Augmented Scene Graph (DASG-CS): We propose a new KG architecture that seamlessly fuses visual features, quantitative depth information (from Depth Anything v2), and commonsense knowledge (from ConceptNet) to create a multi-faceted, structured representation of the scene.
 Spatially-Aware LLM Fine-Tuning Strategy: We develop an effective encoding and fine-tuning strategy for LLMs, enabling the model to explicitly utilize the Spatio-Structural and Commonsense information encoded in the DASG-CS, leading to generated captions that are demonstrably richer in depth and contextual reasoning.
-A Comprehensive Four-Stage Pipeline: We present a robust and reproducible pipeline that integrates feature extraction, multi-source knowledge fusion, structured data encoding, and natural language generation, setting a new benchmark for spatially and contextually grounded image captioning.
+A Three-Stage Pipeline: We present a pipeline that integrates feature extraction, multi-source knowledge fusion, structured data encoding, and natural language generation, setting a new benchmark for spatially and contextually grounded image captioning.
 Extensive Evaluation with Novel Metrics: We conduct a comprehensive evaluation demonstrating the effectiveness of the DASG-CS framework, including specialized metrics to quantify the improvement in Spatial Reasoning Accuracy and Contextual Richness of the generated descriptions.
 \section{Related Work}
 
@@ -129,9 +129,11 @@ Our proposed three-system pipeline addresses these gaps:
 
 The key contribution is the systematic integration of depth information throughout the pipeline, from detection through knowledge graph construction to caption generation, emphasizing spatial accuracy in generated descriptions.
 
+
+
 \section{Theoretical Basis}
 
-This section presents the theoretical foundations underlying our four-stage architecture, providing formal definitions and mathematical models that support the integration of computer vision, knowledge graph reasoning, and natural language generation.
+This section presents the theoretical foundations underlying our three-stage architecture, providing formal definitions and mathematical models that support the integration of computer vision, knowledge graph reasoning, and natural language generation.
 
 \subsection{Object Detection and Spatial Analysis Framework}
 
@@ -246,7 +248,7 @@ The multi-modal information fusion employs weighted combination of feature repre
 
 where $\phi_i$ represents the transformation function for each modality, and $w_i$ are learned weights that adapt to the relative importance of each information source.
 
-This theoretical framework provides the mathematical foundation for our four-stage architecture, ensuring principled integration of computer vision, knowledge representation, and natural language generation components.
+This theoretical framework provides the mathematical foundation for our three-stage architecture, ensuring principled integration of computer vision, knowledge representation, and natural language generation components.
 
 \section{Proposed Approach}
 
@@ -255,7 +257,14 @@ Our proposed architecture consists of three main stages: (1) Spatial Feature Ext
 Each stage is designed to progressively enrich the input image data with spatial and semantic information, culminating in the generation of detailed and contextually 
 relevant captions.
 
+\subsection{Entities extraction}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{figures/System1.pdf}
+    \caption{Overall Architecture of the Proposed Approach}
+    \label{fig:architecture}
+\end{figure}
 
 \section{Evaluation}
 \subsection{Environment and Experiment Data}

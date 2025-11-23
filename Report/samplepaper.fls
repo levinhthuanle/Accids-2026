@@ -113,6 +113,12 @@ OUTPUT samplepaper.pdf
 INPUT C:\Users\DELL\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT E:\MikTex\fonts\tfm\jknappen\ec\ecrm0700.tfm
 INPUT E:\MikTex\fonts\tfm\jknappen\ec\ecrm0500.tfm
+INPUT .\figures\System1.pdf
+INPUT .\figures\System1.pdf
+INPUT .\figures\System1.pdf
+INPUT .\figures\System1.pdf
+INPUT .\figures\System1.pdf
+INPUT .\figures\System1.pdf
 INPUT .\samplepaper.bbl
 INPUT .\samplepaper.bbl
 INPUT samplepaper.bbl
