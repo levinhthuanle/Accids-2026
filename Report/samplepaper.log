@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.3)  21 NOV 2025 21:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  23 NOV 2025 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -328,14 +328,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
  (E:\MikTex\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-7.
-
-(C:\Users\LENOVO\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
 Title too long for running head. Please supply
 a shorter form with \titlerunning prior to \maketitle
+
+LaTeX Warning: Citation `li2022blip' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `alayrac2022flamingo' on page 1 undefined on input line 72.
+
 
 LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 73.
 
@@ -343,114 +343,28 @@ LaTeX Warning: Citation `li2022oscar' on page 1 undefined on input line 73.
 
 [1
 
-{C:/Users/LENOVO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-
-LaTeX Warning: Citation `redmon2016you' on page 2 undefined on input line 87.
-
-
-LaTeX Warning: Citation `bochkovskiy2020yolov4' on page 2 undefined on input li
-ne 87.
-
-
-LaTeX Warning: Citation `krishna2017visual' on page 2 undefined on input line 9
-5.
-
-
-LaTeX Warning: Citation `young2014image' on page 2 undefined on input line 95.
-
-
-LaTeX Warning: Citation `lin2014microsoft' on page 2 undefined on input line 95
-.
+{C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
 
-LaTeX Warning: Citation `karpathy2015deep' on page 3 undefined on input line 10
-3.
-
-
-LaTeX Warning: Citation `krishna2017visual' on page 3 undefined on input line 1
-26.
-
-
-LaTeX Warning: Citation `young2014image' on page 3 undefined on input line 126.
-
-
 [3]
 
-LaTeX Warning: Citation `yang2024depth' on page 4 undefined on input line 149.
+[4]
 
-[4] [5]
-Overfull \hbox (2.31891pt too wide) in paragraph at lines 250--251
-\T1/cmr/m/n/10 four-stage ar-chi-tec-ture, en-sur-ing prin-ci-pled in-te-gra-ti
-on of com-puter vi-sion, knowl-
- []
-
-
+[5]
 
 [6]
-
-LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 2
-58.
-
-
-Overfull \hbox (7.25958pt too wide) in paragraph at lines 267--268
-[]\T1/cmr/m/n/10 The de-tec-tion pro-cess gen-er-ates a com-pre-hen-sive ob-jec
-t set $\OML/cmm/m/it/10 O \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 
-o[]; o[]; :::; o[]\OMS/cmsy/m/n/10 g$\T1/cmr/m/n/10 ,
+Overfull \hbox (2.31891pt too wide) in paragraph at lines 249--250
+\T1/cmr/m/n/10 four-stage ar-chi-tec-ture, en-sur-ing prin-ci-pled in-te-gra-tion of com-puter vi-sion, knowl-
  []
 
-
-LaTeX Warning: Citation `yang2024depth' on page 7 undefined on input line 270.
+(samplepaper.bbl
 
 [7]
-Overfull \hbox (21.50172pt too wide) in paragraph at lines 288--289
-\T1/cmr/m/n/10 and prop-er-ties, \T1/cmr/bx/n/10 Word-Net \T1/cmr/m/n/10 for se
--man-tic hi-er-ar-chies and syn-onyms, \T1/cmr/bx/n/10 YAGO/DBpedia
- []
 
+[8])
 
-Overfull \hbox (110.85109pt too wide) detected at line 293
-[]\OML/cmm/m/it/10 similarity\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]; e[]\OT1/cmr
-/m/n/10 ) = \OML/cmm/m/it/10  \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 sim[]\OT1/
-cmr/m/n/10 (\OML/cmm/m/it/10 label\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr
-/m/n/10 )\OML/cmm/m/it/10 ; label\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/cmr/
-m/n/10 )) + \OML/cmm/m/it/10 ^^L \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 sim[]\OT
-1/cmr/m/n/10 (\OML/cmm/m/it/10 context\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1
-/cmr/m/n/10 )\OML/cmm/m/it/10 ; context\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT
-1/cmr/m/n/10 ))
- []
-
-
-
-[8]
-Overfull \hbox (1.45107pt too wide) in paragraph at lines 306--307
-\T1/cmr/m/n/10 scene, and (4) \T1/cmr/bx/n/10 Conceptual-Level In-fer-ence \T1/
-cmr/m/n/10 for high-level con-cepts and themes. 
- []
-
-[9]
-Overfull \hbox (1.3747pt too wide) in paragraph at lines 342--343
-\T1/cmr/m/n/10 While our cur-rent frame-work demon-strates promis-ing re-sults 
-in knowl-edge graph-
- []
-
-
-Overfull \hbox (8.31744pt too wide) in paragraph at lines 346--347
-\T1/cmr/m/n/10 stage pipeline to en-able real-time ap-pli-ca-tions. This in-clu
-des de-vel-op-ing lightweight
- []
-
-[10] [11] (samplepaper.bbl [12]
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-[]\T1/cmr/m/n/9 Ultralytics: Yolov8: A new state-of-the-art com-puter vi-sion m
-odel.
- []
-
-
-
-[11])
-
-[12] (samplepaper.aux)
+[9] (samplepaper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -461,38 +375,17 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4112 strings out of 474486
- 58931 string characters out of 5743284
- 1936542 words of memory out of 5000000
- 26348 multiletter control sequences out of 15000+600000
- 571217 words of font info for 68 fonts, out of 8000000 for 9000
+ 4109 strings out of 468133
+ 55568 string characters out of 5447550
+ 473683 words of memory out of 5000000
+ 32677 multiletter control sequences out of 15000+600000
+ 639973 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,766b,283s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecb
-x1000.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi
-600\ecbx1200.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\tcrm0900.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\ecbx0900.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\LENOVO\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\LENOVO\AppData\Local\MiK
-TeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\LENOVO\AppData\Lo
-cal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Users/LENOVO/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/L
-ENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-mi6.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr6.pfb><C:/Users/LENOVO/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/LENOVO/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/LENOVO/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/LENOVO/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users
-/LENOVO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
-0.pfb>
-Output written on samplepaper.pdf (14 pages, 254953 bytes).
+ 57i,6n,65p,879b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><E:/MikTex/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on samplepaper.pdf (9 pages, 239378 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
+ 428 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

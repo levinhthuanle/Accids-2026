@@ -8,46 +8,45 @@ Database file #1: ref.bib
 Warning--I didn't find a database entry for "li2022blip"
 Warning--I didn't find a database entry for "alayrac2022flamingo"
 Warning--I didn't find a database entry for "li2022oscar"
-Warning--I didn't find a database entry for "yang2024depth"
-You've used 23 entries,
+You've used 24 entries,
             2850 wiz_defined-function locations,
-            732 strings with 8927 characters,
-and the built_in function-call counts, 16193 in all, are:
-= -- 1369
-> -- 576
+            733 strings with 9192 characters,
+and the built_in function-call counts, 16311 in all, are:
+= -- 1395
+> -- 558
 < -- 27
-+ -- 238
-- -- 212
-* -- 1017
-:= -- 2010
-add.period$ -- 35
-call.type$ -- 23
-change.case$ -- 203
++ -- 231
+- -- 204
+* -- 1016
+:= -- 2034
+add.period$ -- 36
+call.type$ -- 24
+change.case$ -- 200
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 1348
-empty$ -- 1370
-format.name$ -- 233
-if$ -- 3600
+cite$ -- 24
+duplicate$ -- 1374
+empty$ -- 1389
+format.name$ -- 227
+if$ -- 3610
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 269
-newline$ -- 75
-num.names$ -- 46
-pop$ -- 543
+int.to.str$ -- 24
+missing$ -- 272
+newline$ -- 78
+num.names$ -- 48
+pop$ -- 548
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 149
 quote$ -- 0
-skip$ -- 499
+skip$ -- 503
 stack$ -- 0
-substring$ -- 1007
-swap$ -- 801
+substring$ -- 1030
+swap$ -- 793
 text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 92
+type$ -- 96
 warning$ -- 0
-while$ -- 117
-width$ -- 25
-write$ -- 232
-(There were 4 warnings)
+while$ -- 127
+width$ -- 26
+write$ -- 240
+(There were 3 warnings)

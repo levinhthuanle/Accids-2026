@@ -91,7 +91,7 @@ Scene graph generation has emerged as a method to capture object relationships e
 
 \subsection{Knowledge-Enhanced Image Captioning}
 
-Knowledge graphs provide structured representations of visual scenes and external world knowledge, enabling richer semantic understanding. Visual Genome \cite{krishna2017visual} pioneered large-scale visual knowledge graphs with detailed annotations of objects, attributes, and relationships. Flickr30k \cite{young2014image} and MS COCO \cite{lin2014microsoft} provide image-caption pairs widely used for training vision-language models.
+Knowledge graphs provide structured representations of visual scenes and external world knowledge, enabling richer semantic understanding. Visual Genome \cite{krishna2017visual} pioneered large-scale visual knowledge graphs with detailed annotations of objects, attributes, and relationships. Flickr30k \cite{young2014image} provide image-caption pairs widely used for training vision-language models.
 
 Several works have explored incorporating external knowledge into image captioning. Knowledge graphs have been used for visual question answering \cite{KGforVQARef} and image classification \cite{marino2017ok}. Entity linking techniques \cite{EntityLinkingRef} help map visual detections to knowledge base entities. Knowledge-based approaches \cite{KnowledgeBasedCaptioningRef, zhao2021knowledge} have shown improvements by incorporating common-sense and factual knowledge.
 
@@ -250,89 +250,12 @@ This theoretical framework provides the mathematical foundation for our four-sta
 
 \section{Proposed Approach}
 
-This section presents our three-stage architecture for knowledge graph-enhanced image description generation. 
-Our approach integrates advanced computer vision techniques with knowledge representation and natural language processing to generate rich, 
-contextually aware image descriptions.
-
 \subsection{Overall Architecture}
+Our proposed architecture consists of three main stages: (1) Spatial Feature Extraction, (2) Knowledge Graph Construction, and (3) Depth-Aware Caption Generation. 
+Each stage is designed to progressively enrich the input image data with spatial and semantic information, culminating in the generation of detailed and contextually 
+relevant captions.
 
-Figure \ref{fig:architecture} illustrates the complete pipeline of our proposed system. The architecture consists of three interconnected stages: (1) Computer Vision Processing using YOLOv11 and depth estimation, (2) Knowledge Graph Construction with entity linking, and (3) Contextual Analysis and Inference using enriched data, and (4) Natural Language Generation powered by T5 transformer. Each stage contributes essential components that collectively enable sophisticated image understanding and description generation.
-\subsection{Stage I: Enhanced Computer Vision Processing}
 
-The first stage performs comprehensive visual analysis using multiple computer vision techniques to extract rich visual information from input images.
-
-\subsubsection{Multi-Scale Object Detection}
-Our system employs YOLOv11 \cite{ultralytics2023yolov8} for  object detection, which provides real-time object detection with high accuracy, multi-scale feature extraction for objects of varying sizes, and confidence-based filtering to ensure reliable detections.
-
-The detection process generates a comprehensive object set $O = \{o_1, o_2, ..., o_n\}$, where each object $o_i$ contains class information, spatial coordinates, and confidence scores.
-
-\subsubsection{Depth-Based Spatial Understanding}
-We integrate Depth-Anything-V2-Base \cite{yang2024depth} to obtain detailed depth information, enabling 3D spatial relationship understanding between objects, distance estimation for relative positioning, and depth-aware scene composition analysis.
-
-The depth estimation provides spatial context that enhances the understanding of object interactions and scene layout.
-
-\subsubsection{Geometric Relationship Analysis}
-Using the Shapely geometry library \cite{gillies2007shapely}, we compute precise geometric relationships including spatial overlaps and intersections between object regions, relative positioning (above, below, left, right, inside, outside), distance calculations for proximity analysis, and containment relationships for hierarchical object understanding.
-
-\subsubsection{Optical Character Recognition}
-For images containing textual elements, we incorporate OCR capabilities to extract textual information from signs, labels, and documents, integrate text as additional contextual entities, and enhance semantic understanding through textual cues.
-
-\subsection{Stage II: Knowledge Graph Construction and Entity Linking}
-
-The second stage transforms visual detections into a structured knowledge representation that enables semantic reasoning and contextual understanding.
-
-\subsubsection{Entity Enrichment and Aggregation}
-Detected objects are enhanced with additional semantic information including visual attributes (color, size, texture, orientation), spatial properties derived from depth analysis, contextual tags based on scene understanding, and confidence-weighted importance scoring.
-
-\subsubsection{External Knowledge Base Integration}
-Our system performs entity linking with multiple knowledge sources: \textbf{ConceptNet} for common-sense relationships and properties, \textbf{WordNet} for semantic hierarchies and synonyms, \textbf{YAGO/DBpedia} for factual information and entity properties, and \textbf{Visual Genome} for visual relationship patterns.
-
-The linking process employs semantic similarity matching:
-\begin{equation}
-similarity(e_{visual}, e_{kb}) = \alpha \cdot sim_{text}(label(e_{visual}), label(e_{kb})) + \beta \cdot sim_{context}(context(e_{visual}), context(e_{kb}))
-\end{equation}
-
-\subsubsection{Dynamic Knowledge Graph Construction}
-The system constructs a scene-specific knowledge graph $KG = (V, E, R, A)$ where $V$ contains both detected visual entities and linked knowledge entities, $E$ represents relationships derived from spatial analysis and knowledge linking, $R$ includes spatial, semantic, and functional relationship types, and $A$ maps entities to their enriched attribute sets.
-
-\subsection{Stage III: Contextual Analysis and Enriched Data Processing}
-
-The third stage focuses on sophisticated reasoning using the enriched knowledge graph without explicit relationship modeling.
-
-\subsubsection{Semantic Enrichment Strategy}
-Unlike traditional approaches that explicitly model all relationships, our system focuses on enriching entities with contextual information. This includes \textbf{Semantic Context} for inferring implicit meanings from entity combinations, \textbf{Functional Context} for understanding purposes and activities, \textbf{Temporal Context} for inferring time-related aspects from visual cues, and \textbf{Causal Context} for identifying cause-effect relationships.
-
-\subsubsection{Multi-Level Inference Engine}
-Our inference engine operates at multiple abstraction levels: (1) \textbf{Object-Level Inference} for direct properties and attributes, (2) \textbf{Scene-Level Inference} for overall scene understanding and context, (3) \textbf{Activity-Level Inference} for actions and events happening in the scene, and (4) \textbf{Conceptual-Level Inference} for high-level concepts and themes.
-
-\subsubsection{Context Propagation Mechanism}
-The system employs a context propagation algorithm that spreads semantic information through the knowledge graph, weights context based on spatial proximity and semantic similarity, resolves ambiguities through multi-source evidence combination, and maintains uncertainty estimates for probabilistic reasoning.
-
-\subsection{Stage IV: T5-Based Natural Language Generation}
-
-The final stage employs the T5 (Text-to-Text Transfer Transformer) model \cite{raffel2020exploring} to generate natural language descriptions from the enriched semantic representation.
-
-\subsubsection{Semantic-to-Text Encoding}
-The enriched knowledge graph is converted into a structured semantic representation featuring entity-centric encoding highlighting important objects and their properties, relationship-aware structuring preserving spatial and semantic connections, context-enriched formatting including inferred information, and hierarchical organization from concrete objects to abstract concepts.
-
-\subsubsection{T5 Model Adaptation}
-We fine-tune the T5 model specifically for our image description task with \textbf{Input Format} as structured semantic representations derived from knowledge graphs, \textbf{Output Format} as natural language descriptions with varying levels of detail, \textbf{Training Strategy} using multi-task learning with description generation and semantic consistency, and \textbf{Attention Mechanism} enhanced attention over semantic structures.
-
-\subsubsection{Description Generation Logic}
-The text generation process follows a structured approach: (1) \textbf{Content Planning} for organizing semantic information into narrative structure, (2) \textbf{Sentence Structure Logic} for constructing grammatically correct and coherent sentences, (3) \textbf{Style Adaptation} for adjusting linguistic style based on content type and context, and (4) \textbf{Coherence Optimization} for ensuring logical flow and narrative consistency.
-
-\subsubsection{Multi-Level Description Generation}
-Our system generates descriptions at multiple levels of detail: \textbf{Basic Level} for simple object enumeration and spatial relationships, \textbf{Detailed Level} for rich descriptions including attributes, activities, and context, \textbf{Narrative Level} for story-like descriptions with inferred activities and emotions, and \textbf{Technical Level} for precise descriptions suitable for accessibility applications.
-
-\subsection{Integration and Optimization}
-
-\subsubsection{End-to-End Training Strategy}
-While individual components are pre-trained separately, the system employs end-to-end fine-tuning through joint optimization of knowledge graph construction and text generation, reinforcement learning for description quality improvement, and multi-objective optimization balancing accuracy, fluency, and informativeness.
-
-\subsubsection{Quality Assurance Mechanisms}
-The system incorporates several quality control measures including semantic consistency checking between visual content and generated text, factual accuracy verification against knowledge bases, linguistic quality assessment using automated metrics, and diversity promotion to avoid repetitive descriptions.
-
-This comprehensive approach ensures that our system generates high-quality, contextually rich, and semantically accurate image descriptions that surpass traditional methods in both information content and linguistic quality.
 
 \section{Evaluation}
 \subsection{Environment and Experiment Data}
