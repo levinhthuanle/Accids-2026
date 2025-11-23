@@ -257,8 +257,6 @@ Our proposed architecture consists of three main stages: (1) Spatial Feature Ext
 Each stage is designed to progressively enrich the input image data with spatial and semantic information, culminating in the generation of detailed and contextually 
 relevant captions.
 
-\subsection{Depth-Aware Feature Extraction}
-
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/System1.pdf}
@@ -266,7 +264,87 @@ relevant captions.
     \label{fig:architecture}
 \end{figure}
 
-\subsection{DASG-CS Construction and Multi-Source Fusion}
+\subsection{Stage 1: Initial Visual-Spatial Knowledge Generation}
+\label{sec:stage1}
+
+The first stage of our proposed architecture focuses on generating a preliminary, intrinsic Knowledge Graph (KG) that encodes both the semantic entities and their derived spatial-structural relationships within the input image. This initial graph, denoted as the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), serves as the foundational, image-grounded structure before external knowledge enrichment.
+
+As illustrated in Figure 1, Stage 1 encompasses the feature extraction, object-depth fusion, and the construction of the $\mathbf{KG}_{\text{Int}}$.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/System1.pdf}
+    \caption{Stage 1 architecture: Initial Visual-Spatial Knowledge Generation}
+    \label{fig:overall_architecture}
+\end{figure}
+
+\subsubsection{Object and Depth Feature Extraction}
+We employ a dual-branch feature extraction mechanism.
+\begin{enumerate}
+    \item \textbf{Object Detection:} The \textbf{YOLOv11x} model is used to detect objects and extract attributes. The output is a set of detections $D = \{d_i\}_{i=1}^n$, where each $d_i$ includes the bounding box $B_i$, class label $C_i$, and confidence score $S_i$.
+    \item \textbf{Depth Estimation:} The \textbf{Depth Anything V2} model generates a high-resolution, dense Depth Map $D_{\text{map}} \in \mathbb{R}^{H \times W}$. This map provides the crucial relative depth information necessary for 3D spatial reasoning.
+\end{enumerate}
+
+\subsubsection{Object-Depth Fusion and Spatial Logic}
+The Fusion and Spatial Logic modules convert the raw visual and depth data into structured relationships.
+\begin{enumerate}
+    \item \textbf{Quantification and Fusion:} The bounding boxes $B_i$ are aligned with $D_{\text{map}}$. We compute the Average Relative Depth ($\bar{d}_i$) for each object $O_i$ within its bounding box. This step yields a set of Rich Objects $R$, where each object entity is augmented with its spatial center and $\bar{d}_i$. The $\bar{d}_i$ values are used exclusively for internal calculation of relative depth and are not stored as absolute values in the final KG.
+    \item \textbf{Spatial Predicate Generation:} The core of this stage is the derivation of new spatial predicates. By comparing the difference in average depth $\mathbf{\Delta d_{i,j}} = \bar{d}_i - \bar{d}_j$ between object pairs $(O_i, O_j)$, we generate a Novel Set of Qualitative 3D Spatial Predicates ($\mathcal{P}_{3D}$):
+    $$\mathcal{P}_{3D} \subset \{\text{is\_closer\_than, is\_farther\_than, on\_same\_depth\_plane\_as, in\_immediate\_foreground, etc.}\}$$
+    This logic uses dynamic thresholds to convert the continuous $\Delta d_{i,j}$ into discrete, robust relational triplets. Traditional 2D relationships (overlap, adjacency) are computed alongside these 3D predicates (using methods like IoU and Centroid-based Directional logic).
+\end{enumerate}
+
+\subsubsection{Internal Scene Graph Construction}
+The resulting Rich Objects and the generated 2D/3D relationships are fed into the RDF Knowledge Graph Generator (utilizing libraries such as \texttt{rdflib}). This module performs:
+\begin{enumerate}
+    \item \textbf{Namespace Definition} and \textbf{Object Node Creation} (from $R$).
+    \item \textbf{Relationship Edge Creation} (from $\mathcal{P}_{3D}$ and 2D predicates).
+\end{enumerate}
+This process finalizes the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), a set of RDF Triples that accurately models the scene's visual and spatial configuration. This $\mathbf{KG}_{\text{Int}}$ is then serialized (e.g., into a TTL file) as the output of Stage 1, ready for external knowledge enrichment in Stage 2.
+
+
+\subsection{Stage 2: DASG-CS Construction and Multi-Source Fusion}
+\label{sec:stage2}
+
+The primary objective of Stage 2 is the construction of the **Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$)** by integrating the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the critical limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/System2.pdf}
+    \caption{Architecture of the DASG-CS Construction and Fusion Module (Stage 2)}
+    \label{fig:stage2_architecture}
+\end{figure}
+
+\subsubsection{Knowledge Source Acquisition}
+Three distinct knowledge streams are prepared for fusion:
+
+\begin{enumerate}
+    \item \textbf{Internal Visual and 3D Spatial Triples ($\mathbf{KG}_{\text{Int}}$):} This is the output from Stage 1, containing robust 2D semantic triples and our novel $\mathcal{P}_{3D}$ set of qualitative 3D spatial predicates.
+    \item \textbf{Factual/Semantic Triples ($\mathbf{KG}_{\text{Fact}}$):} This stream incorporates standard semantic relationships retrieved from large-scale visual knowledge bases (e.g., Visual Genome and Flickr), providing general object-to-object semantic links.
+    \item \textbf{Commonsense Triples ($\mathbf{KG}_{\text{CS}}$):} This knowledge is acquired through a two-step process: \textbf{Entity Linking \& Query Generation} uses the object entities (Nodes) from $\mathbf{KG}_{\text{Int}}$ as queries to retrieve relevant triples from the \textbf{ConceptNet} semantic network. This yields $\mathbf{KG}_{\text{CS}}$, which enriches the graph with human-like understanding of context, purpose, and causality.
+\end{enumerate}
+
+\subsubsection{Multi-Source Fusion and Graph Consolidation}
+The three knowledge streams ($\mathbf{KG}_{\text{Int}}$, $\mathbf{KG}_{\text{Fact}}$, $\mathbf{KG}_{\text{CS}}$) converge into the **Multi-Source Fusion Module**.
+
+\begin{enumerate}
+    \item \textbf{Entity Alignment:} The module first ensures all entities (subjects and objects) are correctly aligned and unified across the three sources.
+    \item \textbf{Consolidation:} The module performs a set union operation to form the raw $\mathbf{DASG\text{-}CS}$:
+    $$\mathbf{DASG\text{-}CS} = \mathbf{KG}_{\text{Int}} \cup \mathbf{KG}_{\text{Fact}} \cup \mathbf{KG}_{\text{CS}}$$
+    \item \textbf{Conflict Resolution:} During consolidation, $\mathbf{KG}_{\text{Int}}$ (the direct visual evidence) is assigned the highest priority to resolve any potential conflicts or inconsistencies arising from general/abstract knowledge found in $\mathbf{KG}_{\text{Fact}}$ or $\mathbf{KG}_{\text{CS}}$.
+\end{enumerate}
+
+\subsubsection{Spatial Priority and Commonsense Filtering}
+The raw $\mathbf{DASG\text{-}CS}$ is typically redundant and high-dimensional. We introduce a filtering mechanism (represented by the diamond shape in Figure \ref{fig:stage2_architecture}) to retain only the most impactful triples for caption generation:
+
+\begin{enumerate}
+    \item \textbf{Spatial Priority Filtering:} Triples containing the **Novel 3D Spatial Predicates** ($\mathcal{P}_{3D}$) are automatically prioritized and flagged. This ensures the LLM's final output is strongly grounded in the scene's structural awareness.
+    \item \textbf{Commonsense Filtering:} $\mathbf{KG}_{\text{CS}}$ triples are filtered based on a computed Relevance Score (e.g., semantic similarity between the triple and the image context) to remove weak or generic commonsense links that might otherwise introduce noise.
+\end{enumerate}
+This filtering step yields a set of high-quality, non-redundant, and prioritized triples $\mathcal{T}_{\text{opt}}$, ready for the final encoding.
+
+\subsubsection{Structured Sequence Encoding}
+The final step of Stage 2 is the **Structured Sequence Encoding**. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
 
 \subsection{Spatially-Aware LLM Fine-Tuning}
 
