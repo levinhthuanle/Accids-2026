@@ -306,7 +306,7 @@ This process finalizes the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$)
 \subsection{Stage 2: DASG-CS Construction and Multi-Source Fusion}
 \label{sec:stage2}
 
-The primary objective of Stage 2 is the construction of the **Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$)** by integrating the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the critical limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
+The primary objective of Stage 2 is the construction of the Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$) by integrating the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the critical limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
 
 \begin{figure}[!h]
     \centering
@@ -325,7 +325,7 @@ Three distinct knowledge streams are prepared for fusion:
 \end{enumerate}
 
 \subsubsection{Multi-Source Fusion and Graph Consolidation}
-The three knowledge streams ($\mathbf{KG}_{\text{Int}}$, $\mathbf{KG}_{\text{Fact}}$, $\mathbf{KG}_{\text{CS}}$) converge into the **Multi-Source Fusion Module**.
+The three knowledge streams ($\mathbf{KG}_{\text{Int}}$, $\mathbf{KG}_{\text{Fact}}$, $\mathbf{KG}_{\text{CS}}$) converge into the Multi-Source Fusion Module.
 
 \begin{enumerate}
     \item \textbf{Entity Alignment:} The module first ensures all entities (subjects and objects) are correctly aligned and unified across the three sources.
@@ -338,13 +338,13 @@ The three knowledge streams ($\mathbf{KG}_{\text{Int}}$, $\mathbf{KG}_{\text{Fac
 The raw $\mathbf{DASG\text{-}CS}$ is typically redundant and high-dimensional. We introduce a filtering mechanism (represented by the diamond shape in Figure \ref{fig:stage2_architecture}) to retain only the most impactful triples for caption generation:
 
 \begin{enumerate}
-    \item \textbf{Spatial Priority Filtering:} Triples containing the **Novel 3D Spatial Predicates** ($\mathcal{P}_{3D}$) are automatically prioritized and flagged. This ensures the LLM's final output is strongly grounded in the scene's structural awareness.
+    \item \textbf{Spatial Priority Filtering:} Triples containing the Novel 3D Spatial Predicates ($\mathcal{P}_{3D}$) are automatically prioritized and flagged. This ensures the LLM's final output is strongly grounded in the scene's structural awareness.
     \item \textbf{Commonsense Filtering:} $\mathbf{KG}_{\text{CS}}$ triples are filtered based on a computed Relevance Score (e.g., semantic similarity between the triple and the image context) to remove weak or generic commonsense links that might otherwise introduce noise.
 \end{enumerate}
 This filtering step yields a set of high-quality, non-redundant, and prioritized triples $\mathcal{T}_{\text{opt}}$, ready for the final encoding.
 
 \subsubsection{Structured Sequence Encoding}
-The final step of Stage 2 is the **Structured Sequence Encoding**. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
+The final step of Stage 2 is the Structured Sequence Encoding. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
 
 \subsection{Spatially-Aware LLM Fine-Tuning}
 
