@@ -346,7 +346,104 @@ This filtering step yields a set of high-quality, non-redundant, and prioritized
 \subsubsection{Structured Sequence Encoding}
 The final step of Stage 2 is the Structured Sequence Encoding. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
 
-\subsection{Spatially-Aware LLM Fine-Tuning}
+\subsection{Stage 3: Spatially-Aware LLM Fine-Tuning}
+\label{sec:stage3}
+
+The final stage of our pipeline leverages the structured knowledge encoded in $S_{\text{prompt}}$ (the output of Stage 2) to fine-tune a Large Language Model for generating spatially-grounded and contextually rich image captions. This stage is critical for translating the multi-faceted knowledge graph into natural, human-readable descriptions that accurately reflect the 3D spatial structure and commonsense context of the scene. The architecture of Stage 3 is illustrated in Figure \ref{fig:stage3_architecture}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/System3.pdf}
+    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3)}
+    \label{fig:stage3_architecture}
+\end{figure}
+
+\subsubsection{Model Selection and Architecture}
+
+We employ a Text-to-Text Transfer Transformer (T5) \cite{raffel2020exploring} as our base language model due to its unified text-to-text framework and strong performance on various NLP tasks. The T5 architecture treats caption generation as a sequence-to-sequence translation task:
+
+\begin{equation}
+P(Y|S_{\text{prompt}}) = \prod_{t=1}^{T} P(y_t | y_{<t}, S_{\text{prompt}}; \theta)
+\end{equation}
+
+where $Y = \{y_1, y_2, ..., y_T\}$ is the target caption sequence, $S_{\text{prompt}}$ is the structured input from Stage 2, and $\theta$ represents the model parameters.
+
+\subsubsection{Input Representation and Tokenization}
+
+The structured sequence $S_{\text{prompt}}$ is formatted with special delimiter tokens to guide the model's attention to different knowledge types:
+
+\begin{verbatim}
+[3D_START] car is_closer_than building [3D_END]
+[2D_START] person on sidewalk [2D_END]
+[CS_START] car UsedFor transportation [CS_END]
+[FACT_START] building IsA structure [FACT_END]
+\end{verbatim}
+
+This explicit structuring allows the model to learn weighted importance of spatial vs. semantic vs. commonsense knowledge during fine-tuning.
+
+\subsubsection{Training Objective and Loss Functions}
+
+We design a multi-component loss function to optimize both generation quality and spatial-semantic alignment:
+
+\begin{equation}
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{gen}} + \lambda_{\text{spatial}} \mathcal{L}_{\text{spatial}} + \lambda_{\text{cs}} \mathcal{L}_{\text{cs}}
+\end{equation}
+
+where:
+\begin{enumerate}
+    \item \textbf{Generation Loss} ($\mathcal{L}_{\text{gen}}$): Standard cross-entropy loss for caption generation:
+    \begin{equation}
+    \mathcal{L}_{\text{gen}} = -\sum_{t=1}^{T} \log P(y_t^* | y_{<t}^*, S_{\text{prompt}}; \theta)
+    \end{equation}
+    where $y_t^*$ denotes the ground truth token at position $t$.
+    
+    \item \textbf{Spatial Consistency Loss} ($\mathcal{L}_{\text{spatial}}$): Enforces that generated spatial terms (e.g., "in front of", "behind", "closer") align with the 3D spatial predicates in $\mathcal{P}_{3D}$. This is implemented as a binary classification loss over predicted spatial relationships:
+    \begin{equation}
+    \mathcal{L}_{\text{spatial}} = -\sum_{i,j} \left[ r_{ij} \log \hat{r}_{ij} + (1-r_{ij}) \log(1-\hat{r}_{ij}) \right]
+    \end{equation}
+    where $r_{ij}$ indicates ground truth spatial relationship between objects $i$ and $j$, and $\hat{r}_{ij}$ is the model's prediction.
+    
+    \item \textbf{Commonsense Grounding Loss} ($\mathcal{L}_{\text{cs}}$): Encourages the model to incorporate relevant commonsense knowledge from $\mathbf{KG}_{\text{CS}}$ by measuring semantic similarity between generated text and commonsense triples:
+    \begin{equation}
+    \mathcal{L}_{\text{cs}} = 1 - \frac{1}{|\mathbf{KG}_{\text{CS}}|} \sum_{t \in \mathbf{KG}_{\text{CS}}} \text{sim}_{\text{semantic}}(Y, t)
+    \end{equation}
+\end{enumerate}
+
+The hyperparameters $\lambda_{\text{spatial}}$ and $\lambda_{\text{cs}}$ control the relative importance of spatial accuracy and commonsense incorporation.
+
+\subsubsection{Fine-Tuning Strategy}
+
+Our fine-tuning procedure consists of three phases:
+
+\begin{enumerate}
+    \item \textbf{Warm-up Phase:} We first fine-tune on standard image captioning datasets (e.g., MS COCO \cite{lin2014microsoft}) to maintain general caption generation capability. This prevents catastrophic forgetting of linguistic fluency.
+    
+    \item \textbf{Spatial-Aware Phase:} We introduce the spatial consistency loss $\mathcal{L}_{\text{spatial}}$ and fine-tune on depth-annotated image-caption pairs, gradually increasing $\lambda_{\text{spatial}}$ from 0.1 to 0.5 over training epochs.
+    
+    \item \textbf{Commonsense Integration Phase:} We activate $\mathcal{L}_{\text{cs}}$ and fine-tune on the complete $\mathbf{DASG\text{-}CS}$ representation, setting $\lambda_{\text{cs}} = 0.3$ to balance factual grounding with creative description.
+\end{enumerate}
+
+\subsubsection{Attention Mechanism Enhancement}
+
+To explicitly leverage the structured input format, we enhance T5's standard multi-head attention mechanism with a knowledge-type-aware attention layer. This layer computes separate attention weights for different knowledge types (3D spatial, 2D semantic, commonsense, factual):
+
+\begin{equation}
+\text{Attention}_{\text{type}}(Q, K_{\text{type}}, V_{\text{type}}) = \text{softmax}\left(\frac{QK_{\text{type}}^T}{\sqrt{d_k}} + M_{\text{type}}\right)V_{\text{type}}
+\end{equation}
+
+where $M_{\text{type}}$ is a learned mask matrix that adjusts attention weights based on knowledge type, allowing the model to prioritize spatial predicates when generating positional descriptions.
+
+\subsubsection{Decoding and Post-Processing}
+
+During inference, we employ beam search decoding with beam size $k=5$ to generate diverse caption candidates. We then apply a re-ranking mechanism based on:
+
+\begin{equation}
+\text{Score}(Y) = \log P(Y|S_{\text{prompt}}) + \alpha \cdot \text{Spatial\_Acc}(Y) + \beta \cdot \text{Fluency}(Y)
+\end{equation}
+
+where $\text{Spatial\_Acc}(Y)$ measures the consistency between generated spatial terms and $\mathcal{P}_{3D}$, and $\text{Fluency}(Y)$ is computed using a pre-trained language model (e.g., GPT-2) to ensure linguistic naturalness.
+
+The highest-scoring caption is selected as the final output, ensuring both spatial accuracy and linguistic quality.
 
 \subsection{Implementation Details and Dataset Preparation}
 
