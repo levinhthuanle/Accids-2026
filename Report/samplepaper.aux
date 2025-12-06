@@ -1,24 +1,22 @@
 \relax 
+\providecommand*\new@tpo@label[2]{}
 \citation{vinyals2015show,anderson2018bottom}
 \citation{xu2015show,anderson2018bottom}
 \citation{li2022blip,alayrac2022flamingo}
 \citation{marino2017ok,wu2017image}
 \citation{yao2018exploring,li2022oscar}
 \citation{zhao2021knowledge}
+\citation{vinyals2015show}
+\citation{anderson2018bottom}
 \@writefile{toc}{\contentsline {title}{Spatio-Structural Image Captioning via LLM Fine-Tuning with Depth-Enhanced Scene Graphs}{1}{}\protected@file@percent }
 \@writefile{toc}{\authcount {4}}
 \@writefile{toc}{\contentsline {author}{Le Vinh Thuan \and Nguyen Minh Khoa \and Nguyen Vinh Thanh \and Nguyen Thi Dinh }{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
-\citation{vinyals2015show}
-\citation{anderson2018bottom}
 \citation{xu2015show,anderson2018bottom}
 \citation{redmon2016you}
 \citation{bochkovskiy2020yolov4,YOLOv7_ref,YOLO_family_ref}
 \citation{SceneGraphRef,yao2018exploring}
 \citation{zhong2020comprehensive}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Object Detection and Spatial Feature Extraction}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Scene Understanding and Spatial Relationships}{2}{}\protected@file@percent }
 \citation{krishna2017visual}
 \citation{young2014image}
 \citation{KGforVQARef}
@@ -32,77 +30,83 @@
 \citation{raffel2020exploring}
 \citation{vinyals2015show,xu2015show}
 \citation{marino2017ok,zhao2021knowledge}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Knowledge-Enhanced Image Captioning}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Natural Language Generation for Image Captioning}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Research Gaps and Our Contributions}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Object Detection and Spatial Feature Extraction}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Scene Understanding and Spatial Relationships}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Knowledge-Enhanced Image Captioning}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Natural Language Generation for Image Captioning}{2}{}\protected@file@percent }
 \citation{krishna2017visual}
 \citation{young2014image}
 \citation{yang2024depth}
 \citation{gillies2007shapely}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Theoretical Basis}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Object Detection and Spatial Analysis Framework}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{YOLOv11 Detection Model}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Depth Estimation and Spatial Reasoning}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Research Gaps and Our Contributions}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Theoretical Basis}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Object Detection and Spatial Analysis Framework}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{YOLOv11 Detection Model}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Depth Estimation and Spatial Reasoning}{3}{}\protected@file@percent }
 \citation{raffel2020exploring}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Knowledge Graph Construction Theory}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Entity Linking and Knowledge Fusion}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Knowledge Graph Formalization}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}T5-based Natural Language Generation Framework}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Text-to-Text Transfer Learning}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Semantic Representation Encoding}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism for Semantic Focus}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Contextual Reasoning and Inference Theory}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Enriched Data Analysis}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Semantic Coherence Optimization}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Multi-Modal Integration Theory}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Cross-Modal Alignment}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Information Fusion Strategy}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Proposed Approach}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overall Architecture}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Stage 1: Initial Visual-Spatial Knowledge Generation}{7}{}\protected@file@percent }
-\newlabel{sec:stage1}{{4.2}{7}{}{subsection.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Stage 1 architecture: Initial Visual-Spatial Knowledge Generation}}{7}{}\protected@file@percent }
-\newlabel{fig:overall_architecture}{{1}{7}{}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Object and Depth Feature Extraction}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Object-Depth Fusion and Spatial Logic}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Internal Scene Graph Construction}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Stage 2: DASG-CS Construction and Multi-Source Fusion}{8}{}\protected@file@percent }
-\newlabel{sec:stage2}{{4.3}{8}{}{subsection.4.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Architecture of the DASG-CS Construction and Fusion Module (Stage 2)}}{9}{}\protected@file@percent }
-\newlabel{fig:stage2_architecture}{{2}{9}{}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Knowledge Source Acquisition}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Multi-Source Fusion and Graph Consolidation}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Knowledge Graph Construction Theory}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Entity Linking and Knowledge Fusion}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Knowledge Graph Formalization}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}T5-based Natural Language Generation Framework}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Text-to-Text Transfer Learning}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Semantic Representation Encoding}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism for Semantic Focus}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Contextual Reasoning and Inference Theory}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Enriched Data Analysis}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Semantic Coherence Optimization}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Multi-Modal Integration Theory}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Cross-Modal Alignment}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Information Fusion Strategy}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Proposed Approach}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overall Architecture}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Stage 1: Initial Visual-Spatial Knowledge Generation}{5}{}\protected@file@percent }
+\newlabel{sec:stage1}{{4.2}{5}{}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Object and Depth Feature Extraction}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Stage 1 architecture: Initial Visual-Spatial Knowledge Generation}}{6}{}\protected@file@percent }
+\newlabel{fig:overall_architecture}{{1}{6}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Object-Depth Fusion and Spatial Logic}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Internal Scene Graph Construction}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Stage 2: DASG-CS Construction and Multi-Source Fusion}{6}{}\protected@file@percent }
+\newlabel{sec:stage2}{{4.3}{6}{}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Architecture of the DASG-CS Construction and Fusion Module (Stage 2)}}{7}{}\protected@file@percent }
+\newlabel{fig:stage2_architecture}{{2}{7}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Knowledge Source Acquisition}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Multi-Source Fusion and Graph Consolidation}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Spatial Priority and Commonsense Filtering}{7}{}\protected@file@percent }
 \citation{raffel2020exploring}
-\@writefile{toc}{\contentsline {subsubsection}{Spatial Priority and Commonsense Filtering}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Structured Sequence Encoding}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Stage 3: Spatially-Aware LLM Fine-Tuning}{10}{}\protected@file@percent }
-\newlabel{sec:stage3}{{4.4}{10}{}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Model Selection and Architecture}{10}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3)}}{11}{}\protected@file@percent }
-\newlabel{fig:stage3_architecture}{{3}{11}{}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Input Representation and Tokenization}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Structured Sequence Encoding}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Stage 3: Spatially-Aware LLM Fine-Tuning}{8}{}\protected@file@percent }
+\newlabel{sec:stage3}{{4.4}{8}{}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Model Selection and Architecture}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Input Representation and Tokenization}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Training Objective and Loss Functions}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3)}}{9}{}\protected@file@percent }
+\newlabel{fig:stage3_architecture}{{3}{9}{}{figure.3}{}}
 \citation{lin2014microsoft}
-\@writefile{toc}{\contentsline {subsubsection}{Training Objective and Loss Functions}{12}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Fine-Tuning Strategy}{12}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism Enhancement}{13}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Decoding and Post-Processing}{13}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Implementation Details and Dataset Preparation}{13}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{13}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Environment and Experiment Data}{13}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Detailed description for the MS-COCO and Flickr30k image datasets}}{14}{}\protected@file@percent }
-\newlabel{tab:datasets}{{1}{14}{}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Evaluation of Experimental Results}{14}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Qualitative results of the DASG-CS model. The generated captions demonstrate enhanced spatial awareness and commonsense reasoning compared to the ground truth.}}{14}{}\protected@file@percent }
-\newlabel{fig:qualitative}{{4}{14}{}{figure.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experimental results of image captioning using BLEU-1 and BLEU-4 metrics}}{15}{}\protected@file@percent }
-\newlabel{tab:our_results}{{2}{15}{}{table.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparing image caption accuracy with other methods on MS-COCO}}{15}{}\protected@file@percent }
-\newlabel{tab:coco_compare}{{3}{15}{}{table.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparing image caption accuracy with other methods on Flickr30k}}{15}{}\protected@file@percent }
-\newlabel{tab:flickr_compare}{{4}{15}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Fine-Tuning Strategy}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism Enhancement}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Decoding and Post-Processing}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Implementation Details and Dataset Preparation}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Environment and Experiment Data}{10}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Detailed description for the MS-COCO and Flickr30k image datasets}}{10}{}\protected@file@percent }
+\newlabel{tab:datasets}{{1}{10}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Evaluation of Experimental Results}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Qualitative results of the DASG-CS model. The generated captions demonstrate enhanced spatial awareness and commonsense reasoning compared to the ground truth.}}{11}{}\protected@file@percent }
+\newlabel{fig:qualitative}{{4}{11}{}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experimental results of image captioning using BLEU-1 and BLEU-4 metrics}}{11}{}\protected@file@percent }
+\newlabel{tab:our_results}{{2}{11}{}{table.2}{}}
 \bibstyle{splncs04}
 \bibdata{ref}
 \bibcite{anderson2018bottom}{1}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparing image caption accuracy with other methods on MS-COCO}}{12}{}\protected@file@percent }
+\newlabel{tab:coco_compare}{{3}{12}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparing image caption accuracy with other methods on Flickr30k}}{12}{}\protected@file@percent }
+\newlabel{tab:flickr_compare}{{4}{12}{}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The experimental results for the Loss by epochs (Training vs Validation).}}{12}{}\protected@file@percent }
+\newlabel{fig:loss}{{5}{12}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{12}{}\protected@file@percent }
 \bibcite{bochkovskiy2020yolov4}{2}
 \bibcite{YOLO_family_ref}{3}
 \bibcite{EntityLinkingRef}{4}
@@ -110,9 +114,6 @@
 \bibcite{gillies2007shapely}{6}
 \bibcite{karpathy2015deep}{7}
 \bibcite{krishna2017visual}{8}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The experimental results for the Loss by epochs (Training vs Validation).}}{16}{}\protected@file@percent }
-\newlabel{fig:loss}{{5}{16}{}{figure.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{16}{}\protected@file@percent }
 \bibcite{li2019entangled}{9}
 \bibcite{lin2014microsoft}{10}
 \bibcite{marino2017ok}{11}
@@ -130,4 +131,4 @@
 \bibcite{zhao2021knowledge}{23}
 \bibcite{zhong2020comprehensive}{24}
 \bibcite{KnowledgeBasedCaptioningRef}{25}
-\gdef \@abspage@last{17}
+\gdef \@abspage@last{13}
