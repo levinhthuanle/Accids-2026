@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  6 DEC 2025 16:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  6 DEC 2025 16:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -442,68 +442,91 @@ pdfTeX warning: pdflatex (file ./figures/System1.pdf): PDF inclusion: found PDF 
 <figures/System1.pdf, id=38, 864.1083pt x 449.76028pt>
 File: figures/System1.pdf Graphic file (type pdf)
 <use figures/System1.pdf>
-Package pdftex.def Info: figures/System1.pdf  used on input line 265.
+Package pdftex.def Info: figures/System1.pdf  used on input line 272.
 (pdftex.def)             Requested size: 347.12354pt x 180.6764pt.
-File: figures/System1.pdf Graphic file (type pdf)
-<use figures/System1.pdf>
-Package pdftex.def Info: figures/System1.pdf  used on input line 279.
-(pdftex.def)             Requested size: 347.12354pt x 180.6764pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 
 [7 <./figures/System1.pdf>]
-Overfull \hbox (124.59874pt too wide) detected at line 296
+Overfull \hbox (124.59874pt too wide) detected at line 289
 \OMS/lmsy/m/n/10 P[] ^^Z f[]g
  []
 
 
-
-[8]
-Overfull \hbox (17.76488pt too wide) in paragraph at lines 312--313
+Overfull \hbox (17.76488pt too wide) in paragraph at lines 305--306
 \T1/lmr/m/n/10 The pri-mary ob-jec-tive of Stage 2 is the con-struc-tion of the Depth- and Commonsense-
  []
 
 
 
 pdfTeX warning: pdflatex (file ./figures/System2.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/System2.pdf, id=68, 760.76218pt x 314.13359pt>
+<figures/System2.pdf, id=64, 760.76218pt x 314.13359pt>
 File: figures/System2.pdf Graphic file (type pdf)
 <use figures/System2.pdf>
-Package pdftex.def Info: figures/System2.pdf  used on input line 316.
+Package pdftex.def Info: figures/System2.pdf  used on input line 309.
 (pdftex.def)             Requested size: 312.40906pt x 128.99692pt.
 
-Overfull \hbox (1.44604pt too wide) in paragraph at lines 326--327
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[8]
+Overfull \hbox (1.44604pt too wide) in paragraph at lines 319--320
 \T1/lmr/m/n/10 Vi-sual Genome and Flickr), pro-vid-ing gen-eral object-to-object se-man-tic links. 
  []
 
 
-
-[9 <./figures/System2.pdf>]
-Overfull \hbox (9.31047pt too wide) in paragraph at lines 331--332
+Overfull \hbox (9.31047pt too wide) in paragraph at lines 324--325
  \T1/lmr/bx/n/10 Multi-Source Fu-sion and Graph Con-sol-i-da-tion[] \T1/lmr/m/n/10 The three knowl-edge streams
  []
 
 
 
-[10]
-<figures/System3.pdf, id=87, 293.9281pt x 543.76251pt>
+[9 <./figures/System2.pdf>]
+<figures/System3.pdf, id=84, 293.9281pt x 543.76251pt>
 File: figures/System3.pdf Graphic file (type pdf)
 <use figures/System3.pdf>
-Package pdftex.def Info: figures/System3.pdf  used on input line 359.
+Package pdftex.def Info: figures/System3.pdf  used on input line 352.
 (pdftex.def)             Requested size: 208.27623pt x 385.31075pt.
 
+
+[10]
 
 [11 <./figures/System3.pdf>]
 
 [12]
 
-[13] (samplepaper.bbl
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14])
 
-[15] (samplepaper.aux)
+
+[13]
+<figures/System1.png, id=136, 2055.68pt x 1103.12125pt>
+File: figures/System1.png Graphic file (type png)
+<use figures/System1.png>
+Package pdftex.def Info: figures/System1.png  used on input line 476.
+(pdftex.def)             Requested size: 347.12354pt x 186.2657pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[14 <./figures/System1.png>]
+File: figures/System1.png Graphic file (type png)
+<use figures/System1.png>
+Package pdftex.def Info: figures/System1.png  used on input line 536.
+(pdftex.def)             Requested size: 277.69987pt x 149.01593pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[15] (samplepaper.bbl
+
+[16])
+
+[17] (samplepaper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -514,17 +537,17 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4408 strings out of 468133
- 61884 string characters out of 5447550
- 473659 words of memory out of 5000000
- 32927 multiletter control sequences out of 15000+600000
- 693620 words of font info for 85 fonts, out of 8000000 for 9000
+ 4428 strings out of 468133
+ 62299 string characters out of 5447550
+ 476771 words of memory out of 5000000
+ 32945 multiletter control sequences out of 15000+600000
+ 699503 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,879b,290s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,879b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/MikTex/fonts/type1/public/amsfonts/cm/cmbx9.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi9.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr5.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr9.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy9.pfb><E:/MikTex/fonts/type1/public/lm/lmbx10.pfb><E:/MikTex/fonts/type1/public/lm/lmbx12.pfb><E:/MikTex/fonts/type1/public/lm/lmbx7.pfb><E:/MikTex/fonts/type1/public/lm/lmbx9.pfb><E:/MikTex/fonts/type1/public/lm/lmex10.pfb><E:/MikTex/fonts/type1/public/lm/lmmi10.pfb><E:/MikTex/fonts/type1/public/lm/lmmi6.pfb><E:/MikTex/fonts/type1/public/lm/lmmi7.pfb><E:/MikTex/fonts/type1/public/lm/lmr10.pfb><E:/MikTex/fonts/type1/public/lm/lmr5.pfb><E:/MikTex/fonts/type1/public/lm/lmr6.pfb><E:/MikTex/fonts/type1/public/lm/lmr7.pfb><E:/MikTex/fonts/type1/public/lm/lmr9.pfb><E:/MikTex/fonts/type1/public/lm/lmsy10.pfb><E:/MikTex/fonts/type1/public/lm/lmsy6.pfb><E:/MikTex/fonts/type1/public/lm/lmsy7.pfb><E:/MikTex/fonts/type1/public/lm/lmtt10.pfb><E:/MikTex/fonts/type1/public/lm/lmtt9.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on samplepaper.pdf (15 pages, 7405368 bytes).
+Output written on samplepaper.pdf (17 pages, 7956013 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
+ 251 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
