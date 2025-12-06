@@ -30,6 +30,9 @@
 %\urlstyle{rm}
 %
 
+\usepackage[utf8]{inputenc} % Encoding file
+\usepackage[T1]{fontenc}    % Encoding font (quan trọng để copy paste được tiếng Việt)
+\usepackage{lmodern}        % <--- Dòng này sẽ sửa lỗi chữ bị bể
 \pagestyle{plain}
 \begin{document}
 %
@@ -353,7 +356,7 @@ The final stage of our pipeline leverages the structured knowledge encoded in $S
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/System3.pdf}
+    \includegraphics[width=0.6\linewidth]{figures/System3.pdf}
     \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3)}
     \label{fig:stage3_architecture}
 \end{figure}

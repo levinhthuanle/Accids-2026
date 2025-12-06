@@ -46,6 +46,10 @@ Li, G., Zhu, L., Liu, P., Yang, Y.: Entangled transformer for image captioning.
   In: IEEE/CVF International Conference on Computer Vision (ICCV). pp.
   8928--8937 (2019)
 
+\bibitem{lin2014microsoft}
+Lin, T.Y., et~al.: Microsoft coco: Common objects in context. In: European
+  Conference on Computer Vision (ECCV). pp. 740--755 (2014)
+
 \bibitem{marino2017ok}
 Marino, K., Salakhutdinov, R., Gupta, A.: The more you know: Using knowledge
   graphs for image classification. In: IEEE Conference on Computer Vision and
