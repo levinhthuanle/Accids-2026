@@ -350,12 +350,12 @@ The final step of Stage 2 is the Structured Sequence Encoding. The optimized set
 
 The final stage of our pipeline leverages the structured knowledge encoded in $S_{\text{prompt}}$ (the output of Stage 2) to fine-tune a Large Language Model for generating spatially-grounded and contextually rich image captions. This stage is critical for translating the multi-faceted knowledge graph into natural, human-readable descriptions that accurately reflect the 3D spatial structure and commonsense context of the scene. The architecture of Stage 3 is illustrated in Figure \ref{fig:stage3_architecture}.
 
-\begin{figure}[!ht]
+\begin{figure*}[!ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{figures/System3.pdf}
-    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3)}
+    \includegraphics[width=\textwidth]{figures/System3_horizontal.pdf}
+    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3). The horizontal layout shows the complete pipeline from structured input through T5-based encoding, knowledge-type-aware attention, three-phase fine-tuning, beam search decoding, to final caption generation with spatial re-ranking.}
     \label{fig:stage3_architecture}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Model Selection and Architecture}
 
