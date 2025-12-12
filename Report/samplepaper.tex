@@ -275,7 +275,8 @@ relevant captions.
 \subsection{Stage 1: Initial Visual-Spatial Knowledge Generation}
 \label{sec:stage1}
 
-The first stage of our proposed architecture focuses on generating a preliminary, intrinsic Knowledge Graph (KG) that encodes both the semantic entities and their derived spatial-structural relationships within the input image. This initial graph, denoted as the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), serves as the foundational, image-grounded structure before external knowledge enrichment.
+The first stage of our system focuses on generating a Knowledge Graph (KG) that encodes both the semantic entities and their derived spatial-structural relationships within the input image. 
+This initial graph, denoted as the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), serves as the foundational, image-grounded structure before external knowledge enrichment.
 
 As illustrated in Figure 1, Stage 1 encompasses the feature extraction, object-depth fusion, and the construction of the $\mathbf{KG}_{\text{Int}}$.
 
@@ -287,7 +288,7 @@ As illustrated in Figure 1, Stage 1 encompasses the feature extraction, object-d
 \end{figure}
 
 \subsubsection{Object and Depth Feature Extraction}
-We employ a dual-branch feature extraction mechani  sm.
+We employ a dual-branch feature extraction mechanism.
 \begin{enumerate}
     \item \textbf{Object Detection:} The \textbf{YOLOv11x} model is used to detect objects and extract attributes. The output is a set of detections $D = \{d_i\}_{i=1}^n$, where each $d_i$ includes the bounding box $B_i$, class label $C_i$, and confidence score $S_i$.
     \item \textbf{Depth Estimation:} The \textbf{Depth Anything V2} model generates a high-resolution, dense Depth Map $D_{\text{map}} \in \mathbb{R}^{H \times W}$. This map provides the crucial relative depth information necessary for 3D spatial reasoning.
@@ -299,7 +300,7 @@ The Fusion and Spatial Logic modules convert the raw visual and depth data into 
     \item \textbf{Quantification and Fusion:} The bounding boxes $B_i$ are aligned with $D_{\text{map}}$. We compute the Average Relative Depth ($\bar{d}_i$) for each object $O_i$ within its bounding box. This step yields a set of Rich Objects $R$, where each object entity is augmented with its spatial center and $\bar{d}_i$. The $\bar{d}_i$ values are used exclusively for internal calculation of relative depth and are not stored as absolute values in the final KG.
     \item \textbf{Spatial Predicate Generation:} The core of this stage is the derivation of new spatial predicates. By comparing the difference in average depth $\mathbf{\Delta d_{i,j}} = \bar{d}_i - \bar{d}_j$ between object pairs $(O_i, O_j)$, we generate a Novel Set of Qualitative 3D Spatial Predicates ($\mathcal{P}_{3D}$):
     $$\mathcal{P}_{3D} \subset \{\text{is\_closer\_than, is\_farther\_than, on\_same\_depth\_plane\_as, in\_immediate\_foreground, etc.}\}$$
-    This logic uses dynamic thresholds to convert the continuous $\Delta d_{i,j}$ into discrete, robust relational triplets. Traditional 2D relationships (overlap, adjacency) are computed alongside these 3D predicates (using methods like IoU and Centroid-based Directional logic).
+    This logic uses dynamic thresholds to convert the continuous $\Delta d_{i,j}$ into discrete, relational triplets. Traditional 2D relationships (overlap, adjacency) are computed alongside these 3D predicates (using methods like IoU and Centroid-based Directional logic).
 \end{enumerate}
 
 \subsubsection{Internal Scene Graph Construction}
@@ -308,13 +309,15 @@ The resulting Rich Objects and the generated 2D/3D relationships are fed into th
     \item \textbf{Namespace Definition} and \textbf{Object Node Creation} (from $R$).
     \item \textbf{Relationship Edge Creation} (from $\mathcal{P}_{3D}$ and 2D predicates).
 \end{enumerate}
-This process finalizes the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), a set of RDF Triples that accurately models the scene's visual and spatial configuration. This $\mathbf{KG}_{\text{Int}}$ is then serialized (e.g., into a TTL file) as the output of Stage 1, ready for external knowledge enrichment in Stage 2.
+This process finalizes the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), a set of RDF Triples that accurately models the scene's visual and spatial configuration. 
+This $\mathbf{KG}_{\text{Int}}$ is then serialized into a TTL file as the output of Stage 1, ready for external knowledge enrichment in Stage 2.
 
 
 \subsection{Stage 2: DASG-CS Construction and Multi-Source Fusion}
 \label{sec:stage2}
 
-The primary objective of Stage 2 is the construction of the Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$) by integrating the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the critical limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
+The primary objective of Stage 2 is the construction of the Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$) by integrating the Internal 
+Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
 
 \begin{figure}[!h]
     \centering
@@ -327,7 +330,7 @@ The primary objective of Stage 2 is the construction of the Depth- and Commonsen
 Three distinct knowledge streams are prepared for fusion:
 
 \begin{enumerate}
-    \item \textbf{Internal Visual and 3D Spatial Triples ($\mathbf{KG}_{\text{Int}}$):} This is the output from Stage 1, containing robust 2D semantic triples and our novel $\mathcal{P}_{3D}$ set of qualitative 3D spatial predicates.
+    \item \textbf{Internal Visual and 3D Spatial Triples ($\mathbf{KG}_{\text{Int}}$):} This is the output from Stage 1, containing  2D semantic triples and our novel $\mathcal{P}_{3D}$ set of qualitative 3D spatial predicates.
     \item \textbf{Factual/Semantic Triples ($\mathbf{KG}_{\text{Fact}}$):} This stream incorporates standard semantic relationships retrieved from large-scale visual knowledge bases (e.g., Visual Genome and Flickr), providing general object-to-object semantic links.
     \item \textbf{Commonsense Triples ($\mathbf{KG}_{\text{CS}}$):} This knowledge is acquired through a two-step process: \textbf{Entity Linking \& Query Generation} uses the object entities (Nodes) from $\mathbf{KG}_{\text{Int}}$ as queries to retrieve relevant triples from the \textbf{ConceptNet} semantic network. This yields $\mathbf{KG}_{\text{CS}}$, which enriches the graph with human-like understanding of context, purpose, and causality.
 \end{enumerate}
@@ -354,31 +357,25 @@ This filtering step yields a set of high-quality, non-redundant, and prioritized
 \subsubsection{Structured Sequence Encoding}
 The final step of Stage 2 is the Structured Sequence Encoding. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
 
+
+
 \subsection{Stage 3: Spatially-Aware LLM Fine-Tuning}
 \label{sec:stage3}
 
-The final stage of our pipeline leverages the structured knowledge encoded in $S_{\text{prompt}}$ (the output of Stage 2) to fine-tune a Large Language Model for generating spatially-grounded and contextually rich image captions. This stage is critical for translating the multi-faceted knowledge graph into natural, human-readable descriptions that accurately reflect the 3D spatial structure and commonsense context of the scene. The architecture of Stage 3 is illustrated in Figure \ref{fig:stage3_architecture}.
+The final stage of our pipeline uses the structured representation $S_{\text{prompt}}$ to fine-tune a language model capable of producing spatially accurate and contextually rich image captions. This stage transforms multi-level knowledge (3D, 2D, commonsense, factual) into natural and coherent descriptions. The overall architecture is shown in Figure~\ref{fig:stage3_architecture}.
 
-\begin{figure*}[!ht]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{figures/System3_horizontal.pdf}
-    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3). The horizontal layout shows the complete pipeline from structured input through T5-based encoding, knowledge-type-aware attention, three-phase fine-tuning, beam search decoding, to final caption generation with spatial re-ranking.}
+    \includegraphics[width=\textwidth]{figures/System3_horizontal_cropped.pdf}
+    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3).}
     \label{fig:stage3_architecture}
-\end{figure*}
+\end{figure}
 
-\subsubsection{Model Selection and Architecture}
-
-We employ a Text-to-Text Transfer Transformer (T5) \cite{raffel2020exploring} as our base language model due to its unified text-to-text framework and strong performance on various NLP tasks. The T5 architecture treats caption generation as a sequence-to-sequence translation task:
-
-\begin{equation}
-P(Y|S_{\text{prompt}}) = \prod_{t=1}^{T} P(y_t | y_{<t}, S_{\text{prompt}}; \theta)
-\end{equation}
-
-where $Y = \{y_1, y_2, ..., y_T\}$ is the target caption sequence, $S_{\text{prompt}}$ is the structured input from Stage 2, and $\theta$ represents the model parameters.
-
+\textbf{Model Selection and Architecture:}
+We adopt T5 as our base model due to its unified text-to-text design and strong generalization across NLP tasks. Caption generation is treated as a sequence-to-sequence translation process in which the model maps the structured input into a natural caption.
 \subsubsection{Input Representation and Tokenization}
 
-The structured sequence $S_{\text{prompt}}$ is formatted with special delimiter tokens to guide the model's attention to different knowledge types:
+The sequence $S_{\text{prompt}}$ is organized using explicit delimiters that separate knowledge categories and help the model attend to them correctly:
 
 \begin{verbatim}
 [3D_START] car is_closer_than building [3D_END]
@@ -387,71 +384,27 @@ The structured sequence $S_{\text{prompt}}$ is formatted with special delimiter 
 [FACT_START] building IsA structure [FACT_END]
 \end{verbatim}
 
-This explicit structuring allows the model to learn weighted importance of spatial vs. semantic vs. commonsense knowledge during fine-tuning.
+This structured formatting guides the model to emphasize spatial predicates for positional descriptions and commonsense facts for functionality or behavior.
 
-\subsubsection{Training Objective and Loss Functions}
+\subsubsection{Training Objective}
 
-We design a multi-component loss function to optimize both generation quality and spatial-semantic alignment:
+The model is optimized using a combination of three components:
 
-\begin{equation}
-\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{gen}} + \lambda_{\text{spatial}} \mathcal{L}_{\text{spatial}} + \lambda_{\text{cs}} \mathcal{L}_{\text{cs}}
-\end{equation}
+The model is optimized using a combination of three objectives: (i) a \textbf{caption generation objective} that ensures fluent and coherent output aligned with ground-truth captions, 
+(ii) a \textbf{spatial consistency objective} that encourages the model to produce spatial expressions matching the 3D relations encoded in the input, 
+and (iii) a \textbf{commonsense grounding objective} that increases the semantic alignment between generated descriptions and the commonsense triples provided from Stage~2.
 
-where:
-\begin{enumerate}
-    \item \textbf{Generation Loss} ($\mathcal{L}_{\text{gen}}$): Standard cross-entropy loss for caption generation:
-    \begin{equation}
-    \mathcal{L}_{\text{gen}} = -\sum_{t=1}^{T} \log P(y_t^* | y_{<t}^*, S_{\text{prompt}}; \theta)
-    \end{equation}
-    where $y_t^*$ denotes the ground truth token at position $t$.
-    
-    \item \textbf{Spatial Consistency Loss} ($\mathcal{L}_{\text{spatial}}$): Enforces that generated spatial terms (e.g., "in front of", "behind", "closer") align with the 3D spatial predicates in $\mathcal{P}_{3D}$. This is implemented as a binary classification loss over predicted spatial relationships:
-    \begin{equation}
-    \mathcal{L}_{\text{spatial}} = -\sum_{i,j} \left[ r_{ij} \log \hat{r}_{ij} + (1-r_{ij}) \log(1-\hat{r}_{ij}) \right]
-    \end{equation}
-    where $r_{ij}$ indicates ground truth spatial relationship between objects $i$ and $j$, and $\hat{r}_{ij}$ is the model's prediction.
-    
-    \item \textbf{Commonsense Grounding Loss} ($\mathcal{L}_{\text{cs}}$): Encourages the model to incorporate relevant commonsense knowledge from $\mathbf{KG}_{\text{CS}}$ by measuring semantic similarity between generated text and commonsense triples:
-    \begin{equation}
-    \mathcal{L}_{\text{cs}} = 1 - \frac{1}{|\mathbf{KG}_{\text{CS}}|} \sum_{t \in \mathbf{KG}_{\text{CS}}} \text{sim}_{\text{semantic}}(Y, t)
-    \end{equation}
-\end{enumerate}
-
-The hyperparameters $\lambda_{\text{spatial}}$ and $\lambda_{\text{cs}}$ control the relative importance of spatial accuracy and commonsense incorporation.
+Two weighting coefficients control the importance of spatial alignment and commonsense grounding during training.
 
 \subsubsection{Fine-Tuning Strategy}
 
-Our fine-tuning procedure consists of three phases:
+Fine-tuning proceeds in three phases:
 
 \begin{enumerate}
-    \item \textbf{Warm-up Phase:} We first fine-tune on standard image captioning datasets (e.g., MS COCO \cite{lin2014microsoft}) to maintain general caption generation capability. This prevents catastrophic forgetting of linguistic fluency.
-    
-    \item \textbf{Spatial-Aware Phase:} We introduce the spatial consistency loss $\mathcal{L}_{\text{spatial}}$ and fine-tune on depth-annotated image-caption pairs, gradually increasing $\lambda_{\text{spatial}}$ from 0.1 to 0.5 over training epochs.
-    
-    \item \textbf{Commonsense Integration Phase:} We activate $\mathcal{L}_{\text{cs}}$ and fine-tune on the complete $\mathbf{DASG\text{-}CS}$ representation, setting $\lambda_{\text{cs}} = 0.3$ to balance factual grounding with creative description.
+    \item \textbf{Warm-up phase:} train on standard captioning datasets (e.g., MS~COCO) to retain linguistic fluency.
+    \item \textbf{Spatial-aware phase:} introduce spatial consistency supervision and gradually increase its weight so the model learns to use accurate positional terms.
+    \item \textbf{Commonsense phase:} activate the commonsense objective to integrate functional and causal knowledge into the generated captions.
 \end{enumerate}
-
-\subsubsection{Attention Mechanism Enhancement}
-
-To explicitly leverage the structured input format, we enhance T5's standard multi-head attention mechanism with a knowledge-type-aware attention layer. This layer computes separate attention weights for different knowledge types (3D spatial, 2D semantic, commonsense, factual):
-
-\begin{equation}
-\text{Attention}_{\text{type}}(Q, K_{\text{type}}, V_{\text{type}}) = \text{softmax}\left(\frac{QK_{\text{type}}^T}{\sqrt{d_k}} + M_{\text{type}}\right)V_{\text{type}}
-\end{equation}
-
-where $M_{\text{type}}$ is a learned mask matrix that adjusts attention weights based on knowledge type, allowing the model to prioritize spatial predicates when generating positional descriptions.
-
-\subsubsection{Decoding and Post-Processing}
-
-During inference, we employ beam search decoding with beam size $k=5$ to generate diverse caption candidates. We then apply a re-ranking mechanism based on:
-
-\begin{equation}
-\text{Score}(Y) = \log P(Y|S_{\text{prompt}}) + \alpha \cdot \text{Spatial\_Acc}(Y) + \beta \cdot \text{Fluency}(Y)
-\end{equation}
-
-where $\text{Spatial\_Acc}(Y)$ measures the consistency between generated spatial terms and $\mathcal{P}_{3D}$, and $\text{Fluency}(Y)$ is computed using a pre-trained language model (e.g., GPT-2) to ensure linguistic naturalness.
-
-The highest-scoring caption is selected as the final output, ensuring both spatial accuracy and linguistic quality.
 
 % \section{Evaluation}
 
@@ -552,11 +505,11 @@ The highest-scoring caption is selected as the final output, ensuring both spati
 
 
 
-% \section*{Acknowledgments}
-% The authors would like to thank the Faculty of Information Technology, Ho Chi Minh
-%  City University of Industry and Trade, and University of Science, VNU-HCM, which
-%  are sponsors of this research. We also thank anonymous reviewers for their helpful
-%  comments on this paper.
+\section*{Acknowledgments}
+The authors would like to thank the Faculty of Information Technology, Ho Chi Minh
+ City University of Industry and Trade, which
+ are sponsors of this research. We also thank anonymous reviewers for their helpful
+ comments on this paper.
 
 \bibliographystyle{splncs04}
 \bibliography{ref}

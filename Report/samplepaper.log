@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  13 DEC 2025 00:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.18)  13 DEC 2025 01:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -493,7 +493,7 @@ pdfTeX warning: pdflatex (file ./figures/System1.pdf): PDF inclusion: found PDF 
 <figures/System1.pdf, id=2, 864.1083pt x 449.76028pt>
 File: figures/System1.pdf Graphic file (type pdf)
 <use figures/System1.pdf>
-Package pdftex.def Info: figures/System1.pdf  used on input line 284.
+Package pdftex.def Info: figures/System1.pdf  used on input line 285.
 (pdftex.def)             Requested size: 472.03123pt x 245.68753pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -510,45 +510,42 @@ pdfTeX warning: pdflatex (file ./figures/System2.pdf): PDF inclusion: found PDF 
 <figures/System2.pdf, id=84, 760.76218pt x 314.13359pt>
 File: figures/System2.pdf Graphic file (type pdf)
 <use figures/System2.pdf>
-Package pdftex.def Info: figures/System2.pdf  used on input line 321.
+Package pdftex.def Info: figures/System2.pdf  used on input line 324.
 (pdftex.def)             Requested size: 424.82523pt x 175.41989pt.
 
 
 [3 <./figures/System2.pdf>]
-<figures/System3_horizontal.pdf, id=99, 1004.553pt x 354.12299pt>
-File: figures/System3_horizontal.pdf Graphic file (type pdf)
-<use figures/System3_horizontal.pdf>
-Package pdftex.def Info: figures/System3_horizontal.pdf  used on input line 364.
-(pdftex.def)             Requested size: 472.03123pt x 166.4pt.
+<figures/System3_horizontal_cropped.pdf, id=99, 1004.553pt x 233.673pt>
+File: figures/System3_horizontal_cropped.pdf Graphic file (type pdf)
+<use figures/System3_horizontal_cropped.pdf>
+Package pdftex.def Info: figures/System3_horizontal_cropped.pdf  used on input line 369.
+(pdftex.def)             Requested size: 472.03123pt x 109.80136pt.
 
 
-[4{E:/MikTex/fonts/enc/dvips/lm/lm-mathex.enc} <./figures/System3_horizontal.pdf>]
+[4 <./figures/System3_horizontal_cropped.pdf>] (samplepaper.bbl
 
-[5]
-Overfull \hbox (2.52611pt too wide) in paragraph at lines 452--453
-[]\T1/lmr/m/n/10 where $[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Y\OT1/lmr/m/n/10 )$ \T1/lmr/m/n/10 mea-sures the con-sis-tency be-tween gen-er-ated spa-tial terms and $\OMS/lmsy/m/n/10 P[]$\T1/lmr/m/n/10 , and $[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Y\OT1/lmr/m/n/10 )$
- []
+LaTeX Warning: Empty `thebibliography' environment on input line 6.
 
-(samplepaper.bbl)
+)
 
-[6] (samplepaper.aux)
+[5] (samplepaper.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5823 strings out of 468133
- 86881 string characters out of 5447550
- 534528 words of memory out of 5000000
- 34310 multiletter control sequences out of 15000+600000
+ 5816 strings out of 468133
+ 86767 string characters out of 5447550
+ 531522 words of memory out of 5000000
+ 34304 multiletter control sequences out of 15000+600000
  693620 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,6n,107p,853b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<E:/MikTex/fonts/type1/public/lm/lmbx10.pfb><E:/MikTex/fonts/type1/public/lm/lmbx12.pfb><E:/MikTex/fonts/type1/public/lm/lmbx7.pfb><E:/MikTex/fonts/type1/public/lm/lmbx9.pfb><E:/MikTex/fonts/type1/public/lm/lmex10.pfb><E:/MikTex/fonts/type1/public/lm/lmmi10.pfb><E:/MikTex/fonts/type1/public/lm/lmmi6.pfb><E:/MikTex/fonts/type1/public/lm/lmmi7.pfb><E:/MikTex/fonts/type1/public/lm/lmr10.pfb><E:/MikTex/fonts/type1/public/lm/lmr5.pfb><E:/MikTex/fonts/type1/public/lm/lmr6.pfb><E:/MikTex/fonts/type1/public/lm/lmr7.pfb><E:/MikTex/fonts/type1/public/lm/lmr9.pfb><E:/MikTex/fonts/type1/public/lm/lmsy10.pfb><E:/MikTex/fonts/type1/public/lm/lmsy6.pfb><E:/MikTex/fonts/type1/public/lm/lmsy7.pfb><E:/MikTex/fonts/type1/public/lm/lmtt10.pfb><E:/MikTex/fonts/type1/public/lm/lmtt9.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on samplepaper.pdf (6 pages, 22978805 bytes).
+<E:/MikTex/fonts/type1/public/lm/lmbx10.pfb><E:/MikTex/fonts/type1/public/lm/lmbx12.pfb><E:/MikTex/fonts/type1/public/lm/lmbx7.pfb><E:/MikTex/fonts/type1/public/lm/lmbx9.pfb><E:/MikTex/fonts/type1/public/lm/lmmi10.pfb><E:/MikTex/fonts/type1/public/lm/lmmi6.pfb><E:/MikTex/fonts/type1/public/lm/lmmi7.pfb><E:/MikTex/fonts/type1/public/lm/lmr10.pfb><E:/MikTex/fonts/type1/public/lm/lmr6.pfb><E:/MikTex/fonts/type1/public/lm/lmr7.pfb><E:/MikTex/fonts/type1/public/lm/lmr9.pfb><E:/MikTex/fonts/type1/public/lm/lmsy10.pfb><E:/MikTex/fonts/type1/public/lm/lmsy6.pfb><E:/MikTex/fonts/type1/public/lm/lmsy7.pfb><E:/MikTex/fonts/type1/public/lm/lmtt10.pfb><E:/MikTex/fonts/type1/public/lm/lmtt9.pfb><E:/MikTex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on samplepaper.pdf (5 pages, 22940422 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
+ 321 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
