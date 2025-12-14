@@ -1,33 +1,60 @@
 \relax 
 \providecommand*\new@tpo@label[2]{}
-\@writefile{toc}{\contentsline {title}{Spatio-Structural Image Captioning via LLM Fine-Tuning with Depth-Enhanced Scene Graphs}{1}{}\protected@file@percent }
-\@writefile{toc}{\authcount {4}}
-\@writefile{toc}{\contentsline {author}{Le Vinh Thuan \and Nguyen Minh Khoa \and Nguyen Vinh Thanh \and Nguyen Thi Dinh }{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Proposed Approach}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Overall Architecture}{1}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overall architecture of the proposed three-stage image captioning framework.}}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Stage 1: Initial Visual-Spatial Knowledge Generation}{1}{}\protected@file@percent }
-\newlabel{sec:stage1}{{1.2}{1}{}{subsection.1.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Stage 1 architecture: Initial Visual-Spatial Knowledge Generation}}{2}{}\protected@file@percent }
-\newlabel{fig:overall_architecture}{{2}{2}{}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Object and Depth Feature Extraction}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Object-Depth Fusion and Spatial Logic}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Internal Scene Graph Construction}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Stage 2: DASG-CS Construction and Multi-Source Fusion}{3}{}\protected@file@percent }
-\newlabel{sec:stage2}{{1.3}{3}{}{subsection.1.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the DASG-CS Construction and Fusion Module (Stage 2)}}{3}{}\protected@file@percent }
-\newlabel{fig:stage2_architecture}{{3}{3}{}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Knowledge Source Acquisition}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Multi-Source Fusion and Graph Consolidation}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Spatial Priority and Commonsense Filtering}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Structured Sequence Encoding}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Stage 3: Spatially-Aware LLM Fine-Tuning}{4}{}\protected@file@percent }
-\newlabel{sec:stage3}{{1.4}{4}{}{subsection.1.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3).}}{4}{}\protected@file@percent }
-\newlabel{fig:stage3_architecture}{{4}{4}{}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Input Representation and Tokenization}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {title}{Image Captioning via Depth-Aware Scene Graphs and Spatio-Structural Modeling with LLM Fine-Tuning}{1}{}\protected@file@percent }
+\@writefile{toc}{\authcount {5}}
+\@writefile{toc}{\contentsline {author}{Le Vinh Thuan \and Nguyen Minh Khoa \and Nguyen Vinh Thanh \and Thanh Manh Le  \and Nguyen Thi Dinh }{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{}\protected@file@percent }
+\citation{yang2024depth}
+\citation{gillies2007shapely}
+\citation{raffel2020exploring}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Theoretical basis and proposed model}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Theoretical Basis}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Entity Linking and Knowledge Fusion}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Knowledge Graph Formalization}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Text-to-Text Transfer Learning}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Semantic Representation Encoding}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Attention Mechanism for Semantic Focus}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Enriched Data Analysis}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Semantic Coherence Optimization}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Cross-Modal Alignment}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Information Fusion Strategy}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Proposed method for generating image captioning}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Structure of proposed model for image captioning}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{3.2.1. Initial Visual-Spatial Knowledge Generation}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces An architecture of Initial Visual-Spatial Knowledge Generation}}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{3.2.2. DASG-CS Construction and Multi-Source Fusion}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the DASG-CS Construction and Fusion Module}}{8}{}\protected@file@percent }
+\citation{coco}
+\citation{flickr30k}
+\@writefile{toc}{\contentsline {subsubsection}{3.2.3. Spatially-Aware LLM Fine-Tuning}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Architecture of the Spatially-Aware LLM Fine-Tuning}}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental and evaluation results}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Environment and experimental data}{9}{}\protected@file@percent }
+\citation{coco}
+\citation{flickr30k}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Detailed description for the ViVQA and OpenViVQA datasets}}{10}{}\protected@file@percent }
+\newlabel{tab:vivqa_datasets}{{1}{10}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment and evaluation of results}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces illustrating the results of Scene Graph and building captions image 000000050380.jpg (MS-COCO)}}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces illustrating the results of Scene Graph and building captions image 000000025057.jpg (Flickr30k)}}{10}{}\protected@file@percent }
+\citation{resnet101}
+\citation{drl_att}
+\citation{context_att}
+\citation{resnet101}
+\citation{drl_att}
+\citation{context_att}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experimental results of image captioning using BLEU-1 and BLEU-4}}{11}{}\protected@file@percent }
+\newlabel{tab:caption_results}{{2}{11}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparing image caption accuracy with some other methods on MS-COCO}}{11}{}\protected@file@percent }
+\newlabel{tab:ms_coco_comparison}{{3}{11}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparing image caption accuracy with some other methods on Flickr30k}}{11}{}\protected@file@percent }
+\newlabel{tab:flickr30k_comparison}{{4}{11}{}{table.4}{}}
 \bibstyle{splncs04}
 \bibdata{ref}
-\@writefile{toc}{\contentsline {subsubsection}{Training Objective}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Fine-Tuning Strategy}{5}{}\protected@file@percent }
-\gdef \@abspage@last{5}
+\bibcite{gillies2007shapely}{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Training and validation loss curves during the fine-tuning of the proposed spa-tially-aware image captioning model}}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion and development}{12}{}\protected@file@percent }
+\bibcite{raffel2020exploring}{2}
+\bibcite{yang2024depth}{3}
+\gdef \@abspage@last{13}
