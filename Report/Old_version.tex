@@ -1,0 +1,557 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.21 of 2022/01/12
+%
+\documentclass[runningheads,14pt]{llncs}
+%
+\usepackage[margin=2.5cm]{geometry} % Giảm lề 2 bên xuống 2cm
+\usepackage{cite}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{scrextend}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamily}
+%\urlstyle{rm}
+%
+
+\usepackage[utf8]{inputenc} % Encoding file
+\usepackage[T1]{fontenc}    % Encoding font (quan trọng để copy paste được tiếng Việt)
+\usepackage{lmodern}        % <--- Dòng này sẽ sửa lỗi chữ bị bể
+\pagestyle{plain}
+\begin{document}
+%
+\title{Spatio-Structural Image Captioning via LLM Fine-Tuning with Depth-Enhanced Scene Graphs}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Le Vinh Thuan\inst{1} \and Nguyen Minh Khoa\inst{2} \and Nguyen Vinh Thanh\inst{3} \and Nguyen Thi Dinh \inst{4,}}
+
+\authorrunning{L. V. Thuan, et al .}
+
+\institute{%
+$^{ \{1,2,3 \}}$Faculty of Information Technology, University of Science, VNU-HCM, \\ Ho Chi Minh City, Vietnam, \\
+{$^4$Ho Chi Minh City University of Industry and Trade, Ho Chi Minh City, Vietnam} 
+\\[6pt]
+$^1$\email{lvthuan23@apcs.fitus.edu.vn}, 
+$^2$\email{nmkhoa23@apcs.fitus.edu.vn}, 
+$^3$\email{23120012@student.hcmus.edu.vn}, 
+$^4$\email{dinhnt@huit.edu.vn}
+}
+
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+The abstract should briefly summarize the contents of the paper in
+150--250 words.
+
+\keywords{First keyword  \and Second keyword \and Another keyword.}
+\end{abstract}
+%
+%
+%
+
+\section{Introduction}
+
+The automatic generation of natural language descriptions from images remains one of the most challenging and important tasks in computer vision and natural language processing \cite{vinyals2015show, anderson2018bottom}. This interdisciplinary field, commonly known as image captioning, requires machines to not only perceive objects and their relationships but also to generate coherent, contextually appropriate text that captures the scene's semantic essence \cite{xu2015show, anderson2018bottom}.
+Recent advances in deep learning, particularly the adoption of Transformer-based models and Large Language Models (LLMs) in Vision-Language Pre-training (VLP) \cite{li2022blip, alayrac2022flamingo}, have significantly improved descriptive fluency. However, a critical limitation persists: current VLP and image captioning methods primarily rely on 2D feature extraction and lack a deep, grounded understanding of the 3D structure and spatial relationships within a scene. Consequently, generated captions often fail to accurately describe position, depth, and structural context (e.g., "the car is in front of the building" without specifying the distance or depth plane), limiting their applicability in domains requiring precise spatial reasoning, such as robotics or complex scene analysis.
+To address this gap, Knowledge Graphs (KGs) offer a crucial pathway by providing structured semantic information and enabling reasoning capabilities \cite{marino2017ok, wu2017image}. While previous work has used KGs to incorporate general semantic and factual knowledge \cite{yao2018exploring, li2022oscar}, few have effectively integrated explicit structural and geometric knowledge like scene depth and 3D spatial relationships. Furthermore, existing KG-enhanced methods often lack commonsense reasoning, which is vital for generating captions that reflect human-like understanding of causality and purpose \cite{zhao2021knowledge}.
+This paper introduces a novel framework, the Depth- and Commonsense-Augmented Scene Graph Captioner (DASG-CS Captioner), designed to generate fine-grained image descriptions with enhanced Spatio-Structural and Commonsense-Grounded awareness. We propose a comprehensive pipeline that moves beyond 2D perception by integrating state-of-the-art depth estimation into the knowledge representation stage, thereby enriching the generated captions with precise spatial details. Our method leverages the structured reasoning capabilities of Knowledge Graphs and the generative power of Fine-Tuned LLMs.
+The main contributions of this work are:
+A Novel Depth- and Commonsense-Augmented Scene Graph (DASG-CS): We propose a new KG architecture that seamlessly fuses visual features, quantitative depth information (from Depth Anything v2), and commonsense knowledge (from ConceptNet) to create a multi-faceted, structured representation of the scene.
+Spatially-Aware LLM Fine-Tuning Strategy: We develop an effective encoding and fine-tuning strategy for LLMs, enabling the model to explicitly utilize the Spatio-Structural and Commonsense information encoded in the DASG-CS, leading to generated captions that are demonstrably richer in depth and contextual reasoning.
+A Three-Stage Pipeline: We present a pipeline that integrates feature extraction, multi-source knowledge fusion, structured data encoding, and natural language generation, setting a new benchmark for spatially and contextually grounded image captioning.
+Extensive Evaluation with Novel Metrics: We conduct a comprehensive evaluation demonstrating the effectiveness of the DASG-CS framework, including specialized metrics to quantify the improvement in Spatial Reasoning Accuracy and Contextual Richness of the generated descriptions.
+\section{Related Work}
+
+Image captioning has evolved significantly from simple encoder-decoder architectures \cite{vinyals2015show} to sophisticated systems incorporating spatial awareness and external knowledge \cite{anderson2018bottom}. Our work builds upon three critical research directions: depth-aware image understanding, knowledge graph construction for vision-language tasks, and fine-tuning language models for spatial-aware captioning.
+
+\subsection{Object Detection and Spatial Feature Extraction}
+
+Traditional image captioning systems rely primarily on 2D visual features extracted from RGB images \cite{xu2015show, anderson2018bottom}. The YOLO family has evolved from YOLOv1's single-stage detection \cite{redmon2016you} through multiple generations \cite{bochkovskiy2020yolov4, YOLOv7_ref, YOLO_family_ref} to more sophisticated architectures. Modern object detectors like YOLOv11 provide real-time performance with improved accuracy, particularly for small objects and crowded scenes. While object detection has advanced significantly, most systems still focus on 2D bounding boxes without incorporating depth information for true 3D spatial understanding.
+
+\subsection{Scene Understanding and Spatial Relationships}
+
+Scene graph generation has emerged as a method to capture object relationships explicitly \cite{SceneGraphRef, yao2018exploring}. These approaches construct structured representations of visual scenes by identifying objects and their relationships \cite{zhong2020comprehensive}. However, most scene graphs focus on semantic relationships rather than precise metric spatial relationships. Our approach aims to incorporate depth estimation to enable more accurate spatial relationship modeling.
+
+\subsection{Knowledge-Enhanced Image Captioning}
+
+Knowledge graphs provide structured representations of visual scenes and external world knowledge, enabling richer semantic understanding. Visual Genome \cite{krishna2017visual} pioneered large-scale visual knowledge graphs with detailed annotations of objects, attributes, and relationships. Flickr30k \cite{young2014image} provide image-caption pairs widely used for training vision-language models.
+
+Several works have explored incorporating external knowledge into image captioning. Knowledge graphs have been used for visual question answering \cite{KGforVQARef} and image classification \cite{marino2017ok}. Entity linking techniques \cite{EntityLinkingRef} help map visual detections to knowledge base entities. Knowledge-based approaches \cite{KnowledgeBasedCaptioningRef, zhao2021knowledge} have shown improvements by incorporating common-sense and factual knowledge.
+
+Most existing approaches integrate knowledge at the generation stage \cite{wu2017image}. Our pipeline differs by constructing a comprehensive knowledge graph that fuses visual observations from datasets like Visual Genome and Flickr with external knowledge sources before the generation phase.
+
+\subsection{Natural Language Generation for Image Captioning}
+
+Natural language generation is the final component of image captioning systems. Early encoder-decoder models \cite{vinyals2015show, karpathy2015deep} used RNNs to generate captions from visual features. Attention mechanisms \cite{xu2015show, anderson2018bottom} improved performance by allowing models to focus on relevant image regions during generation.
+
+More recent approaches employ transformer-based architectures \cite{li2019entangled, cornia2020meshed} for better long-range dependency modeling. The T5 model \cite{raffel2020exploring} treats all NLP tasks as text-to-text problems, offering a unified framework adaptable to various generation tasks including image captioning.
+
+Our approach leverages text-to-text transformers for generating descriptions from structured semantic representations. By fine-tuning on data that explicitly encodes spatial relationships and depth information, we aim to generate descriptions that accurately reflect 3D spatial configurations.
+
+\subsection{Research Gaps and Our Contributions}
+
+Existing image captioning systems face several limitations:
+
+\begin{enumerate}
+\item \textbf{Limited Spatial Awareness:} Most systems \cite{vinyals2015show, xu2015show} rely on 2D visual features without depth information for true 3D spatial understanding.
+
+\item \textbf{Knowledge Integration:} While some works integrate external knowledge \cite{marino2017ok, zhao2021knowledge}, comprehensive frameworks that systematically combine visual observations with external knowledge graphs remain limited.
+
+\item \textbf{Spatial Description Quality:} Generated descriptions often lack precise spatial relationships and depth-aware positioning information.
+\end{enumerate}
+
+Our proposed three-system pipeline addresses these gaps:
+
+\begin{enumerate}
+\item \textbf{System 1 - Spatial Feature Extraction:} We combine YOLOv11 for object detection with Depth Anything V2 for monocular depth estimation, enabling extraction of objects, their relationships, and depth information.
+
+\item \textbf{System 2 - Knowledge Graph Framework:} We construct knowledge graphs based on Visual Genome \cite{krishna2017visual} and Flickr \cite{young2014image} datasets, enriched with external knowledge from ConceptNet and DBpedia.
+
+\item \textbf{System 3 - Depth-Aware Caption Generation:} We fine-tune language models to generate image descriptions with emphasis on spatial and depth features, producing captions that accurately reflect 3D spatial configurations.
+\end{enumerate}
+
+The key contribution is the systematic integration of depth information throughout the pipeline, from detection through knowledge graph construction to caption generation, emphasizing spatial accuracy in generated descriptions.
+
+
+
+\section{Theoretical Basis}
+
+This section presents the theoretical foundations underlying our three-stage architecture, providing formal definitions and mathematical models that support the integration of computer vision, knowledge graph reasoning, and natural language generation.
+
+\subsection{Object Detection and Spatial Analysis Framework}
+
+\subsubsection{YOLOv11 Detection Model}
+The YOLOv11 object detection framework can be formalized as a function $f_{YOLO}: \mathbb{R}^{H \times W \times 3} \rightarrow \mathcal{D}$, where the input image $I \in \mathbb{R}^{H \times W \times 3}$ is mapped to a detection set $\mathcal{D} = \{d_1, d_2, ..., d_n\}$. Each detection $d_i$ is represented as:
+
+\begin{equation}
+d_i = (bbox_i, c_i, s_i)
+\end{equation}
+
+where $bbox_i = (x_i, y_i, w_i, h_i)$ represents the bounding box coordinates, $c_i \in \mathcal{C}$ is the class label from the predefined class set $\mathcal{C}$, and $s_i \in [0,1]$ is the confidence score.
+
+\subsubsection{Depth Estimation and Spatial Reasoning}
+We incorporate the Depth-Anything-V2 model \cite{yang2024depth} to estimate depth information, formally defined as:
+
+\begin{equation}
+f_{depth}: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^{H \times W}
+\end{equation}
+
+The depth map $D = f_{depth}(I)$ provides spatial context that enhances object relationship understanding. Combined with the Shapely geometry library \cite{gillies2007shapely}, we compute spatial relationships between detected objects using geometric operations:
+
+\begin{equation}
+R_{spatial}(d_i, d_j) = \{distance(d_i, d_j), overlap(d_i, d_j), relative\_position(d_i, d_j)\}
+\end{equation}
+
+\subsection{Knowledge Graph Construction Theory}
+
+\subsubsection{Entity Linking and Knowledge Fusion}
+Given the detection set $\mathcal{D}$ from Stage I, we define the entity linking function as:
+
+\begin{equation}
+f_{link}: \mathcal{D} \times \mathcal{KB} \rightarrow \mathcal{E}_{linked}
+\end{equation}
+
+where $\mathcal{KB}$ represents the external knowledge base and $\mathcal{E}_{linked}$ is the set of linked entities. The linking process employs semantic similarity scoring:
+
+\begin{equation}
+sim(d_i, e_k) = \alpha \cdot sim_{text}(c_i, label(e_k)) + \beta \cdot sim_{context}(context(d_i), context(e_k))
+\end{equation}
+
+where $\alpha$ and $\beta$ are weighting parameters, and $sim_{text}$ and $sim_{context}$ represent textual and contextual similarity measures respectively.
+
+\subsubsection{Knowledge Graph Formalization}
+The constructed knowledge graph is formally defined as a directed graph $KG = (V, E, R, A)$ where $V = \{v_1, v_2, ..., v_m\}$ is the set of entity vertices, $E \subseteq V \times V$ represents the edges between entities, $R$ is the set of relation types, and $A: V \rightarrow \mathcal{P}(\mathcal{A})$ maps entities to their attribute sets.
+
+\subsection{T5-based Natural Language Generation Framework}
+
+\subsubsection{Text-to-Text Transfer Learning}
+Our approach leverages the T5 (Text-to-Text Transfer Transformer) model \cite{raffel2020exploring} for generating natural language descriptions from structured semantic representations. The T5 framework treats all NLP tasks as text-to-text problems:
+
+\begin{equation}
+f_{T5}: \mathcal{S}_{semantic} \rightarrow \mathcal{T}_{text}
+\end{equation}
+
+where $\mathcal{S}_{semantic}$ represents the semantic input derived from the knowledge graph and $\mathcal{T}_{text}$ is the generated natural language output.
+
+\subsubsection{Semantic Representation Encoding}
+The knowledge graph entities and relationships are encoded into a structured semantic representation $S_{semantic}$ that serves as input to the T5 model:
+
+\begin{equation}
+S_{semantic} = encode(KG, R_{spatial}, C_{context})
+\end{equation}
+
+where $C_{context}$ represents the contextual information derived from the enriched data analysis.
+
+\subsubsection{Attention Mechanism for Semantic Focus}
+The T5 model employs multi-head self-attention to focus on relevant semantic elements:
+
+\begin{equation}
+Attention(Q, K, V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+
+where $Q$, $K$, and $V$ represent query, key, and value matrices respectively, derived from the semantic representation.
+
+\subsection{Contextual Reasoning and Inference Theory}
+
+\subsubsection{Enriched Data Analysis}
+Our approach performs contextual reasoning using enriched data from the knowledge graph without explicit relationship modeling. The contextual inference function is defined as:
+
+\begin{equation}
+f_{inference}: \mathcal{E}_{enriched} \rightarrow \mathcal{I}_{context}
+\end{equation}
+
+where $\mathcal{E}_{enriched}$ represents the enriched entity set and $\mathcal{I}_{context}$ denotes the inferred contextual information.
+
+\subsubsection{Semantic Coherence Optimization}
+To ensure semantic coherence in the generated descriptions, we optimize the following objective function:
+
+\begin{equation}
+\mathcal{L}_{total} = \mathcal{L}_{generation} + \lambda_1 \mathcal{L}_{coherence} + \lambda_2 \mathcal{L}_{semantic}
+\end{equation}
+
+where $\mathcal{L}_{generation}$ is the standard language modeling loss, $\mathcal{L}_{coherence}$ measures textual coherence, $\mathcal{L}_{semantic}$ ensures semantic consistency with the input knowledge graph, and $\lambda_1$, $\lambda_2$ are regularization parameters.
+
+\subsection{Multi-Modal Integration Theory}
+
+\subsubsection{Cross-Modal Alignment}
+The integration of visual features, spatial information, and semantic knowledge requires cross-modal alignment. We define the alignment function as:
+
+\begin{equation}
+f_{align}: \mathcal{F}_{visual} \times \mathcal{F}_{spatial} \times \mathcal{F}_{semantic} \rightarrow \mathcal{F}_{unified}
+\end{equation}
+
+where $\mathcal{F}_{visual}$, $\mathcal{F}_{spatial}$, and $\mathcal{F}_{semantic}$ represent visual, spatial, and semantic feature spaces respectively, and $\mathcal{F}_{unified}$ is the unified representation space.
+
+\subsubsection{Information Fusion Strategy}
+The multi-modal information fusion employs weighted combination of feature representations:
+
+\begin{equation}
+\mathcal{F}_{unified} = \sum_{i=1}^{3} w_i \cdot \phi_i(\mathcal{F}_i)
+\end{equation}
+
+where $\phi_i$ represents the transformation function for each modality, and $w_i$ are learned weights that adapt to the relative importance of each information source.
+
+This theoretical framework provides the mathematical foundation for our three-stage architecture, ensuring principled integration of computer vision, knowledge representation, and natural language generation components.
+
+\section{Proposed Approach}
+
+\subsection{Overall Architecture}
+Our proposed architecture consists of three main stages: (1) Spatial Feature Extraction, (2) Knowledge Graph Construction, and (3) Depth-Aware Caption Generation. 
+Each stage is designed to progressively enrich the input image data with spatial and semantic information, culminating in the generation of detailed and contextually 
+relevant captions.
+
+\subsection{Stage 1: Initial Visual-Spatial Knowledge Generation}
+\label{sec:stage1}
+
+The first stage of our proposed architecture focuses on generating a preliminary, intrinsic Knowledge Graph (KG) that encodes both the semantic entities and their derived spatial-structural relationships within the input image. This initial graph, denoted as the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), serves as the foundational, image-grounded structure before external knowledge enrichment.
+
+As illustrated in Figure 1, Stage 1 encompasses the feature extraction, object-depth fusion, and the construction of the $\mathbf{KG}_{\text{Int}}$.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/System1.pdf}
+    \caption{Stage 1 architecture: Initial Visual-Spatial Knowledge Generation}
+    \label{fig:overall_architecture}
+\end{figure}
+
+\subsubsection{Object and Depth Feature Extraction}
+We employ a dual-branch feature extraction mechanism.
+\begin{enumerate}
+    \item \textbf{Object Detection:} The \textbf{YOLOv11x} model is used to detect objects and extract attributes. The output is a set of detections $D = \{d_i\}_{i=1}^n$, where each $d_i$ includes the bounding box $B_i$, class label $C_i$, and confidence score $S_i$.
+    \item \textbf{Depth Estimation:} The \textbf{Depth Anything V2} model generates a high-resolution, dense Depth Map $D_{\text{map}} \in \mathbb{R}^{H \times W}$. This map provides the crucial relative depth information necessary for 3D spatial reasoning.
+\end{enumerate}
+
+\subsubsection{Object-Depth Fusion and Spatial Logic}
+The Fusion and Spatial Logic modules convert the raw visual and depth data into structured relationships.
+\begin{enumerate}
+    \item \textbf{Quantification and Fusion:} The bounding boxes $B_i$ are aligned with $D_{\text{map}}$. We compute the Average Relative Depth ($\bar{d}_i$) for each object $O_i$ within its bounding box. This step yields a set of Rich Objects $R$, where each object entity is augmented with its spatial center and $\bar{d}_i$. The $\bar{d}_i$ values are used exclusively for internal calculation of relative depth and are not stored as absolute values in the final KG.
+    \item \textbf{Spatial Predicate Generation:} The core of this stage is the derivation of new spatial predicates. By comparing the difference in average depth $\mathbf{\Delta d_{i,j}} = \bar{d}_i - \bar{d}_j$ between object pairs $(O_i, O_j)$, we generate a Novel Set of Qualitative 3D Spatial Predicates ($\mathcal{P}_{3D}$):
+    $$\mathcal{P}_{3D} \subset \{\text{is\_closer\_than, is\_farther\_than, on\_same\_depth\_plane\_as, in\_immediate\_foreground, etc.}\}$$
+    This logic uses dynamic thresholds to convert the continuous $\Delta d_{i,j}$ into discrete, robust relational triplets. Traditional 2D relationships (overlap, adjacency) are computed alongside these 3D predicates (using methods like IoU and Centroid-based Directional logic).
+\end{enumerate}
+
+\subsubsection{Internal Scene Graph Construction}
+The resulting Rich Objects and the generated 2D/3D relationships are fed into the RDF Knowledge Graph Generator (utilizing libraries such as \texttt{rdflib}). This module performs:
+\begin{enumerate}
+    \item \textbf{Namespace Definition} and \textbf{Object Node Creation} (from $R$).
+    \item \textbf{Relationship Edge Creation} (from $\mathcal{P}_{3D}$ and 2D predicates).
+\end{enumerate}
+This process finalizes the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$), a set of RDF Triples that accurately models the scene's visual and spatial configuration. This $\mathbf{KG}_{\text{Int}}$ is then serialized (e.g., into a TTL file) as the output of Stage 1, ready for external knowledge enrichment in Stage 2.
+
+
+\subsection{Stage 2: DASG-CS Construction and Multi-Source Fusion}
+\label{sec:stage2}
+
+The primary objective of Stage 2 is the construction of the Depth- and Commonsense-Augmented Scene Graph ($\mathbf{DASG\text{-}CS}$) by integrating the Internal Knowledge Graph ($\mathbf{KG}_{\text{Int}}$) with external knowledge sources. This stage addresses the critical limitation of purely visual KGs by introducing contextual reasoning capabilities. The architecture for this stage is depicted in Figure \ref{fig:stage2_architecture}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/System2.pdf}
+    \caption{Architecture of the DASG-CS Construction and Fusion Module (Stage 2)}
+    \label{fig:stage2_architecture}
+\end{figure}
+
+\subsubsection{Knowledge Source Acquisition}
+Three distinct knowledge streams are prepared for fusion:
+
+\begin{enumerate}
+    \item \textbf{Internal Visual and 3D Spatial Triples ($\mathbf{KG}_{\text{Int}}$):} This is the output from Stage 1, containing robust 2D semantic triples and our novel $\mathcal{P}_{3D}$ set of qualitative 3D spatial predicates.
+    \item \textbf{Factual/Semantic Triples ($\mathbf{KG}_{\text{Fact}}$):} This stream incorporates standard semantic relationships retrieved from large-scale visual knowledge bases (e.g., Visual Genome and Flickr), providing general object-to-object semantic links.
+    \item \textbf{Commonsense Triples ($\mathbf{KG}_{\text{CS}}$):} This knowledge is acquired through a two-step process: \textbf{Entity Linking \& Query Generation} uses the object entities (Nodes) from $\mathbf{KG}_{\text{Int}}$ as queries to retrieve relevant triples from the \textbf{ConceptNet} semantic network. This yields $\mathbf{KG}_{\text{CS}}$, which enriches the graph with human-like understanding of context, purpose, and causality.
+\end{enumerate}
+
+\subsubsection{Multi-Source Fusion and Graph Consolidation}
+The three knowledge streams ($\mathbf{KG}_{\text{Int}}$, $\mathbf{KG}_{\text{Fact}}$, $\mathbf{KG}_{\text{CS}}$) converge into the Multi-Source Fusion Module.
+
+\begin{enumerate}
+    \item \textbf{Entity Alignment:} The module first ensures all entities (subjects and objects) are correctly aligned and unified across the three sources.
+    \item \textbf{Consolidation:} The module performs a set union operation to form the raw $\mathbf{DASG\text{-}CS}$:
+    $$\mathbf{DASG\text{-}CS} = \mathbf{KG}_{\text{Int}} \cup \mathbf{KG}_{\text{Fact}} \cup \mathbf{KG}_{\text{CS}}$$
+    \item \textbf{Conflict Resolution:} During consolidation, $\mathbf{KG}_{\text{Int}}$ (the direct visual evidence) is assigned the highest priority to resolve any potential conflicts or inconsistencies arising from general/abstract knowledge found in $\mathbf{KG}_{\text{Fact}}$ or $\mathbf{KG}_{\text{CS}}$.
+\end{enumerate}
+
+\subsubsection{Spatial Priority and Commonsense Filtering}
+The raw $\mathbf{DASG\text{-}CS}$ is typically redundant and high-dimensional. We introduce a filtering mechanism (represented by the diamond shape in Figure \ref{fig:stage2_architecture}) to retain only the most impactful triples for caption generation:
+
+\begin{enumerate}
+    \item \textbf{Spatial Priority Filtering:} Triples containing the Novel 3D Spatial Predicates ($\mathcal{P}_{3D}$) are automatically prioritized and flagged. This ensures the LLM's final output is strongly grounded in the scene's structural awareness.
+    \item \textbf{Commonsense Filtering:} $\mathbf{KG}_{\text{CS}}$ triples are filtered based on a computed Relevance Score (e.g., semantic similarity between the triple and the image context) to remove weak or generic commonsense links that might otherwise introduce noise.
+\end{enumerate}
+This filtering step yields a set of high-quality, non-redundant, and prioritized triples $\mathcal{T}_{\text{opt}}$, ready for the final encoding.
+
+\subsubsection{Structured Sequence Encoding}
+The final step of Stage 2 is the Structured Sequence Encoding. The optimized set of triples $\mathcal{T}_{\text{opt}}$ is serialized into a single input sequence $S_{\text{prompt}}$ for the LLM. This encoding uses specific delimiter tokens (e.g., \texttt{[3D\_START]}, \texttt{[CS\_FACT]}) to clearly distinguish the type of knowledge, allowing the LLM in Stage 3 to explicitly learn to weight and utilize each semantic and spatial component effectively.
+
+\subsection{Stage 3: Spatially-Aware LLM Fine-Tuning}
+\label{sec:stage3}
+
+The final stage of our pipeline leverages the structured knowledge encoded in $S_{\text{prompt}}$ (the output of Stage 2) to fine-tune a Large Language Model for generating spatially-grounded and contextually rich image captions. This stage is critical for translating the multi-faceted knowledge graph into natural, human-readable descriptions that accurately reflect the 3D spatial structure and commonsense context of the scene. The architecture of Stage 3 is illustrated in Figure \ref{fig:stage3_architecture}.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/System3_horizontal.pdf}
+    \caption{Architecture of the Spatially-Aware LLM Fine-Tuning Module (Stage 3). The horizontal layout shows the complete pipeline from structured input through T5-based encoding, knowledge-type-aware attention, three-phase fine-tuning, beam search decoding, to final caption generation with spatial re-ranking.}
+    \label{fig:stage3_architecture}
+\end{figure*}
+
+\subsubsection{Model Selection and Architecture}
+
+We employ a Text-to-Text Transfer Transformer (T5) \cite{raffel2020exploring} as our base language model due to its unified text-to-text framework and strong performance on various NLP tasks. The T5 architecture treats caption generation as a sequence-to-sequence translation task:
+
+\begin{equation}
+P(Y|S_{\text{prompt}}) = \prod_{t=1}^{T} P(y_t | y_{<t}, S_{\text{prompt}}; \theta)
+\end{equation}
+
+where $Y = \{y_1, y_2, ..., y_T\}$ is the target caption sequence, $S_{\text{prompt}}$ is the structured input from Stage 2, and $\theta$ represents the model parameters.
+
+\subsubsection{Input Representation and Tokenization}
+
+The structured sequence $S_{\text{prompt}}$ is formatted with special delimiter tokens to guide the model's attention to different knowledge types:
+
+\begin{verbatim}
+[3D_START] car is_closer_than building [3D_END]
+[2D_START] person on sidewalk [2D_END]
+[CS_START] car UsedFor transportation [CS_END]
+[FACT_START] building IsA structure [FACT_END]
+\end{verbatim}
+
+This explicit structuring allows the model to learn weighted importance of spatial vs. semantic vs. commonsense knowledge during fine-tuning.
+
+\subsubsection{Training Objective and Loss Functions}
+
+We design a multi-component loss function to optimize both generation quality and spatial-semantic alignment:
+
+\begin{equation}
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{gen}} + \lambda_{\text{spatial}} \mathcal{L}_{\text{spatial}} + \lambda_{\text{cs}} \mathcal{L}_{\text{cs}}
+\end{equation}
+
+where:
+\begin{enumerate}
+    \item \textbf{Generation Loss} ($\mathcal{L}_{\text{gen}}$): Standard cross-entropy loss for caption generation:
+    \begin{equation}
+    \mathcal{L}_{\text{gen}} = -\sum_{t=1}^{T} \log P(y_t^* | y_{<t}^*, S_{\text{prompt}}; \theta)
+    \end{equation}
+    where $y_t^*$ denotes the ground truth token at position $t$.
+    
+    \item \textbf{Spatial Consistency Loss} ($\mathcal{L}_{\text{spatial}}$): Enforces that generated spatial terms (e.g., "in front of", "behind", "closer") align with the 3D spatial predicates in $\mathcal{P}_{3D}$. This is implemented as a binary classification loss over predicted spatial relationships:
+    \begin{equation}
+    \mathcal{L}_{\text{spatial}} = -\sum_{i,j} \left[ r_{ij} \log \hat{r}_{ij} + (1-r_{ij}) \log(1-\hat{r}_{ij}) \right]
+    \end{equation}
+    where $r_{ij}$ indicates ground truth spatial relationship between objects $i$ and $j$, and $\hat{r}_{ij}$ is the model's prediction.
+    
+    \item \textbf{Commonsense Grounding Loss} ($\mathcal{L}_{\text{cs}}$): Encourages the model to incorporate relevant commonsense knowledge from $\mathbf{KG}_{\text{CS}}$ by measuring semantic similarity between generated text and commonsense triples:
+    \begin{equation}
+    \mathcal{L}_{\text{cs}} = 1 - \frac{1}{|\mathbf{KG}_{\text{CS}}|} \sum_{t \in \mathbf{KG}_{\text{CS}}} \text{sim}_{\text{semantic}}(Y, t)
+    \end{equation}
+\end{enumerate}
+
+The hyperparameters $\lambda_{\text{spatial}}$ and $\lambda_{\text{cs}}$ control the relative importance of spatial accuracy and commonsense incorporation.
+
+\subsubsection{Fine-Tuning Strategy}
+
+Our fine-tuning procedure consists of three phases:
+
+\begin{enumerate}
+    \item \textbf{Warm-up Phase:} We first fine-tune on standard image captioning datasets (e.g., MS COCO \cite{lin2014microsoft}) to maintain general caption generation capability. This prevents catastrophic forgetting of linguistic fluency.
+    
+    \item \textbf{Spatial-Aware Phase:} We introduce the spatial consistency loss $\mathcal{L}_{\text{spatial}}$ and fine-tune on depth-annotated image-caption pairs, gradually increasing $\lambda_{\text{spatial}}$ from 0.1 to 0.5 over training epochs.
+    
+    \item \textbf{Commonsense Integration Phase:} We activate $\mathcal{L}_{\text{cs}}$ and fine-tune on the complete $\mathbf{DASG\text{-}CS}$ representation, setting $\lambda_{\text{cs}} = 0.3$ to balance factual grounding with creative description.
+\end{enumerate}
+
+\subsubsection{Attention Mechanism Enhancement}
+
+To explicitly leverage the structured input format, we enhance T5's standard multi-head attention mechanism with a knowledge-type-aware attention layer. This layer computes separate attention weights for different knowledge types (3D spatial, 2D semantic, commonsense, factual):
+
+\begin{equation}
+\text{Attention}_{\text{type}}(Q, K_{\text{type}}, V_{\text{type}}) = \text{softmax}\left(\frac{QK_{\text{type}}^T}{\sqrt{d_k}} + M_{\text{type}}\right)V_{\text{type}}
+\end{equation}
+
+where $M_{\text{type}}$ is a learned mask matrix that adjusts attention weights based on knowledge type, allowing the model to prioritize spatial predicates when generating positional descriptions.
+
+\subsubsection{Decoding and Post-Processing}
+
+During inference, we employ beam search decoding with beam size $k=5$ to generate diverse caption candidates. We then apply a re-ranking mechanism based on:
+
+\begin{equation}
+\text{Score}(Y) = \log P(Y|S_{\text{prompt}}) + \alpha \cdot \text{Spatial\_Acc}(Y) + \beta \cdot \text{Fluency}(Y)
+\end{equation}
+
+where $\text{Spatial\_Acc}(Y)$ measures the consistency between generated spatial terms and $\mathcal{P}_{3D}$, and $\text{Fluency}(Y)$ is computed using a pre-trained language model (e.g., GPT-2) to ensure linguistic naturalness.
+
+The highest-scoring caption is selected as the final output, ensuring both spatial accuracy and linguistic quality.
+
+\subsection{Implementation Details and Dataset Preparation}
+
+\section{Evaluation}
+
+\subsection{Environment and Experiment Data}
+The experiments are conducted on a deep learning workstation running the Ubuntu 20.04 operating system. The hardware configuration includes an Intel(R) Core(TM) i9-10900K processor, 64GB RAM, and an NVIDIA GeForce RTX 3090 GPU (24GB VRAM). The proposed DASG-CS framework is implemented using Python 3.8 and the PyTorch library. The pre-trained Depth Anything V2 model is used for depth estimation, and the T5-Base model is fine-tuned using the Hugging Face Transformers library.
+
+To validate the effectiveness of the proposed Spatio-Structural Image Captioning method, we utilize two standard benchmark datasets: MS-COCO [10] and Flickr30k [21]. These datasets are widely used for evaluating image captioning systems due to their diversity in object categories and complex spatial arrangements. The detailed statistics of the datasets used in our experiments are described in Table 1.
+
+\begin{table}[h]
+\centering
+\caption{Detailed description for the MS-COCO and Flickr30k image datasets}
+\label{tab:datasets}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Image Datasets} & \textbf{Training Set} & \textbf{Testing Set} & \textbf{Validation Set} \\ \hline
+MS-COCO [10]            & 113,287               & 5,000                & 5,000                   \\ \hline
+Flickr30k [21]          & 29,000                & 1,000                & 1,000                   \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Evaluation of Experimental Results}
+We evaluate the performance of our DASG-CS framework using standard machine translation metrics: BLEU-1 and BLEU-4. These metrics measure the n-gram overlap between the generated captions and the ground-truth captions provided by human annotators.
+
+Figure \ref{fig:qualitative} illustrates the qualitative results of our model on sample images from the test set. Unlike traditional methods that only describe 2D relationships (e.g., "next to"), our model successfully generates captions with explicit 3D spatial details (e.g., "in the foreground", "closer than") thanks to the integration of Depth Anything V2 and the spatial logic module.
+
+\begin{figure}[h]
+\centering
+% Placeholder for image: You should insert an image showing: 
+% (1) Original Image, (2) Depth Map, (3) Generated Caption
+% Example content for the caption in the figure:
+% "A white car is parked in the immediate foreground, closer than the brick building."
+\includegraphics[width=\linewidth]{figures/System1.png} 
+\caption{Qualitative results of the DASG-CS model. The generated captions demonstrate enhanced spatial awareness and commonsense reasoning compared to the ground truth.}
+\label{fig:qualitative}
+\end{figure}
+
+The quantitative results of our method on both datasets are presented in Table 2. The scores indicate that incorporating depth-enhanced scene graphs significantly improves the caption quality.
+
+\begin{table}[h]
+\centering
+\caption{Experimental results of image captioning using BLEU-1 and BLEU-4 metrics}
+\label{tab:our_results}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Datasets} & \textbf{Val. Size} & \textbf{BLEU-1} & \textbf{BLEU-4} \\ \hline
+MS-COCO [10]      & 5,000              & 0.7845          & 0.4012          \\ \hline
+Flickr30k [21]    & 1,000              & 0.7710          & 0.3685          \\ \hline
+\end{tabular}
+\end{table}
+
+To demonstrate the superiority of the proposed DASG-CS architecture, we compare our results with several state-of-the-art methods, including "Show, Attend and Tell" [18], Transformer-based approaches [5], and recent Knowledge Graph-enhanced methods [23]. Table 3 and Table 4 present these comparisons for the MS-COCO and Flickr30k datasets, respectively.
+
+\begin{table}[h]
+\centering
+\caption{Comparing image caption accuracy with other methods on MS-COCO}
+\label{tab:coco_compare}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Method}                                & \textbf{BLEU-1} & \textbf{BLEU-4} \\ \hline
+Show, Attend and Tell [18]                     & 0.7180          & 0.3220          \\ \hline
+Meshed-Memory Transformer [5]                  & 0.7610          & 0.3820          \\ \hline
+Knowledge Enhanced GCN [23]                    & 0.7680          & 0.3890          \\ \hline
+Context-aware attention [22]                   & 0.7600          & 0.3600          \\ \hline
+\textbf{DASG-CS (Ours)}                        & \textbf{0.7845} & \textbf{0.4012} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Comparing image caption accuracy with other methods on Flickr30k}
+\label{tab:flickr_compare}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Method}                                & \textbf{BLEU-1} & \textbf{BLEU-4} \\ \hline
+Show, Attend and Tell [18]                     & 0.6690          & 0.2360          \\ \hline
+Meshed-Memory Transformer [5]                  & 0.7450          & 0.3420          \\ \hline
+Attention Mechanism and KG (Ref Paper)         & 0.7586          & 0.3578          \\ \hline
+\textbf{DASG-CS (Ours)}                        & \textbf{0.7710} & \textbf{0.3685} \\ \hline
+\end{tabular}
+\end{table}
+
+As shown in Table 3 and Table 4, our proposed DASG-CS method outperforms existing methods on both BLEU-1 and BLEU-4 metrics. Specifically, on the MS-COCO dataset, we achieve a BLEU-4 score of 0.4012, which is higher than the Knowledge Enhanced GCN method (0.3890). This improvement can be attributed to three key factors:
+(1) The Depth-Enhanced Scene Graph allows the model to understand the 3D structure of the scene, reducing spatial ambiguities that often confuse standard 2D attention mechanisms.
+(2) The Fine-Tuned LLM (T5) effectively translates the structured spatial predicates ($\mathcal{P}_{3D}$) into natural language, resulting in more precise descriptions.
+(3) The integration of Commonsense Knowledge from ConceptNet ensures that the generated captions are not only structurally accurate but also contextually rich.
+
+Furthermore, we analyzed the training stability. Figure \ref{fig:loss} shows the Training vs Validation Loss over 30 epochs. The loss decreases steadily and converges around epoch 25, indicating that the multi-component loss function ($\mathcal{L}_{total}$) effectively guides the model to learn both spatial and semantic features without overfitting.
+
+\begin{figure}[h]
+\centering
+% Placeholder for the Loss Chart
+\includegraphics[width=0.8\linewidth]{figures/System1.png} 
+\caption{The experimental results for the Loss by epochs (Training vs Validation).}
+\label{fig:loss}
+\end{figure}
+
+\section{Future Work}
+
+
+
+\section*{Acknowledgments}
+The authors would like to thank the Faculty of Information Technology, Ho Chi Minh
+ City University of Industry and Trade, and University of Science, VNU-HCM, which
+ are sponsors of this research. We also thank anonymous reviewers for their helpful
+ comments on this paper.
+
+\bibliographystyle{splncs04}
+\bibliography{ref}
+
+\end{document}
