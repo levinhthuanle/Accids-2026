@@ -47,7 +47,7 @@
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
-\author{Le Vinh Thuan\inst{1} \and Nguyen Minh Khoa\inst{2} \and Nguyen Vinh Thanh\inst{3} \and Thanh Manh Le \inst{4} \and Nguyen Thi Dinh \inst{5,}}
+\author{Le Vinh Thuan\inst{1} \and Nguyen Minh Khoa\inst{2} \and Nguyen Vinh Thanh\inst{3} \and Thanh Manh Le \inst{4} \and \\ Nguyen Thi Dinh \inst{5,*}}
 
 \authorrunning{L. V. Thuan, et al .}
 
@@ -60,7 +60,6 @@ $^1$\email{lvthuan23@apcs.fitus.edu.vn},
 $^2$\email{nmkhoa23@apcs.fitus.edu.vn}, 
 $^3$\email{23120012@student.hcmus.edu.vn}, 
 $^4$\email{lmthanh@hueuni.edu.vn},
-$^3$\email{thuynt@huit.edu.vn},
 $^5$\email{dinhnt@huit.edu.vn}
 }
 
@@ -69,12 +68,12 @@ $^5$\email{dinhnt@huit.edu.vn}
 %
 \begin{abstract}
 This paper proposes a method for image captioning based on Depth-Aware and Commonsense-Augmented Scene Graphs (DASG-CS) integrated with a large pre-trained 
-language model fine-tuning strategy. The proposed approach con-structs structured contextual representations by combining object-level visual in-formation, 
+language model fine-tuning strategy. The proposed approach constructs structured contextual representations by combining object-level visual information, 
 quantified three-dimensional spatial relationships, and semantic and commonsense knowledge from multiple sources. On the basis of these structured representations, 
-a T5-based language generation model is fine-tuned to produce image captions with enhanced spatial awareness and contextual coherence, with-out requiring direct visual 
+a T5-based language generation model is fine-tuned to produce image captions with enhanced spatial awareness and contextual coherence, without requiring direct visual 
 input to the language model. The overall architecture is implemented through three main stages: (1) depth-aware visual feature extraction, (2) multi-source knowledge graph 
 construction and fusion, and (3) structured representation-driven caption generation. Experimental evaluations conducted on the MS-COCO and Flickr30k benchmark datasets 
-demonstrate consistent im-provements in BLEU-n metrics compared to representative baseline methods, particularly in accurately describing relative position, depth cues, 
+demonstrate consistent improvements in BLEU-n metrics compared to representative baseline methods, particularly in accurately describing relative position, depth cues, 
 and spatial structure between objects. These results highlight the effectiveness of integrating depth-aware spatial modeling and knowledge graphs into LLM-based image 
 cap-tioning frameworks.
 
@@ -86,38 +85,41 @@ cap-tioning frameworks.
 
 \section{Introduction}
 
-Generating a caption for an image with high content and semantic accuracy using natural language words for each image is a challenge for image captioning in the field of computer vision, combined with natural language processing [1, 14]. To implement this problem, the system needs to combine many elements, including object recogni-tion in the image and contextual analysis of the relationship between objects. In ad-dition, the generated caption must also create coherent text, appropriate to the con-text, and accurately reflect the semantic meaning of the input image [1, 5, 18], which is a major challenge. Recent works applying deep learning models, especially the application of Transformer-based models and large language models (LLMs) in visu-al-linguistic programming (VLP) training, have significantly improved the accuracy and time of extracting captions for images. However, a major limitation and chal-lenge is that current VLP image description methods rely primarily on visual features and image semantics, which perform quite well, but cannot understand depth repre-sentation in space. To improve this problem, this paper proposes a method to repre-sent depth-enhanced spatial relationships between objects in images, especially those with complex relationships and where relative spatial distances are difficult to distin-guish. 
-Image captioning is one of the most important and challenging problems in the field of computer vision and natural language processing [1, 14]. To generate an ac-curate semantic caption, the model needs to be able to accurately identify objects, determine the relationships between them, and create a coherent and contextually appropriate description of the image [1, 18]. Recent advances in deep learning, espe-cially Transformer models and large language models (LLMs) in visual-linguistic programming (VLP) training, have significantly improved the accuracy of generating captions that accurately reflect the content and semantics of images [9].
-Most traditional caption generation models use only 2D features from RGB imag-es and offer limited 3D spatial scene representation. As a result, these models struggle to describe location, depth, proximity, or spatial layering between objects. For in-stance, the caption “the car is closer to the building” lacks clear distance or depth cues, making spatial inference difficult. To address this, this paper introduces a method for extracting enhanced object-to-object spatial relationships based on depth, enriching spatial semantics and improving caption generation accuracy.
+Generating a caption for an image with high content and semantic accuracy using natural language words for each image is a challenge for image captioning in the field of computer vision, combined with natural language processing [1, 14]. To implement this problem, the system needs to combine many elements, including object recognition in the image and contextual analysis of the relationship between objects. In addition, the generated caption must also create coherent text, appropriate to the context, and accurately reflect the semantic meaning of the input image [1, 5, 18], which is a major challenge. Recent works applying deep learning models, 
+especially the application of Transformer-based models and large language models (LLMs) in visual-linguistic programming (VLP) training, have significantly improved the accuracy and time of extracting captions for images. However, a major limitation and challenge is that current VLP image description methods rely primarily on visual features and image semantics, which perform quite well, but cannot understand depth representation in space. To improve this problem, this paper proposes a method to represent depth-enhanced spatial relationships between objects in images, especially those with complex relationships and where relative spatial distances are difficult to distinguish. 
+
+To generate an accurate semantic caption, the model needs to be able to accurately identify objects, determine the relationships between them, and create a coherent and contextually appropriate description of the image [1, 18]. Recent advances in deep learning, especially Transformer models and large language models (LLMs) in visual-linguistic programming (VLP) training, have significantly improved the accuracy of generating captions that accurately reflect the content and semantics of images [9].
+Most traditional caption generation models use only 2D features from RGB images and offer limited 3D spatial scene representation. As a result, these models struggle to describe location, depth, proximity, or spatial layering between objects. For instance, the caption “the car is closer to the building” lacks clear distance or depth cues, making spatial inference difficult. To address this, this paper introduces a method for extracting enhanced object-to-object spatial relationships based on depth, enriching spatial semantics and improving caption generation accuracy.
+
 The main contributions of this work are: 
-(1)	Propose a DASG-CS structure, combining visual features, quantitative depth information, and common sense knowledge to represent the image scene uni-formly.
+(1)	Propose a DASG-CS structure, combining visual features, quantitative depth information, and common sense knowledge to represent the image scene uniformly.
 (2)	Develop a spatially perceptive LLM refinement strategy, allowing the model to utilize spatial-structural relationships and semantic knowledge in DASG-CS effectively.
 (3)	Propose a three-stage process integrating feature extraction, multi-source knowledge integration, and natural language generation.
 (4)	Experiments on MS-COCO, Flickr30k, and Visual Genome with BLEU-n indi-ces show that the method provides a richer description, especially in capturing spatial and depth relationships.
+
 The rest of the article includes: Section 2 reviews related works, including ap-proaches to object detection and spatial feature extraction, spatial relationships, Knowledge-Enhanced image captioning, and Natural Language generation for im-age captioning. Section 3 details the theoretical basis for proposed method. Section 4 analyzes the design and evaluation of experimental results on the MS-COCO [10] and Flickr30k [21] datasets. Section 5 discusses conclusions and development direc-tions.
 
 
 \section{Related Work}
 
-The problem of image captioning has evolved significantly with the combination of visual models, linguistic models, and knowledge representation techniques. These works can be grouped into four main directions: (1) object recognition and extraction methods to form the basis for scene representation; (2) techniques for modeling scene relationships and structures, including scene graphs and 3D scene comprehension models; (3) knowledge enhancement approaches using Knowledge Graphs to sup-plement semantic and common sense information; and (4) methods for generating natural language from structural or multimodal representations. This classification clarifies the progress of the field while highlighting the remaining limitations that our approach aims to address.
+The problem of image captioning has evolved significantly with the combination of visual models, linguistic models, and knowledge representation techniques. These works can be grouped into four main directions: (1) object recognition and extraction methods to form the basis for scene representation; (2) techniques for modeling scene relationships and structures, including scene graphs and 3D scene comprehension models; (3) knowledge enhancement approaches using Knowledge Graphs to sup-plement semantic and commonsense information; and (4) methods for generating natural language from structural or multimodal representations. This classification clarifies the progress of the field while highlighting the remaining limitations that our approach aims to address.
 
 Traditional image captioning systems are primarily based on 2D visual features extracted from RGB images, which are the main input for the encoding-decoding architecture in image captioning [1, 18]. In the field of object recognition, the YOLO family has developed strongly from the YOLOv1 model with a single-stage detection architecture [13], then expanded through several improved generations such as YOLOv2, YOLOv3, and recent optimized variants [2, 3, 15]. Modern versions such as YOLOv11 continue to improve inference accuracy and speed, especially in contexts with many small objects or dense scenes.
 
-Although object detection models have made significant strides, much of the re-search still focuses on using 2D bounding boxes to represent object position. This representation fails to capture the three-dimensional nature of the scene, limiting the ability to infer depth, proximity, and the environment's layered structure. The lack of depth information makes it difficult for models to build a true spatial understanding, a crucial component for tasks that require complex inference of scene layout.
-
+Although object detection models have made significant strides, much of the research still focuses on using 2D bounding boxes to represent object position. This representation fails to capture the three-dimensional nature of the scene, limiting the ability to infer depth, proximity, and the environment's layered structure. The lack of depth information makes it difficult for models to build a true spatial understanding, a crucial component for tasks that require complex inference of scene layout.
 Scene structure modeling plays a crucial role in the semantic understanding and spatial composition of images. One prominent approach is scene graph generation, where objects and the relationships between them are represented as clearly struc-tured graphs [20, 22]. These scene graphs are often built through entity recognition and extraction of semantic relationships such as “person-sitting-on-chair” or “dog-standing-next-to-person” [24], which enhances inference capabilities and improves many tasks such as captioning, image querying, and scene comprehension.
 
-However, most current scene graph methods focus on semantic relationships and do not fully describe quantitative spatial relationships, such as distance, near-far degrees, or depth plane stratification. The lack of this precise spatial information means that scene graphs only partially reflect the nature of the scene and fail to rep-resent the three-dimensional (3D) structure required by spatial inference..
+However, most current scene graph methods focus on semantic relationships and do not fully describe quantitative spatial relationships, such as distance, near-far degrees, or depth plane stratification. The lack of this precise spatial information means that scene graphs only partially reflect the nature of the scene and fail to represent the three-dimensional (3D) structure required by spatial inference.
 
-To overcome this limitation, our approach incorporates depth estimation into the scene graph construction process. This allows for more informative modeling of spa-tial relationships, including semantic connections and quantitative representations related to the relative position and 3D structure of the scene. As a result, the generat-ed scene graph is more accurately reflected in terms of spatial layout, thereby better supporting the task of generating spatially perceptive image descriptions.
+To overcome this limitation, our approach incorporates depth estimation into the scene graph construction process. This allows for more informative modeling of spatial relationships, including semantic connections and quantitative representations related to the relative position and 3D structure of the scene. As a result, the generated scene graph is more accurately reflected in terms of spatial layout, thereby better supporting the task of generating spatially perceptive image descriptions.
 
-Knowledge Graphs (KGs) play a crucial role in extending the semantic understand-ing of models by providing a clear knowledge structure, including entities, attributes, and relationships. In the field of computer vision, Visual Genome [8] is one of the largest visual knowledge sources, containing detailed annotations of objects, attrib-utes, and relationships, forming the basis for building large-scale visual knowledge graphs. Similarly, Flickr30k [21] provides tens of thousands of image-caption pairs, becoming a key dataset in training visual-linguistic models.
+Knowledge Graphs (KGs) play a crucial role in extending the semantic understanding of models by providing a clear knowledge structure, including entities, attributes, and relationships. In the field of computer vision, Visual Genome [8] is one of the largest visual knowledge sources, containing detailed annotations of objects, attributes, and relationships, forming the basis for building large scale visual knowledge graphs. Similarly, Flickr30k [21] provides tens of thousands of image-caption pairs, becoming a key dataset in training visual linguistic models.
 
-Many previous studies have exploited external knowledge to enhance descriptive generation capabilities. For example, Knowledge Graphs have been used to support visual inquiry answering (VQA) [16] and image classification [11], demonstrating the effectiveness of adding background knowledge to visual models. Entity linking tech-niques [4] help map detected objects in images to entities in the knowledge base, thereby enabling the system to leverage real-world knowledge. In addition, knowledge-based methods [23, 25] have demonstrated that integrating common sense and factual knowledge improves caption quality, especially in expressing ac-tion, meaning, and context. However, most current approaches only integrate knowledge at the caption generation stage [17], meaning the model only references knowledge when creating text, instead of using knowledge to structure the scene rep-resentation from the beginning. Unlike these approaches, our method builds a unified knowledge graph before the description generation stage, by combining visual obser-vations from Visual Genome and Flickr30k with external knowledge sources. The integration of knowledge from multiple sources helps to form a more comprehensive scene representation, reflecting both image content and encompassing real-world understanding, thereby supporting a more semantically accurate and accurate cap-tion generation model.
+Many previous studies have exploited external knowledge to enhance descriptive generation capabilities. Knowledge Graphs have been used to support visual inquiry answering (VQA) [16] and image classification [11], demonstrating the effectiveness of adding background knowledge to visual models. Entity linking techniques [4] help map detected objects in images to entities in the knowledge base, thereby enabling the system to leverage realworld knowledge. In addition, knowledge-based methods [23, 25] have demonstrated that integrating common sense and factual knowledge improves caption quality, especially in expressing ac-tion, meaning, and context. However, most current approaches only integrate knowledge at the caption generation stage [17], meaning the model only references knowledge when creating text, instead of using knowledge to structure the scene representation from the beginning. Unlike these approaches, our method builds a unified knowledge graph before the description generation stage, by combining visual observations from Visual Genome and Flickr30k with external knowledge sources. The integration of knowledge from multiple sources helps to form a more comprehensive scene representation, reflecting both image content and encompassing realworld understanding, thereby supporting a more semantically accurate and accurate cap-tion generation model.
 
-Natural language is the final component in the image description generation sys-tem. Early encoder-decoder models [7, 14] based on RNNs were used to generate sentences from visual features. The introduction of attention mechanisms [1, 18] helped the model focus on important image regions, thereby significantly improving description quality. Recently, Transformer-based architectures [5,9] have further expanded the ability to model long-term context, becoming the dominant choice for captioning problems. In particular, the T5 model [12] with its “text-to-text” approach provides a unified processing framework for many language generation tasks.
+Natural language is the final component in the image description generation system. Early encoder-decoder models [7, 14] based on RNNs were used to generate sentences from visual features. The introduction of attention mechanisms [1, 18] helped the model focus on important image regions, thereby significantly improving description quality. Recently, Transformer-based architectures [5,9] have further expanded the ability to model long-term context, becoming the dominant choice for captioning problems. In particular, the T5 model [12] with its “text-to-text” approach provides a unified processing framework for many language generation tasks.
 
-In this study, we use text-to-text transformers to generate descriptions from struc-tured semantic representations. By refining the model on data that clearly encodes spatial relationships and depth information, the system aims to create a description that accurately reflects the 3D spatial structure of the scene. Current paper on image captioning generation has made significant progress through object detection, scene graphs, knowledge integration, and Transformer-based linguistic models. However, most methods remain limited to two-dimensional visual representation, failing to fully model three-dimensional spatial relationships and depth information. Further-more, common-sense knowledge is primarily exploited during the description genera-tion phase, rather than being directly integrated into the structural representation of the scene. These limitations highlight the need for a unified scene representation model capable of combining depth information, spatial relationships, and semantic knowledge to improve image description quality.
+In this study, we use text-to-text transformers to generate descriptions from struc-tured semantic representations. By refining the model on data that clearly encodes spatial relationships and depth information, the system aims to create a description that accurately reflects the 3D spatial structure of the scene. Current paper on image captioning generation has made significant progress through object detection, scene graphs, knowledge integration, and Transformer-based linguistic models. However, most methods remain limited to two-dimensional visual representation, failing to fully model three-dimensional spatial relationships and depth information. Furthermore, commonsense knowledge is primarily exploited during the description genera-tion phase, rather than being directly integrated into the structural representation of the scene. These limitations highlight the need for a unified scene representation model capable of combining depth information, spatial relationships, and semantic knowledge to improve image description quality.
 
 
 
@@ -131,7 +133,7 @@ The theoretical foundations used for image caption extraction methods are presen
 which is considered the first step in transforming raw visual information into structured components for relationship extraction, knowledge integration, 
 and the generation of spatially perceptive image descriptions [3].
 
-We incorporate the Depth-Anything-V2 model \cite{yang2024depth} to estimate depth information, formally defined as:
+The Depth-Anything-V2 model \cite{yang2024depth} is incorporated to estimate depth information such as: 
 
 \begin{equation}
 f_{depth}: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^{H \times W}
@@ -146,8 +148,8 @@ R_{spatial}(d_i, d_j) = \{distance(d_i, d_j), overlap(d_i, d_j), relative\_posit
 (2) Knowledge Graph Construction:
 
 
-\subsubsection{Entity Linking and Knowledge Fusion}
-Given the detection set $\mathcal{D}$ from Stage I, we define the entity linking function as:
+\subsubsection{Entity Linking and Knowledge Fusion:}
+given the detection set $\mathcal{D}$ from Stage 1, we define the entity linking function as:
 
 \begin{equation}
 f_{link}: \mathcal{D} \times \mathcal{KB} \rightarrow \mathcal{E}_{linked}
@@ -161,7 +163,7 @@ sim(d_i, e_k) = \alpha \cdot sim_{text}(c_i, label(e_k)) + \beta \cdot sim_{cont
 
 where $\alpha$ and $\beta$ are weighting parameters, and $sim_{text}$ and $sim_{context}$ represent textual and contextual similarity measures respectively.
 
-\subsubsection{Knowledge Graph Formalization}
+\subsubsection{Knowledge Graph Formalization:}
 The constructed knowledge graph is formally defined as a directed graph $KG = (V, E, R, A)$ where $V = \{v_1, v_2, ..., v_m\}$ is the set of entity vertices, $E \subseteq V \times V$ represents the edges between entities, $R$ is the set of relation types, and $A: V \rightarrow \mathcal{P}(\mathcal{A})$ maps entities to their attribute sets.
 
 
@@ -247,7 +249,7 @@ A proposed architecture (Fig. 1) consists of three main stages: (1) Spatial feat
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{figures/StructureOverall.png}
+    \includegraphics[width=0.9\linewidth]{figures/OverallFinal.jpg}
     \caption{Structure of proposed model for image captioning}
     
 \end{figure}
@@ -351,7 +353,7 @@ Fine-Tuning strategy: The fine-tuning proceeds in three phases: (1) warm-up phas
 
 \subsection{Environment and experimental data}
 
-The experiment is built on the Python Notebook platform [6]. The graphs are built based on the Python Matplotlib library. The process of the experiment is built on the Dell Gaming G3 15 computer environment, which includes an Intel(R) Core(TM) i7-10750H processor, 16GB RAM, GTX 1660 ti GPU, and Windows 11 operating sys-tem. The experimental data sets are MS-COCO and Flickr30k multi-object image sets, which are described in Table 1.
+The experiment is built on the Python Notebook platform [6]. The graphs are built based on the Python Matplotlib library. The process of the experiment is built on the Dell Gaming G3 15 computer environment, which includes an Intel(R) Core(TM) i7-10750H processor, 16GB RAM, GTX 1660 ti GPU, and Windows 11 operating system. The experimental data sets are MS-COCO and Flickr30k multi-object image sets, which are described in Table 1.
 
 \begin{table}[!htbp]
 \centering
@@ -445,7 +447,7 @@ Figure 7 shows the training and validation loss curves during the fine-tuning pr
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.9\linewidth]{figures/train.jpg}
-    \caption{Training and validation loss curves during the fine-tuning of the proposed spa-tially-aware image captioning model}
+    \caption{Training and validation loss curves during the fine-tuning of the proposed spatially-aware image captioning model}
     
 \end{figure}
 
@@ -453,7 +455,7 @@ The performance of IC\_DSGLM compared to the methods reported in Tables 3 and 4 
 First, prior approaches that rely primarily on 2D visual features or attention-based mechanisms, IC\_DSGLM explicitly incorpo-rates depth-aware spatial relationships, 
 nabling more accurate modeling of object proximity, relative position, and scene structure. Second, the proposed method con-structs a unified depth and commonsense 
 augmented Scene Graph, allowing multi-source semantic and commonsense knowledge to be integrated at the representation level rather than only at the language generation stage. 
-Finally, the spatially-aware LLM fine-tuning strategy enables the language model to effectively leverage struc-tured spatial and semantic cues, resulting in more precise 
+Finally, the spatially-aware LLM fine-tuning strategy enables the language model to effectively leverage structured spatial and semantic cues, resulting in more precise 
 and contextually rich cap-tions. 
 
 \section{Conclusion and development}
